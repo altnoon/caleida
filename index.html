@@ -136,16 +136,36 @@
   footer{padding:40px 0 80px;color:var(--muted);font-size:13px}
 
   @media (max-width:680px){
-    h1{font-size:34px}
+    .wrap{padding:0 20px}
+    header{padding:52px 0 30px}
+    h1{font-size:32px}
+    h1 .sub{font-size:16px;margin-top:14px}
+    section{padding:38px 0}
+    h2{font-size:24px}
+    .lede,h2 + .lede{font-size:16px;margin-bottom:24px}
+
     .three{grid-template-columns:1fr}
-    .layer{grid-template-columns:1fr;gap:12px}
+    .layer{grid-template-columns:1fr;gap:12px;padding:16px}
     .rails{grid-template-columns:1fr}
-    table,thead,tbody,tr,td{display:block;width:auto}
-    th{display:none}
-    td{border:none;padding:2px 0}
-    td:first-child{width:auto;padding-top:14px}
-    tr{border-bottom:1px solid var(--line);padding-bottom:12px;display:block}
-    td:first-child{width:auto}
+    .split,.platgrid{grid-template-columns:1fr}
+    .summary{padding:26px 22px}
+    .summary p{font-size:15.5px}
+
+    /* stack table → stacked cards */
+    table,tbody,tr,td{display:block;width:auto}
+    thead{display:none}
+    table{margin-top:2px}
+    tr{border:1px solid var(--line-2);border-radius:12px;padding:13px 15px;margin-bottom:10px}
+    td{border:none;padding:0;width:auto}
+    td:first-child{font-size:15px;white-space:normal;margin-bottom:2px}
+    td:nth-child(2){color:var(--accent);font-weight:600;font-size:13.5px;width:auto;margin-bottom:6px}
+    td:last-child{font-size:13.5px}
+    tr:last-child td{border-bottom:none}
+  }
+
+  @media (max-width:380px){
+    .cell{min-width:100%}
+    .three .c{padding:18px}
   }
 </style>
 </head>
