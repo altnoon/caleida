@@ -123,6 +123,13 @@
   .panel svg{display:block;width:100%;height:auto}
   .panel svg text{font-family:'Inter',sans-serif}
   .panel svg .hand{font-family:'Newsreader',serif;font-style:italic}
+  .panel svg.legacy-art{display:none}
+  .panel svg.story-art{background:#f6ecdc}
+  .panel .story-image{display:block;width:100%;height:auto;aspect-ratio:7/5;object-fit:cover;object-position:center}
+  .panel-raster svg{display:none}
+  .story-art .outline{stroke:#292825;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+  .story-art .fine{stroke:#292825;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .story-art .teal{stroke:#267b79}
   .panel figcaption{padding:14px 18px 17px;font-size:13.5px;color:var(--body);line-height:1.58;border-top:1px solid var(--line);margin-top:auto}
   .panel figcaption b{color:var(--ink);font-weight:600}
 
@@ -261,9 +268,9 @@
     <div class="board">
 
       <!-- PANEL 1 · the idea -->
-      <figure class="panel">
+      <figure class="panel panel-raster">
         <div class="ph"><span class="pnum">1</span><span class="ptitle">One head holds it all</span></div>
-        <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="In a warm kitchen, a woman stands under a huge thought bubble packed with household icons — calendar, tooth, cake, shopping cart, medicine — while her partner checks his phone beside a tiny empty thought bubble.">
+        <svg class="legacy-art" viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="In a warm kitchen, a woman stands under a huge thought bubble packed with household icons — calendar, tooth, cake, shopping cart, medicine — while her partner checks his phone beside a tiny empty thought bubble.">
           <rect width="420" height="300" fill="#f7efe3"/>
           <!-- kitchen: tiles, counter, lamp, shelf -->
           <g stroke="#e8dcc6" stroke-width="2">
@@ -370,11 +377,39 @@
             <text x="374" y="104" font-size="14" fill="#8a8a93" text-anchor="middle">…</text>
           </g>
         </svg>
+        <svg class="story-art" viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A woman in a warm kitchen carries a crowded teal thought bubble full of household responsibilities while her partner stands beside a small empty thought bubble.">
+          <rect width="420" height="300" fill="#f6ecdc"/>
+          <path d="M0 194H420M0 222H420M0 250H420M54 194v28m82-28v28m82-28v28m82-28v28m82-28v28M12 222v28m82-28v28m82-28v28m82-28v28m82-28v28" fill="none" stroke="#d9c8ad" stroke-width="2"/>
+          <path d="M0 252H420v48H0z" fill="#dca679"/><path d="M0 252H420" class="outline" fill="none"/>
+          <path d="M58 0v34M42 68l12-34h8l13 34z" fill="#fffaf0" class="outline"/><circle cx="59" cy="72" r="5" fill="#efb36f" class="fine"/>
+          <ellipse cx="190" cy="82" rx="139" ry="67" fill="#fffdf7" stroke="#267b79" stroke-width="7"/>
+          <circle cx="116" cy="156" r="5" fill="#fffdf7" stroke="#267b79" stroke-width="5"/><circle cx="130" cy="141" r="8" fill="#fffdf7" stroke="#267b79" stroke-width="5"/>
+          <g class="fine">
+            <rect x="76" y="52" width="45" height="38" rx="5" fill="#fff8e9"/><path d="M76 63h45"/><path d="m87 76 7 7 15-17" fill="none" stroke="#d96e50" stroke-width="4"/><path d="M88 47v10m21-10v10" stroke-width="5"/>
+            <path d="M139 47c0-16 13-18 18-8 6-10 19-8 19 8 0 12-6 14-7 26-1 8-7 9-9-3-2-7-4-7-6 0-2 12-8 11-9 3-1-12-6-14-6-26z" fill="#fff8e9"/>
+            <path d="M202 45h41v48h-41z" fill="#df7658" transform="rotate(12 222 69)"/><path d="M216 38h44v54h-44z" fill="#fffaf0" transform="rotate(28 238 65)"/><path d="m227 55 25 14m-29-6 23 13m-27-5 21 12"/>
+            <path d="M280 53h40l-5 25h-29zM276 43h7l5 35" fill="none"/><circle cx="291" cy="86" r="4" fill="#d96e50"/><circle cx="310" cy="86" r="4" fill="#d96e50"/>
+            <path d="M83 109c8-7 20-7 28 0l-3 24H86z" fill="#4d9b99"/><path d="M88 109c3 7 16 7 19 0" fill="none"/>
+            <rect x="137" y="110" width="24" height="34" rx="3" fill="#df7658"/><rect x="142" y="102" width="14" height="9" rx="2" fill="#267b79"/><rect x="142" y="121" width="14" height="14" fill="#fff8e9"/>
+            <path d="M192 125h45v17h-45z" fill="#df7658"/><path d="M192 128q7-10 14 0t14 0t14 0" fill="none"/><path d="M201 124v-14m14 14v-14m14 14v-14"/>
+            <g transform="rotate(-35 281 124)"><rect x="263" y="114" width="36" height="20" rx="10" fill="#fff8e9"/><path d="M281 114v20"/><path d="M263 124a10 10 0 0 1 10-10h8v20h-8a10 10 0 0 1-10-10" fill="#df7658"/></g>
+          </g>
+          <g>
+            <path d="M63 203c-5-40 52-48 62-9l-5 25H69z" fill="#654735" class="outline"/><circle cx="95" cy="191" r="18" fill="#f2b990" class="outline"/><path d="M78 189c4-19 28-27 37-7-11-6-21-4-37 7" fill="#654735"/><circle cx="89" cy="192" r="2"/><circle cx="102" cy="192" r="2"/><path d="M89 201q7 6 13 0" fill="none" class="fine"/>
+            <path d="M66 218q29-18 58 0l15 82H50z" fill="#dc7355" class="outline"/><path d="M81 215l14 15 15-15M95 230v50" fill="none" class="fine"/><path d="M68 230q-14 13-18 39M122 229q12 16 14 38" fill="none" stroke="#292825" stroke-width="12" stroke-linecap="round"/><path d="M68 230q-14 13-18 39M122 229q12 16 14 38" fill="none" stroke="#dc7355" stroke-width="7" stroke-linecap="round"/>
+          </g>
+          <g>
+            <circle cx="326" cy="195" r="18" fill="#f2b990" class="outline"/><path d="M309 193q2-25 25-20 13 3 10 22-9-12-35-2" fill="#654735" class="outline"/><circle cx="320" cy="196" r="2"/><circle cx="333" cy="196" r="2"/><path d="M321 205h10" class="fine"/>
+            <path d="M296 220q30-20 59 0l17 80h-92z" fill="#fff8e9" class="outline"/><path d="M312 218q13 14 27 0" fill="none" class="fine"/><path d="M300 232q-16 13-25 34m76-34q13 15 18 35" fill="none" stroke="#292825" stroke-width="12" stroke-linecap="round"/><path d="M300 232q-16 13-25 34m76-34q13 15 18 35" fill="none" stroke="#fff8e9" stroke-width="7" stroke-linecap="round"/>
+            <circle cx="354" cy="151" r="5" fill="#fffdf7" stroke="#267b79" stroke-width="4"/><circle cx="368" cy="137" r="8" fill="#fffdf7" stroke="#267b79" stroke-width="4"/><ellipse cx="389" cy="116" rx="22" ry="16" fill="#fffdf7" stroke="#267b79" stroke-width="5"/><text x="389" y="121" text-anchor="middle" font-size="18" fill="#9a9184">…</text>
+          </g>
+        </svg>
+        <img class="story-image" src="assets/panel-1-mental-load-v2.png" width="1000" height="714" loading="lazy" alt="In a warmly illustrated kitchen, a woman carries a large thought bubble full of household responsibilities while her partner looks on beside a small empty thought bubble.">
         <figcaption><b>The idea starts here.</b> The mental load is real work — unwritten, invisible, carried by one person while the rest of the house honestly can't see it. You can't split a weight no one can see.</figcaption>
       </figure>
 
       <!-- PANEL 2 · cal texts first -->
-      <figure class="panel">
+      <figure class="panel panel-raster">
         <div class="ph"><span class="pnum">2</span><span class="ptitle">Cal texts first</span></div>
         <svg viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A phone lock screen with a notification from Cal: nine days since the big shop, mate. Fridge is looking brave.">
           <rect width="420" height="280" fill="#ffffff"/>
@@ -394,11 +429,12 @@
           <text x="158" y="190" font-size="9.5" fill="#3f3f46">brave.</text>
           <text x="210" y="238" font-size="9" fill="#c9c9cf" text-anchor="middle">swipe to reply</text>
         </svg>
+        <img class="story-image" src="assets/panel-2-cal-texts-first-v2.png" width="1000" height="714" loading="lazy" alt="In a warmly illustrated kitchen, a man smiles at an incoming Cal notification on his phone beside a simple visual reminder about groceries.">
         <figcaption><b>The app makes the first move.</b> Cal notices the pattern and reaches out — no dashboard to check, no app you have to remember to open. Proactive, but only when it's worth the interruption.</figcaption>
       </figure>
 
       <!-- PANEL 3 · the interface -->
-      <figure class="panel">
+      <figure class="panel panel-raster">
         <div class="ph"><span class="pnum">3</span><span class="ptitle">The whole app is a conversation</span></div>
         <svg viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A chat thread with Cal: he offers a shopping list, the dad replies, and quick-action chips sit under the messages.">
           <rect width="420" height="280" fill="#ffffff"/>
@@ -433,13 +469,14 @@
           <circle cx="284" cy="247" r="10" fill="#e8553a"/>
           <path d="M284 252 L284 242 M280 246 L284 242 L288 246" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" fill="none"/>
         </svg>
+        <img class="story-image" src="assets/panel-3-conversation-v2.png" width="1000" height="714" loading="lazy" alt="A man chats with Cal from his kitchen table while an enlarged illustrated phone shows a simple conversation and quick actions.">
         <figcaption><b>The UI is a text thread.</b> No boards, no forms, no setup. Lists, reminders and bookings happen as replies and one-tap chips — Cal turns talk into action, and the interface stays as light as a chat with a mate.</figcaption>
       </figure>
 
       <!-- PANEL 4 · the use -->
-      <figure class="panel">
+      <figure class="panel panel-raster">
         <div class="ph"><span class="pnum">4</span><span class="ptitle">Noticing becomes doing</span></div>
-        <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The dad unpacks grocery bags in the kitchen, holding a jar up triumphantly; a toast confirms the shop is logged and Cal sends a celebratory message.">
+        <svg class="legacy-art" viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The dad unpacks grocery bags in the kitchen, holding a jar up triumphantly; a toast confirms the shop is logged and Cal sends a celebratory message.">
           <rect width="420" height="300" fill="#f7efe3"/>
           <!-- tiles -->
           <g stroke="#e8dcc6" stroke-width="2">
@@ -508,11 +545,20 @@
           <text x="278" y="167" font-size="9.5" fill="#3f3f46">Get in. That's three</text>
           <text x="278" y="180" font-size="9.5" fill="#3f3f46">weeks running.</text>
         </svg>
+        <svg class="story-art" viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="In a warm illustrated kitchen, a dad proudly unpacks the weekly shop while his partner smiles and Cal celebrates the completed task.">
+          <rect width="420" height="300" fill="#f6ecdc"/><path d="M0 156H420M0 184H420M0 212H420M42 156v28m84-28v28m84-28v28m84-28v28m84-28v28M0 184h42m42 0h84m84 0h84m42 0h42" fill="none" stroke="#d9c8ad" stroke-width="2"/><path d="M0 218h420v82H0z" fill="#dca679"/><path d="M0 218h420" class="outline" fill="none"/>
+          <path d="M52 0v31M36 66l12-35h8l13 35z" fill="#fffaf0" class="outline"/><circle cx="52" cy="70" r="5" fill="#efb36f" class="fine"/><path d="M300 68h120M323 67q18-13 36 0" fill="none" class="outline"/><rect x="377" y="42" width="20" height="25" rx="4" fill="#fffaf0" class="fine"/>
+          <g class="fine"><path d="M38 176h58v42H38z" fill="#e8bd89"/><path d="M47 176q0-22 18-22t18 22" fill="none"/><path d="M108 184h48v34h-48z" fill="#e8bd89"/><path d="M116 184q0-18 16-18t16 18" fill="none"/><path d="M55 163c-7-17-5-28 6-36m5 35c1-18 8-28 20-33" fill="none" stroke="#267b79" stroke-width="4"/></g>
+          <g><path d="M48 205q4-39 33-39t36 39" fill="#654735" class="outline"/><circle cx="84" cy="193" r="18" fill="#f2b990" class="outline"/><path d="M67 193q4-25 30-19 9 2 9 14-19-11-39 5" fill="#654735"/><circle cx="78" cy="194" r="2"/><circle cx="91" cy="194" r="2"/><path d="M78 203q7 5 13 0" fill="none" class="fine"/><path d="M54 219q30-18 59 0l14 81H40z" fill="#dc7355" class="outline"/><path d="M70 217l14 14 14-14M84 231v48" fill="none" class="fine"/><path d="M57 232q-14 13-18 32M110 232q15 11 21 28" fill="none" stroke="#292825" stroke-width="12" stroke-linecap="round"/><path d="M57 232q-14 13-18 32M110 232q15 11 21 28" fill="none" stroke="#dc7355" stroke-width="7" stroke-linecap="round"/></g>
+          <g><circle cx="229" cy="183" r="19" fill="#f2b990" class="outline"/><path d="M211 181q2-27 29-20 12 4 8 24-12-16-37-4" fill="#654735" class="outline"/><circle cx="223" cy="184" r="2"/><circle cx="236" cy="184" r="2"/><path d="M222 194q8 8 16-1" fill="none" class="fine"/><path d="M196 210q34-21 67 0l19 90H178z" fill="#fff8e9" class="outline"/><path d="M214 207q15 16 31 0" fill="none" class="fine"/><path d="M257 219q22-21 31-58" fill="none" stroke="#292825" stroke-width="13" stroke-linecap="round"/><path d="M257 219q22-21 31-58" fill="none" stroke="#fff8e9" stroke-width="8" stroke-linecap="round"/><circle cx="289" cy="157" r="6" fill="#f2b990" class="fine"/><rect x="278" y="113" width="23" height="43" rx="5" fill="#dc7355" class="outline"/><rect x="282" y="104" width="15" height="10" rx="3" fill="#267b79" class="fine"/><rect x="282" y="125" width="15" height="17" fill="#fff8e9"/><path d="M199 220q-17 8-31 26" fill="none" stroke="#292825" stroke-width="13" stroke-linecap="round"/><path d="M199 220q-17 8-31 26" fill="none" stroke="#fff8e9" stroke-width="8" stroke-linecap="round"/></g>
+          <g transform="translate(271 28)"><rect width="128" height="54" rx="17" fill="#fffdf7" class="outline"/><circle cx="23" cy="27" r="12" fill="#dc7355"/><path d="m17 27 5 5 9-11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/><text x="42" y="25" font-size="12" font-weight="700" fill="#292825">Big shop — done</text><text x="42" y="41" font-size="10" fill="#81796f">Cal noticed. You owned it.</text></g><path d="M315 98q10-10 20 0M332 110q10-10 20 0" fill="none" stroke="#267b79" stroke-width="4" stroke-linecap="round"/><circle cx="312" cy="119" r="4" fill="#dc7355"/><circle cx="359" cy="92" r="4" fill="#267b79"/>
+        </svg>
+        <img class="story-image" src="assets/panel-4-noticing-becomes-doing-v2.png" width="1000" height="714" loading="lazy" alt="In a warmly illustrated kitchen, a man proudly unpacks groceries while his relaxed partner looks on and a small teal check confirms the task is logged.">
         <figcaption><b>This is the use, day to day.</b> He notices, he does it, one tap logs it — and Cal celebrates. Warm roast, never shame: the win gets recorded without anyone having to chase, ask, or assign.</figcaption>
       </figure>
 
       <!-- PANEL 5 · the load -->
-      <figure class="panel">
+      <figure class="panel panel-raster">
         <div class="ph"><span class="pnum">5</span><span class="ptitle">The Load, made visible</span></div>
         <svg viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A dashboard screen titled The Load showing the household split 63 to 37, with bars per category showing who carried what.">
           <rect width="420" height="280" fill="#ffffff"/>
@@ -549,13 +595,14 @@
           <circle cx="210" cy="256" r="3" fill="#e8553a"/>
           <text x="217" y="259" font-size="8" fill="#8a8a93">picked up by him</text>
         </svg>
+        <img class="story-image" src="assets/panel-5-load-visible-v2.png" width="1000" height="714" loading="lazy" alt="A couple calmly review The Load together on a tablet beside a clear illustrated dashboard of shared household categories.">
         <figcaption><b>The one screen that isn't chat.</b> The Load shows who carried what — the invisible work, finally legible to the whole household. Clarity before fairness: you can only rebalance what you can see.</figcaption>
       </figure>
 
       <!-- PANEL 6 · the exhale -->
-      <figure class="panel">
+      <figure class="panel panel-raster">
         <div class="ph"><span class="pnum">6</span><span class="ptitle">The exhale</span></div>
-        <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The couple sit close together on a warm sofa with a mug of tea, sharing one small calm thought bubble containing a kaleidoscope pattern.">
+        <svg class="legacy-art" viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The couple sit close together on a warm sofa with a mug of tea, sharing one small calm thought bubble containing a kaleidoscope pattern.">
           <rect width="420" height="300" fill="#f7efe3"/>
           <!-- lamp + plant -->
           <line x1="368" y1="0" x2="368" y2="26" stroke="#3b2f2a" stroke-width="2.5"/>
@@ -618,6 +665,17 @@
           <rect x="108" y="264" width="8" height="14" rx="3" fill="#6f4a33" stroke="#3b2f2a" stroke-width="1.5"/>
           <rect x="308" y="264" width="8" height="14" rx="3" fill="#6f4a33" stroke="#3b2f2a" stroke-width="1.5"/>
         </svg>
+        <svg class="story-art" viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A relaxed couple sit close together on a warm sofa, sharing tea and one calm teal thought bubble containing the Caleida kaleidoscope.">
+          <rect width="420" height="300" fill="#f6ecdc"/><path d="M0 237h420v63H0z" fill="#e7caa8"/><ellipse cx="215" cy="286" rx="167" ry="10" fill="#d9b991"/>
+          <path d="M53 0v35M38 70l12-35h8l13 35z" fill="#fffaf0" class="outline"/><circle cx="54" cy="74" r="5" fill="#efb36f" class="fine"/><path d="M350 236q-8-31 5-57m1 57q2-32 23-52m-20 34q-20-17-17-37m17 28q18-21 32-16" fill="none" stroke="#267b79" stroke-width="5" stroke-linecap="round"/><path d="M337 232h48l-7 52h-34z" fill="#dc7355" class="outline"/>
+          <ellipse cx="223" cy="73" rx="78" ry="52" fill="#fffdf7" stroke="#267b79" stroke-width="7"/><circle cx="198" cy="139" r="5" fill="#fffdf7" stroke="#267b79" stroke-width="5"/><circle cx="207" cy="123" r="8" fill="#fffdf7" stroke="#267b79" stroke-width="5"/><g transform="translate(223 73)"><path d="M0-27 8-8l19-8-8 19 19 8-19 8 8 19-19-8-8 19-8-19-19 8 8-19-19-8 19-8-8-19 19 8z" fill="#dc7355" class="fine"/><circle r="13" fill="#267b79"/><circle r="5" fill="#fffdf7"/></g>
+          <rect x="72" y="190" width="276" height="83" rx="28" fill="#ddc5a4" class="outline"/><rect x="91" y="167" width="238" height="74" rx="27" fill="#ead7bb" class="outline"/><path d="M202 169v70" class="fine"/><rect x="55" y="207" width="46" height="73" rx="18" fill="#ddc5a4" class="outline"/><rect x="319" y="207" width="46" height="73" rx="18" fill="#ddc5a4" class="outline"/>
+          <g transform="rotate(-7 171 181)"><path d="M134 181q2-48 39-48t43 49" fill="#654735" class="outline"/><circle cx="175" cy="169" r="20" fill="#f2b990" class="outline"/><path d="M156 169q3-29 31-22 11 3 10 17-22-13-41 5" fill="#654735"/><path d="M164 170q5 5 10 0m5 0q5 5 10 0" fill="none" class="fine"/><path d="M169 180q7 5 13 0" fill="none" class="fine"/></g><path d="M126 196q46-26 83 3l13 42H111z" fill="#dc7355" class="outline"/><path d="M144 191l25 22 21-22" fill="none" class="fine"/>
+          <g><circle cx="243" cy="165" r="20" fill="#f2b990" class="outline"/><path d="M224 163q2-29 30-22 12 3 10 19-20-12-40 3" fill="#654735" class="outline"/><path d="M232 166q5 5 10 0m5 0q5 5 10 0" fill="none" class="fine"/><path d="M237 176q7 6 14 0" fill="none" class="fine"/><path d="M212 191q34-24 68 1l18 49H201z" fill="#fff8e9" class="outline"/><path d="M228 188q15 18 31 0" fill="none" class="fine"/></g>
+          <path d="M275 202q-21 19-56 8" fill="none" stroke="#292825" stroke-width="14" stroke-linecap="round"/><path d="M275 202q-21 19-56 8" fill="none" stroke="#fff8e9" stroke-width="8" stroke-linecap="round"/><circle cx="216" cy="209" r="6" fill="#f2b990" class="fine"/><path d="M281 205q12 13 8 29" fill="none" stroke="#292825" stroke-width="14" stroke-linecap="round"/><path d="M281 205q12 13 8 29" fill="none" stroke="#fff8e9" stroke-width="8" stroke-linecap="round"/><rect x="278" y="225" width="25" height="20" rx="5" fill="#fffdf7" class="fine"/><path d="M303 230q12 0 8 10-2 5-8 3" fill="none" class="fine"/><path d="M285 218q5-7 0-13m11 13q5-7 0-13" fill="none" stroke="#267b79" stroke-width="2" stroke-linecap="round"/>
+          <path d="M94 239h113v36H94zm113 0h119v36H207" fill="#f1dfc5" class="outline"/>
+        </svg>
+        <img class="story-image" src="assets/panel-6-the-exhale-v2.png" width="1000" height="714" loading="lazy" alt="A relaxed couple sit close together on a warm sofa beneath one shared teal thought bubble containing a calm kaleidoscope pattern.">
         <figcaption><b>The outcome we're building for.</b> The scattered fragments resolve into one clear picture — the kaleidoscope in the name. She isn't the only one holding it any more. That exhale is the product.</figcaption>
       </figure>
 
