@@ -30,6 +30,17 @@
   }
   .wrap{max-width:920px;margin:0 auto;padding:0 28px}
 
+  /* ---- top nav ---- */
+  .topnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line)}
+  .navwrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+  .topnav .brand{font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:var(--ink);letter-spacing:-.01em}
+  .topnav .brand:hover{color:var(--accent)}
+  .navlinks{display:flex;gap:6px}
+  .navlinks a{font-size:13.5px;font-weight:500;color:var(--muted);padding:7px 14px;border-radius:8px;transition:color .15s,background .15s}
+  .navlinks a:hover{color:var(--ink);background:var(--panel)}
+  .navlinks a.active{color:var(--accent);background:var(--accent-soft)}
+  @media(max-width:680px){.navwrap{height:52px}.topnav .brand{font-size:18px}.navlinks a{padding:6px 11px;font-size:13px}}
+
   /* ---- header ---- */
   header{padding:88px 0 44px;border-bottom:1px solid var(--line)}
   .eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
@@ -170,6 +181,17 @@
 </style>
 </head>
 <body>
+
+<nav class="topnav">
+  <div class="wrap navwrap">
+    <a class="brand" href="/">Caleida</a>
+    <div class="navlinks">
+      <a href="/">Home</a>
+      <a href="/caleida-tech-stack" class="active">Tech Stack</a>
+      <a href="/caleida-brand-narrative">Brand Narrative</a>
+    </div>
+  </div>
+</nav>
 
 <header>
   <div class="wrap">

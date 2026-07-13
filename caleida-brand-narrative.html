@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caleida — Brand Narrative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1a1e;
+    --body:#3f3f46;
+    --muted:#8a8a93;
+    --line:#ececec;
+    --line-2:#e3e3e3;
+    --bg:#ffffff;
+    --panel:#fafafa;
+    --accent:#e8553a;       /* terracotta — used sparingly */
+    --accent-soft:#fdf0ec;
+    --radius:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    color:var(--body);background:var(--bg);
+    line-height:1.6;-webkit-font-smoothing:antialiased;
+    font-size:16px;
+  }
+  .wrap{max-width:820px;margin:0 auto;padding:0 28px}
+
+  /* ---- top nav ---- */
+  .topnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line)}
+  .navwrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+  .topnav .brand{font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:var(--ink);letter-spacing:-.01em}
+  .topnav .brand:hover{color:var(--accent)}
+  .navlinks{display:flex;gap:6px}
+  .navlinks a{font-size:13.5px;font-weight:500;color:var(--muted);padding:7px 14px;border-radius:8px;transition:color .15s,background .15s}
+  .navlinks a:hover{color:var(--ink);background:var(--panel)}
+  .navlinks a.active{color:var(--accent);background:var(--accent-soft)}
+  @media(max-width:680px){.navwrap{height:52px}.topnav .brand{font-size:18px}.navlinks a{padding:6px 11px;font-size:13px}}
+
+  /* ---- header ---- */
+  header{padding:96px 0 48px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+  h1{font-family:'Newsreader',serif;font-weight:500;font-size:52px;line-height:1.06;color:var(--ink);letter-spacing:-.015em;margin-bottom:20px}
+  h1 .sub{display:block;font-family:'Inter';font-weight:400;font-size:18px;color:var(--muted);margin-top:18px;line-height:1.55;max-width:600px}
+
+  section{padding:60px 0;border-bottom:1px solid var(--line)}
+  .kicker{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+  h2{font-family:'Newsreader',serif;font-weight:500;font-size:30px;color:var(--ink);letter-spacing:-.01em;margin-bottom:14px;line-height:1.18}
+  h2 + .lede{font-size:18px;color:var(--body);max-width:680px;margin-bottom:30px}
+  p{margin-bottom:18px;max-width:680px}
+  p:last-child{margin-bottom:0}
+  strong{color:var(--ink);font-weight:600}
+  em.t{font-style:normal;color:var(--accent)}
+  a{color:var(--accent);text-decoration:none}
+
+  /* ---- manifesto / big statement ---- */
+  .manifesto{font-family:'Newsreader',serif;font-weight:400;font-size:30px;line-height:1.42;color:var(--ink);max-width:740px;letter-spacing:-.005em}
+  .manifesto .hl{color:var(--accent)}
+  .manifesto p{font-size:inherit;max-width:none;margin-bottom:26px}
+  .manifesto p:last-child{margin-bottom:0}
+
+  .pull{font-family:'Newsreader',serif;font-style:italic;font-size:23px;line-height:1.5;color:var(--ink);border-left:2px solid var(--accent);padding:6px 0 6px 24px;margin:30px 0;max-width:680px}
+
+  /* ---- the gap (problem) ---- */
+  .statline{display:grid;grid-template-columns:1fr;gap:0;margin-top:8px}
+  .statline .row{display:grid;grid-template-columns:64px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}
+  .statline .row:last-child{border-bottom:none}
+  .statline .num{font-family:'Newsreader',serif;font-size:30px;color:var(--accent);font-weight:500;line-height:1}
+  .statline .txt{font-size:15.5px;color:var(--body)}
+  .statline .txt b{color:var(--ink);font-weight:600}
+
+  /* ---- name block ---- */
+  .name{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
+  .name .nc{border:1px solid var(--line-2);border-radius:var(--radius);padding:24px 26px}
+  .name .nc.key{background:var(--accent-soft);border-color:#f1c8bd}
+  .name .nw{font-family:'Newsreader',serif;font-size:26px;color:var(--ink);margin-bottom:8px}
+  .name .nc.key .nw{color:var(--accent)}
+  .name .nd{font-size:14.5px;color:var(--body);line-height:1.55}
+  .name .nd b{color:var(--ink);font-weight:600}
+
+  /* ---- audience split ---- */
+  .who{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
+  .who .wc{border:1px solid var(--line-2);border-radius:var(--radius);padding:24px 26px}
+  .who .wl{font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .who .wt{font-family:'Newsreader',serif;font-size:21px;color:var(--ink);margin-bottom:8px}
+  .who .wd{font-size:14.5px;color:var(--body);line-height:1.55}
+
+  /* ---- principles ---- */
+  .prin{margin-top:8px}
+  .pr{display:grid;grid-template-columns:54px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--line)}
+  .pr:last-child{border-bottom:none}
+  .pr .pn{font-family:'Newsreader',serif;font-size:18px;color:var(--accent);font-weight:500;padding-top:3px}
+  .pr .pt{font-weight:600;color:var(--ink);font-size:17px;margin-bottom:7px}
+  .pr .pd{font-size:15px;color:var(--body);line-height:1.6}
+  .pr .pd b{color:var(--ink);font-weight:600}
+
+  /* ---- voice do/don't ---- */
+  .voice{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line-2);border-radius:var(--radius);overflow:hidden;margin-top:8px}
+  .voice .col{padding:24px 26px}
+  .voice .col.yes{background:var(--accent-soft)}
+  .voice .col.no{background:var(--panel);border-left:1px solid var(--line-2)}
+  .voice .vh{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+  .voice .yes .vh{color:var(--accent)}
+  .voice .no .vh{color:var(--muted)}
+  .voice ul{list-style:none}
+  .voice li{font-size:14.5px;color:var(--body);padding:7px 0;line-height:1.5;border-bottom:1px solid rgba(0,0,0,.04)}
+  .voice li:last-child{border-bottom:none}
+  .voice .quote{font-family:'Newsreader',serif;font-style:italic;color:var(--ink)}
+
+  /* ---- storyboard ---- */
+  .board{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px}
+  .panel{border:1px solid var(--line-2);border-radius:var(--radius);overflow:hidden;background:#fff;margin:0;display:flex;flex-direction:column}
+  .panel .ph{display:flex;align-items:center;gap:11px;padding:14px 18px 13px;border-bottom:1px dashed var(--line-2)}
+  .panel .pnum{flex:none;width:23px;height:23px;border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center}
+  .panel .ptitle{font-family:'Newsreader',serif;font-size:17.5px;color:var(--ink);letter-spacing:-.005em}
+  .panel svg{display:block;width:100%;height:auto}
+  .panel svg text{font-family:'Inter',sans-serif}
+  .panel svg .hand{font-family:'Newsreader',serif;font-style:italic}
+  .panel figcaption{padding:14px 18px 17px;font-size:13.5px;color:var(--body);line-height:1.58;border-top:1px solid var(--line);margin-top:auto}
+  .panel figcaption b{color:var(--ink);font-weight:600}
+
+  /* ---- mission summary ---- */
+  .summary{background:var(--ink);color:#e8e8ea;border-radius:18px;padding:40px 40px;margin-top:8px}
+  .summary .kicker{color:#9a9aa2}
+  .summary p{color:#d4d4d8;font-size:19px;max-width:none;margin:0;font-family:'Newsreader',serif;line-height:1.5}
+  .summary strong{color:#fff;font-weight:500;color:#f3a892}
+
+  footer{padding:44px 0 90px;color:var(--muted);font-size:13px}
+
+  @media (max-width:680px){
+    .wrap{padding:0 20px}
+    header{padding:56px 0 34px}
+    h1{font-size:36px}
+    h1 .sub{font-size:16px;margin-top:14px}
+    section{padding:42px 0}
+    h2{font-size:25px}
+    .lede,h2 + .lede{font-size:16px;margin-bottom:24px}
+    .manifesto{font-size:23px;line-height:1.4}
+    .manifesto p{margin-bottom:20px}
+    .pull{font-size:20px;padding-left:18px}
+    .name,.who{grid-template-columns:1fr}
+    .voice{grid-template-columns:1fr}
+    .voice .col.no{border-left:none;border-top:1px solid var(--line-2)}
+    .board{grid-template-columns:1fr;gap:18px}
+    .statline .row{grid-template-columns:48px 1fr;gap:14px}
+    .statline .num{font-size:25px}
+    .pr{grid-template-columns:44px 1fr;gap:14px}
+    .summary{padding:28px 24px}
+    .summary p{font-size:17px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap navwrap">
+    <a class="brand" href="/">Caleida</a>
+    <div class="navlinks">
+      <a href="/">Home</a>
+      <a href="/caleida-tech-stack">Tech Stack</a>
+      <a href="/caleida-brand-narrative" class="active">Brand Narrative</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Brand Narrative · Internal North Star</div>
+    <h1>What we believe,<br>and why Caleida exists.
+      <span class="sub">The story we tell ourselves before we tell anyone else. Read it when you join. Re-read it when a decision feels hard — the answer is almost always in here.</span>
+    </h1>
+  </div>
+</header>
+
+<!-- MANIFESTO -->
+<section>
+  <div class="wrap">
+    <div class="kicker">The belief</div>
+    <div class="manifesto">
+      <p>In every home there is a person who remembers. Who notices the milk is low and the dentist is overdue and the school jumper no longer fits. None of it is written down. All of it is carried.</p>
+      <p>We call that weight the <span class="hl">mental load</span> — and for most of history it has been invisible, unpaid, and unevenly shared. Not because anyone is cruel. Because no one was <em class="t">noticing</em>.</p>
+      <p>Caleida exists to make the invisible visible — and then to help carry it. Not by nagging. Not by shaming. By standing beside the person who could be doing more, and quietly making it easier to step up.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE GAP -->
+<section>
+  <div class="wrap">
+    <div class="kicker">The problem we refuse to accept</div>
+    <h2>The work that no one sees is the work that breaks people</h2>
+    <p class="lede">The dishes get done and the appointments get made — but the <em>remembering</em>, the planning, the worrying, the holding-it-all-in-your-head — that almost always lands on one person. It is real labour, and it has a cost.</p>
+
+    <div class="statline">
+      <div class="row"><div class="num">01</div><div class="txt"><b>It's invisible.</b> You can't split a load no one can see. The first move isn't fairness — it's making the weight legible to the whole household.</div></div>
+      <div class="row"><div class="num">02</div><div class="txt"><b>It's lopsided.</b> One person becomes the household's operating system. The other waits to be told what to do — and being told is itself a tax on the person who carries the list.</div></div>
+      <div class="row"><div class="num">03</div><div class="txt"><b>It's corrosive.</b> Resentment doesn't arrive in arguments. It accumulates in the thousand small things one partner tracked and the other never knew about.</div></div>
+      <div class="row"><div class="num">04</div><div class="txt"><b>Apps made it worse.</b> Shared calendars and to-do lists just moved the load. Someone still has to fill them in, assign them, and chase them. We didn't need another list. We needed a mate.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- THE NAME -->
+<section>
+  <div class="wrap">
+    <div class="kicker">The name</div>
+    <h2>Caleida, and the one we call Cal</h2>
+    <p class="lede">From <em>caleidoscopio</em> — kaleidoscope. Hundreds of small, scattered fragments that, turned the right way and held to the light, resolve into one clear picture. That is exactly what a household is, and exactly what we do with it.</p>
+
+    <div class="name">
+      <div class="nc">
+        <div class="nw">Caleida</div>
+        <div class="nd"><b>The platform. The company. The pattern.</b> All the fragments of a family's life — the shop, the dentist, the half-term, the kit that doesn't fit — gathered and turned until they make sense. The kaleidoscope is the promise: chaos into clarity.</div>
+      </div>
+      <div class="nc key">
+        <div class="nw">Cal</div>
+        <div class="nd"><b>The mate you actually talk to.</b> Caleida is the system; Cal is the human face of it. Short, warm, first-name. You don't open Cal. You text him — and he texts back like someone who's known your house for years.</div>
+      </div>
+    </div>
+    <p style="margin-top:24px">The name carries our two markets in one word. It reads as English and lives in Spanish — fitting for a product born between the UK and Spain, for families who don't all share one language but share the same load.</p>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section>
+  <div class="wrap">
+    <div class="kicker">Who we serve</div>
+    <h2>We talk to the dad. We're building for the whole house.</h2>
+    <p class="lede">This is the most important strategic line in the document, so we say it plainly: the person we speak to is not always the person we're for. Getting this relationship right is the whole game.</p>
+
+    <div class="who">
+      <div class="wc">
+        <div class="wl">The user we talk to</div>
+        <div class="wt">The dad who wants to step up</div>
+        <div class="wd">He isn't lazy and he isn't the villain. He's a partner who genuinely wants to carry more but doesn't have the map in his head — so he waits to be asked, and asking is exhausting for the person asking. Cal hands him the map.</div>
+      </div>
+      <div class="wc">
+        <div class="wl">The person we're for</div>
+        <div class="wt">The partner who's been carrying it</div>
+        <div class="wd">She is the ultimate beneficiary — but she is never the one being managed. Success isn't her getting better reminders. It's her stopping being the reminder. The relief we're really chasing is hers.</div>
+      </div>
+    </div>
+    <p style="margin-top:24px">So we account for one and serve the other. Cal lives in the dad's pocket, but every feature is judged by a question asked from the partner's side of the bed: <strong>does this take weight off me, or just move it around?</strong></p>
+  </div>
+</section>
+
+<!-- STORYBOARD -->
+<section id="storyboard">
+  <div class="wrap">
+    <div class="kicker">The product, in pictures</div>
+    <h2>How Caleida works — a story in six panels</h2>
+    <p class="lede">The idea, the interface, and the everyday use of it — told the way it actually happens in a house. The entire surface area is two things: <strong>a chat thread with Cal</strong>, and <strong>one screen called The Load</strong>. Everything else is voice and timing.</p>
+
+    <div class="board">
+
+      <!-- PANEL 1 · the idea -->
+      <figure class="panel">
+        <div class="ph"><span class="pnum">1</span><span class="ptitle">One head holds it all</span></div>
+        <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="In a warm kitchen, a woman stands under a huge thought bubble packed with household icons — calendar, tooth, cake, shopping cart, medicine — while her partner checks his phone beside a tiny empty thought bubble.">
+          <rect width="420" height="300" fill="#f7efe3"/>
+          <!-- kitchen: tiles, counter, lamp, shelf -->
+          <g stroke="#e8dcc6" stroke-width="2">
+            <line x1="0" y1="204" x2="420" y2="204"/><line x1="0" y1="222" x2="420" y2="222"/><line x1="0" y1="240" x2="420" y2="240"/>
+            <line x1="46" y1="204" x2="46" y2="222"/><line x1="130" y1="204" x2="130" y2="222"/><line x1="214" y1="204" x2="214" y2="222"/><line x1="298" y1="204" x2="298" y2="222"/><line x1="382" y1="204" x2="382" y2="222"/>
+            <line x1="88" y1="222" x2="88" y2="240"/><line x1="172" y1="222" x2="172" y2="240"/><line x1="256" y1="222" x2="256" y2="240"/><line x1="340" y1="222" x2="340" y2="240"/>
+            <line x1="46" y1="240" x2="46" y2="256"/><line x1="130" y1="240" x2="130" y2="256"/><line x1="214" y1="240" x2="214" y2="256"/><line x1="298" y1="240" x2="298" y2="256"/><line x1="382" y1="240" x2="382" y2="256"/>
+          </g>
+          <rect x="0" y="256" width="420" height="8" fill="#d9b58e"/>
+          <rect x="0" y="264" width="420" height="36" fill="#f2e7d4"/>
+          <rect x="150" y="274" width="28" height="5" rx="2.5" fill="none" stroke="#3b2f2a" stroke-width="2"/>
+          <rect x="248" y="274" width="28" height="5" rx="2.5" fill="none" stroke="#3b2f2a" stroke-width="2"/>
+          <line x1="52" y1="0" x2="52" y2="30" stroke="#3b2f2a" stroke-width="2.5"/>
+          <path d="M40 52 L64 52 L58 30 L46 30 Z" fill="#fffdf8" stroke="#3b2f2a" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle cx="52" cy="57" r="4" fill="#f0c98f" stroke="#3b2f2a" stroke-width="1.5"/>
+          <line x1="322" y1="66" x2="414" y2="66" stroke="#3b2f2a" stroke-width="2.5"/>
+          <ellipse cx="346" cy="63" rx="15" ry="3.5" fill="#fffdf8" stroke="#3b2f2a" stroke-width="1.8"/>
+          <ellipse cx="346" cy="58" rx="12" ry="3" fill="#fffdf8" stroke="#3b2f2a" stroke-width="1.8"/>
+          <rect x="376" y="44" width="16" height="22" rx="3" fill="#fffdf8" stroke="#3b2f2a" stroke-width="1.8"/>
+          <line x1="376" y1="50" x2="392" y2="50" stroke="#3b2f2a" stroke-width="1.5"/>
+          <!-- her giant thought bubble -->
+          <circle cx="141" cy="145" r="3.5" fill="#fffdf8" stroke="#2f6f68" stroke-width="2.5"/>
+          <circle cx="152" cy="131" r="5.5" fill="#fffdf8" stroke="#2f6f68" stroke-width="2.5"/>
+          <ellipse cx="188" cy="76" rx="118" ry="56" fill="#fffdf8" stroke="#2f6f68" stroke-width="3"/>
+          <g stroke-linecap="round" stroke-linejoin="round">
+            <!-- calendar -->
+            <rect x="96" y="42" width="30" height="26" rx="4" fill="#fffdf8" stroke="#3b2f2a" stroke-width="2"/>
+            <path d="M96 52 L126 52" stroke="#3b2f2a" stroke-width="2"/>
+            <rect x="96" y="42" width="30" height="10" rx="4" fill="#c9694d" stroke="#3b2f2a" stroke-width="2"/>
+            <path d="M104 58 L109 63 L118 53" fill="none" stroke="#c9694d" stroke-width="2.5"/>
+            <!-- tooth -->
+            <path d="M142 44 C142 34 151 32 153 38 C155 32 164 34 164 44 C164 52 160 52 159 60 C158 64 154 64 154 57 C154 64 150 64 149 60 C148 52 144 52 144 44 Z" fill="#fffdf8" stroke="#3b2f2a" stroke-width="2"/>
+            <!-- cake -->
+            <rect x="184" y="50" width="30" height="15" rx="3" fill="#c9694d" stroke="#3b2f2a" stroke-width="2"/>
+            <path d="M184 56 Q189 52 194 56 Q199 60 204 56 Q209 52 214 56" fill="none" stroke="#fffdf8" stroke-width="2"/>
+            <path d="M191 50 L191 41 M199 50 L199 41 M207 50 L207 41" stroke="#3b2f2a" stroke-width="2"/>
+            <circle cx="191" cy="38" r="2" fill="#e8963a"/><circle cx="199" cy="38" r="2" fill="#e8963a"/><circle cx="207" cy="38" r="2" fill="#e8963a"/>
+            <!-- shopping cart -->
+            <path d="M236 36 L243 36 L249 56 L268 56 L273 40 L246 40" fill="none" stroke="#3b2f2a" stroke-width="2"/>
+            <circle cx="252" cy="63" r="3.2" fill="#2f6f68" stroke="#3b2f2a" stroke-width="1.5"/>
+            <circle cx="264" cy="63" r="3.2" fill="#2f6f68" stroke="#3b2f2a" stroke-width="1.5"/>
+            <!-- jumper -->
+            <path d="M110 86 L118 80 L132 80 L140 86 L135 93 L134 106 L116 106 L115 93 Z" fill="#7fa39e" stroke="#3b2f2a" stroke-width="2"/>
+            <path d="M118 80 C119 85 131 85 132 80" fill="none" stroke="#3b2f2a" stroke-width="1.6"/>
+            <!-- medicine bottle -->
+            <rect x="165" y="84" width="14" height="20" rx="3" fill="#c9694d" stroke="#3b2f2a" stroke-width="2"/>
+            <rect x="168" y="78" width="8" height="6" rx="1.5" fill="#2f6f68" stroke="#3b2f2a" stroke-width="1.6"/>
+            <rect x="168" y="90" width="8" height="8" rx="1" fill="#fffdf8"/>
+            <!-- pill -->
+            <g transform="rotate(-22 236 92)">
+              <rect x="225" y="87" width="22" height="10" rx="5" fill="#fffdf8" stroke="#3b2f2a" stroke-width="2"/>
+              <path d="M231 87 A5 5 0 0 0 225 92 A5 5 0 0 0 231 97 L236 97 L236 87 Z" fill="#c9694d"/>
+            </g>
+          </g>
+          <!-- her -->
+          <g>
+            <path d="M91 168 C86 132 134 132 129 168 C129 172 124 173 123 169 C122 172 98 172 97 169 C96 173 91 172 91 168 Z" fill="#6f4a33" stroke="#3b2f2a" stroke-width="2"/>
+            <circle cx="110" cy="156" r="10" fill="#f3cfae" stroke="#3b2f2a" stroke-width="2"/>
+            <path d="M91 168 C88 144 100 136 110 136 C120 136 132 144 129 168 C127 150 118 145 110 145 C102 145 93 150 91 168 Z" fill="#6f4a33"/>
+            <circle cx="106.5" cy="156" r="1.4" fill="#3b2f2a"/><circle cx="113.5" cy="156" r="1.4" fill="#3b2f2a"/>
+            <path d="M104 152 Q106.5 150.5 109 152 M111 152 Q113.5 150.5 116 152" fill="none" stroke="#3b2f2a" stroke-width="1.3"/>
+            <path d="M107.5 162 Q110 163.5 112.5 162" fill="none" stroke="#3b2f2a" stroke-width="1.6" stroke-linecap="round"/>
+            <rect x="107" y="165" width="6" height="6" fill="#f3cfae"/>
+            <path d="M96 171 C102 168 118 168 124 171 L129 189 L128 214 C117 218 103 218 92 214 L91 189 Z" fill="#c9694d" stroke="#3b2f2a" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M106 171 L110 177 L114 171" fill="none" stroke="#3b2f2a" stroke-width="1.6"/>
+            <circle cx="110" cy="184" r="1" fill="#3b2f2a"/><circle cx="110" cy="192" r="1" fill="#3b2f2a"/><circle cx="110" cy="200" r="1" fill="#3b2f2a"/>
+            <path d="M95 177 C84 183 82 197 92 205" fill="none" stroke="#3b2f2a" stroke-width="8" stroke-linecap="round"/>
+            <path d="M95 177 C84 183 82 197 92 205" fill="none" stroke="#c9694d" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="93" cy="206" r="3.5" fill="#f3cfae" stroke="#3b2f2a" stroke-width="1.5"/>
+            <path d="M125 177 C133 187 133 201 128 211" fill="none" stroke="#3b2f2a" stroke-width="8" stroke-linecap="round"/>
+            <path d="M125 177 C133 187 133 201 128 211" fill="none" stroke="#c9694d" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="127" cy="213" r="3.5" fill="#f3cfae" stroke="#3b2f2a" stroke-width="1.5"/>
+            <rect x="94" y="212" width="32" height="14" rx="5" fill="#f6efe2" stroke="#3b2f2a" stroke-width="2"/>
+            <rect x="96" y="220" width="13" height="62" rx="5" fill="#f6efe2" stroke="#3b2f2a" stroke-width="2"/>
+            <rect x="111" y="220" width="13" height="62" rx="5" fill="#f6efe2" stroke="#3b2f2a" stroke-width="2"/>
+            <rect x="93" y="280" width="17" height="8" rx="4" fill="#3b2f2a"/>
+            <rect x="110" y="280" width="17" height="8" rx="4" fill="#3b2f2a"/>
+          </g>
+          <!-- him, on his phone -->
+          <g>
+            <circle cx="330" cy="152" r="11" fill="#f3cfae" stroke="#3b2f2a" stroke-width="2"/>
+            <path d="M318.5 153 C314 130 346 130 341.5 153 C338 142 322 142 318.5 153 Z" fill="#6f4a33" stroke="#3b2f2a" stroke-width="2"/>
+            <circle cx="326.5" cy="155" r="1.4" fill="#3b2f2a"/><circle cx="333.5" cy="155" r="1.4" fill="#3b2f2a"/>
+            <path d="M328.5 161 L331.5 161" stroke="#3b2f2a" stroke-width="1.6" stroke-linecap="round"/>
+            <rect x="327" y="161" width="6" height="6" fill="#f3cfae"/>
+            <path d="M316 167 C322 164 338 164 344 167 L349 185 L348 214 C337 218 323 218 312 214 L311 185 Z" fill="#f6efe2" stroke="#3b2f2a" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M324 167 C326 171 334 171 336 167" fill="none" stroke="#3b2f2a" stroke-width="1.6"/>
+            <path d="M315 173 C308 183 310 193 320 197" fill="none" stroke="#3b2f2a" stroke-width="8" stroke-linecap="round"/>
+            <path d="M315 173 C308 183 310 193 320 197" fill="none" stroke="#f6efe2" stroke-width="5" stroke-linecap="round"/>
+            <path d="M345 173 C352 183 350 193 340 197" fill="none" stroke="#3b2f2a" stroke-width="8" stroke-linecap="round"/>
+            <path d="M345 173 C352 183 350 193 340 197" fill="none" stroke="#f6efe2" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="321" cy="198" r="3.5" fill="#f3cfae" stroke="#3b2f2a" stroke-width="1.5"/>
+            <circle cx="339" cy="198" r="3.5" fill="#f3cfae" stroke="#3b2f2a" stroke-width="1.5"/>
+            <rect x="323" y="184" width="14" height="22" rx="3" fill="#3b2f2a"/>
+            <rect x="325.5" y="187" width="9" height="14" rx="1.5" fill="#f7efe3"/>
+            <rect x="314" y="212" width="32" height="14" rx="5" fill="#b2593e" stroke="#3b2f2a" stroke-width="2"/>
+            <rect x="316" y="220" width="13" height="62" rx="5" fill="#b2593e" stroke="#3b2f2a" stroke-width="2"/>
+            <rect x="331" y="220" width="13" height="62" rx="5" fill="#b2593e" stroke="#3b2f2a" stroke-width="2"/>
+            <rect x="313" y="280" width="17" height="8" rx="4" fill="#3b2f2a"/>
+            <rect x="330" y="280" width="17" height="8" rx="4" fill="#3b2f2a"/>
+            <circle cx="349" cy="130" r="3.5" fill="#fffdf8" stroke="#2f6f68" stroke-width="2.5"/>
+            <circle cx="357" cy="116" r="5" fill="#fffdf8" stroke="#2f6f68" stroke-width="2.5"/>
+            <ellipse cx="374" cy="99" rx="17" ry="12" fill="#fffdf8" stroke="#2f6f68" stroke-width="3"/>
+            <text x="374" y="104" font-size="14" fill="#8a8a93" text-anchor="middle">…</text>
+          </g>
+        </svg>
+        <figcaption><b>The idea starts here.</b> The mental load is real work — unwritten, invisible, carried by one person while the rest of the house honestly can't see it. You can't split a weight no one can see.</figcaption>
+      </figure>
+
+      <!-- PANEL 2 · cal texts first -->
+      <figure class="panel">
+        <div class="ph"><span class="pnum">2</span><span class="ptitle">Cal texts first</span></div>
+        <svg viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A phone lock screen with a notification from Cal: nine days since the big shop, mate. Fridge is looking brave.">
+          <rect width="420" height="280" fill="#ffffff"/>
+          <rect x="138" y="16" width="144" height="248" rx="24" fill="#ffffff" stroke="#1a1a1e" stroke-width="2.5"/>
+          <rect x="190" y="26" width="40" height="6" rx="3" fill="#ececec"/>
+          <text x="210" y="84" font-size="30" font-weight="600" fill="#1a1a1e" text-anchor="middle" letter-spacing="-0.5">17:42</text>
+          <text x="210" y="102" font-size="10" fill="#8a8a93" text-anchor="middle">Tuesday 3 March</text>
+          <!-- ping marks -->
+          <path d="M146 128 L138 122 M146 196 L138 202" stroke="#e8553a" stroke-width="2" stroke-linecap="round"/>
+          <!-- notification -->
+          <rect x="150" y="124" width="120" height="72" rx="13" fill="#fdf0ec" stroke="#f1c8bd" stroke-width="1.5"/>
+          <circle cx="167" cy="142" r="8.5" fill="#e8553a"/>
+          <text x="167" y="146" font-size="10" font-weight="600" fill="#ffffff" text-anchor="middle">C</text>
+          <text x="181" y="140" font-size="8" font-weight="600" fill="#8a8a93" letter-spacing="1">CAL · NOW</text>
+          <text x="158" y="164" font-size="9.5" fill="#3f3f46">9 days since the big shop,</text>
+          <text x="158" y="177" font-size="9.5" fill="#3f3f46">mate. Fridge is looking</text>
+          <text x="158" y="190" font-size="9.5" fill="#3f3f46">brave.</text>
+          <text x="210" y="238" font-size="9" fill="#c9c9cf" text-anchor="middle">swipe to reply</text>
+        </svg>
+        <figcaption><b>The app makes the first move.</b> Cal notices the pattern and reaches out — no dashboard to check, no app you have to remember to open. Proactive, but only when it's worth the interruption.</figcaption>
+      </figure>
+
+      <!-- PANEL 3 · the interface -->
+      <figure class="panel">
+        <div class="ph"><span class="pnum">3</span><span class="ptitle">The whole app is a conversation</span></div>
+        <svg viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A chat thread with Cal: he offers a shopping list, the dad replies, and quick-action chips sit under the messages.">
+          <rect width="420" height="280" fill="#ffffff"/>
+          <rect x="118" y="12" width="184" height="256" rx="24" fill="#ffffff" stroke="#1a1a1e" stroke-width="2.5"/>
+          <!-- header -->
+          <circle cx="146" cy="40" r="9" fill="#e8553a"/>
+          <text x="146" y="44" font-size="10" font-weight="600" fill="#ffffff" text-anchor="middle">C</text>
+          <text x="162" y="39" font-size="12" font-weight="600" fill="#1a1a1e">Cal</text>
+          <text x="162" y="51" font-size="8" fill="#8a8a93">your household, sorted-ish</text>
+          <line x1="120" y1="60" x2="300" y2="60" stroke="#ececec" stroke-width="1.5"/>
+          <!-- cal bubble -->
+          <rect x="130" y="72" width="112" height="32" rx="11" fill="#fdf0ec"/>
+          <text x="139" y="86" font-size="9.5" fill="#3f3f46">Fridge is looking</text>
+          <text x="139" y="98" font-size="9.5" fill="#3f3f46">brave, mate.</text>
+          <!-- dad bubble -->
+          <rect x="174" y="112" width="114" height="32" rx="11" fill="#1a1a1e"/>
+          <text x="183" y="126" font-size="9.5" fill="#ffffff">On it — build me</text>
+          <text x="183" y="138" font-size="9.5" fill="#ffffff">a list?</text>
+          <!-- cal bubble 2 -->
+          <rect x="130" y="152" width="132" height="44" rx="11" fill="#fdf0ec"/>
+          <text x="139" y="166" font-size="9.5" fill="#3f3f46">Done — 14 things,</text>
+          <text x="139" y="178" font-size="9.5" fill="#3f3f46">milk twice. You know</text>
+          <text x="139" y="190" font-size="9.5" fill="#3f3f46">how it goes.</text>
+          <!-- quick chips -->
+          <rect x="130" y="206" width="66" height="19" rx="9.5" fill="#ffffff" stroke="#e8553a" stroke-width="1.5"/>
+          <text x="163" y="218.5" font-size="8.5" font-weight="600" fill="#e8553a" text-anchor="middle">See the list</text>
+          <rect x="202" y="206" width="82" height="19" rx="9.5" fill="#ffffff" stroke="#e8553a" stroke-width="1.5"/>
+          <text x="243" y="218.5" font-size="8.5" font-weight="600" fill="#e8553a" text-anchor="middle">Remind me at 5</text>
+          <!-- input -->
+          <rect x="130" y="236" width="138" height="22" rx="11" fill="#fafafa" stroke="#e3e3e3" stroke-width="1.5"/>
+          <text x="140" y="250" font-size="9" fill="#8a8a93">Message Cal…</text>
+          <circle cx="284" cy="247" r="10" fill="#e8553a"/>
+          <path d="M284 252 L284 242 M280 246 L284 242 L288 246" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        </svg>
+        <figcaption><b>The UI is a text thread.</b> No boards, no forms, no setup. Lists, reminders and bookings happen as replies and one-tap chips — Cal turns talk into action, and the interface stays as light as a chat with a mate.</figcaption>
+      </figure>
+
+      <!-- PANEL 4 · the use -->
+      <figure class="panel">
+        <div class="ph"><span class="pnum">4</span><span class="ptitle">Noticing becomes doing</span></div>
+        <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The dad unpacks grocery bags in the kitchen, holding a jar up triumphantly; a toast confirms the shop is logged and Cal sends a celebratory message.">
+          <rect width="420" height="300" fill="#f7efe3"/>
+          <!-- tiles -->
+          <g stroke="#e8dcc6" stroke-width="2">
+            <line x1="0" y1="128" x2="420" y2="128"/><line x1="0" y1="146" x2="420" y2="146"/><line x1="0" y1="164" x2="420" y2="164"/><line x1="0" y1="182" x2="420" y2="182"/><line x1="0" y1="200" x2="420" y2="200"/>
+            <line x1="40" y1="128" x2="40" y2="146"/><line x1="124" y1="128" x2="124" y2="146"/><line x1="208" y1="128" x2="208" y2="146"/><line x1="292" y1="128" x2="292" y2="146"/><line x1="376" y1="128" x2="376" y2="146"/>
+            <line x1="82" y1="146" x2="82" y2="164"/><line x1="166" y1="146" x2="166" y2="164"/><line x1="250" y1="146" x2="250" y2="164"/><line x1="334" y1="146" x2="334" y2="164"/>
+            <line x1="40" y1="164" x2="40" y2="182"/><line x1="124" y1="164" x2="124" y2="182"/><line x1="208" y1="164" x2="208" y2="182"/><line x1="292" y1="164" x2="292" y2="182"/><line x1="376" y1="164" x2="376" y2="182"/>
+            <line x1="82" y1="182" x2="82" y2="200"/><line x1="166" y1="182" x2="166" y2="200"/><line x1="250" y1="182" x2="250" y2="200"/><line x1="334" y1="182" x2="334" y2="200"/>
+          </g>
+          <!-- confetti -->
+          <g>
+            <circle cx="112" cy="76" r="2.5" fill="#c9694d"/><circle cx="216" cy="56" r="2" fill="#2f6f68"/><circle cx="92" cy="116" r="2" fill="#2f6f68"/><circle cx="232" cy="102" r="2.2" fill="#c9694d"/>
+            <rect x="140" y="52" width="8" height="3" rx="1.5" fill="#c9694d" transform="rotate(40 144 53)"/>
+            <rect x="196" y="84" width="8" height="3" rx="1.5" fill="#2f6f68" transform="rotate(-30 200 85)"/>
+            <rect x="86" y="92" width="8" height="3" rx="1.5" fill="#c9694d" transform="rotate(15 90 93)"/>
+          </g>
+          <!-- counter with bags -->
+          <rect x="24" y="210" width="182" height="9" rx="3" fill="#d9b58e" stroke="#3b2f2a" stroke-width="2"/>
+          <rect x="30" y="219" width="170" height="62" fill="#f2e7d4" stroke="#3b2f2a" stroke-width="2"/>
+          <rect x="58" y="232" width="26" height="5" rx="2.5" fill="none" stroke="#3b2f2a" stroke-width="2"/>
+          <rect x="130" y="232" width="26" height="5" rx="2.5" fill="none" stroke="#3b2f2a" stroke-width="2"/>
+          <g>
+            <path d="M52 166 C50 152 46 146 42 140 M58 166 C58 150 56 144 54 138 M56 166 C58 150 62 144 66 140" fill="none" stroke="#2f6f68" stroke-width="2.5" stroke-linecap="round"/>
+            <g transform="rotate(26 76 152)"><rect x="70" y="132" width="12" height="40" rx="6" fill="#e0aa72" stroke="#3b2f2a" stroke-width="2"/><path d="M73 140 L79 142 M72 150 L78 152 M72 160 L78 162" stroke="#3b2f2a" stroke-width="1.5" stroke-linecap="round"/></g>
+            <rect x="42" y="166" width="38" height="46" rx="4" fill="#e9c9a1" stroke="#3b2f2a" stroke-width="2"/>
+            <line x1="42" y1="176" x2="80" y2="176" stroke="#3b2f2a" stroke-width="1.5"/>
+            <rect x="92" y="180" width="32" height="32" rx="4" fill="#e9c9a1" stroke="#3b2f2a" stroke-width="2"/>
+            <line x1="92" y1="189" x2="124" y2="189" stroke="#3b2f2a" stroke-width="1.5"/>
+          </g>
+          <!-- him, jar aloft -->
+          <g>
+            <rect x="196" y="94" width="14" height="24" rx="4" fill="#c9694d" stroke="#3b2f2a" stroke-width="2"/>
+            <rect x="199" y="88" width="8" height="7" rx="2" fill="#2f6f68" stroke="#3b2f2a" stroke-width="1.6"/>
+            <rect x="199" y="102" width="8" height="9" rx="1" fill="#fffdf8"/>
+            <circle cx="165" cy="140" r="11" fill="#f3cfae" stroke="#3b2f2a" stroke-width="2"/>
+            <path d="M154 139 C151 122 179 122 176 139 C174 128 156 128 154 139 Z" fill="#6f4a33" stroke="#3b2f2a" stroke-width="2"/>
+            <circle cx="161.5" cy="142" r="1.4" fill="#3b2f2a"/><circle cx="168.5" cy="142" r="1.4" fill="#3b2f2a"/>
+            <path d="M159 138 Q161.5 136.5 164 138 M166 138 Q168.5 136.5 171 138" fill="none" stroke="#3b2f2a" stroke-width="1.3"/>
+            <path d="M161 147 Q165 151 169 147" fill="none" stroke="#3b2f2a" stroke-width="1.7" stroke-linecap="round"/>
+            <rect x="162" y="150" width="6" height="6" fill="#f3cfae"/>
+            <path d="M151 156 C157 153 173 153 179 156 L184 174 L183 202 C172 206 158 206 147 202 L146 174 Z" fill="#f6efe2" stroke="#3b2f2a" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M159 156 C161 160 169 160 171 156" fill="none" stroke="#3b2f2a" stroke-width="1.6"/>
+            <path d="M180 162 C192 152 198 138 202 124" fill="none" stroke="#3b2f2a" stroke-width="8" stroke-linecap="round"/>
+            <path d="M180 162 C192 152 198 138 202 124" fill="none" stroke="#f6efe2" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="203" cy="121" r="3.8" fill="#f3cfae" stroke="#3b2f2a" stroke-width="1.5"/>
+            <path d="M150 162 C142 170 134 176 127 180" fill="none" stroke="#3b2f2a" stroke-width="8" stroke-linecap="round"/>
+            <path d="M150 162 C142 170 134 176 127 180" fill="none" stroke="#f6efe2" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="125" cy="181" r="3.5" fill="#f3cfae" stroke="#3b2f2a" stroke-width="1.5"/>
+            <rect x="149" y="200" width="32" height="14" rx="5" fill="#b2593e" stroke="#3b2f2a" stroke-width="2"/>
+            <rect x="151" y="208" width="13" height="66" rx="5" fill="#b2593e" stroke="#3b2f2a" stroke-width="2"/>
+            <rect x="166" y="208" width="13" height="66" rx="5" fill="#b2593e" stroke="#3b2f2a" stroke-width="2"/>
+            <rect x="148" y="272" width="17" height="8" rx="4" fill="#3b2f2a"/>
+            <rect x="165" y="272" width="17" height="8" rx="4" fill="#3b2f2a"/>
+          </g>
+          <!-- toast -->
+          <rect x="238" y="52" width="154" height="50" rx="13" fill="#fffdf8" stroke="#3b2f2a" stroke-width="2"/>
+          <circle cx="260" cy="77" r="10" fill="#c9694d"/>
+          <path d="M255 77 L259 81 L266 73" stroke="#fffdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <text x="276" y="74" font-size="10.5" font-weight="600" fill="#3b2f2a">Big shop — done</text>
+          <text x="276" y="89" font-size="9" fill="#8a8a93">logged to The Load</text>
+          <!-- cal speech bubble -->
+          <path d="M296 150 L304 138 L312 150" fill="#f7dfd2"/>
+          <rect x="246" y="148" width="148" height="46" rx="12" fill="#f7dfd2" stroke="#d9a08c" stroke-width="1.5"/>
+          <circle cx="264" cy="171" r="8" fill="#c9694d"/>
+          <text x="264" y="174.5" font-size="9" font-weight="600" fill="#fffdf8" text-anchor="middle">C</text>
+          <text x="278" y="167" font-size="9.5" fill="#3f3f46">Get in. That's three</text>
+          <text x="278" y="180" font-size="9.5" fill="#3f3f46">weeks running.</text>
+        </svg>
+        <figcaption><b>This is the use, day to day.</b> He notices, he does it, one tap logs it — and Cal celebrates. Warm roast, never shame: the win gets recorded without anyone having to chase, ask, or assign.</figcaption>
+      </figure>
+
+      <!-- PANEL 5 · the load -->
+      <figure class="panel">
+        <div class="ph"><span class="pnum">5</span><span class="ptitle">The Load, made visible</span></div>
+        <svg viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A dashboard screen titled The Load showing the household split 63 to 37, with bars per category showing who carried what.">
+          <rect width="420" height="280" fill="#ffffff"/>
+          <rect x="118" y="12" width="184" height="256" rx="24" fill="#ffffff" stroke="#1a1a1e" stroke-width="2.5"/>
+          <text x="136" y="50" font-size="17" fill="#1a1a1e" font-family="Newsreader, serif">The Load</text>
+          <text x="136" y="64" font-size="9" fill="#8a8a93">this week, whole household</text>
+          <text x="136" y="98" font-size="24" font-weight="600" fill="#1a1a1e" letter-spacing="-0.5">63<tspan fill="#c9c9cf" font-weight="400"> / </tspan><tspan fill="#e8553a">37</tspan></text>
+          <text x="136" y="112" font-size="8.5" fill="#8a8a93">her / him — the gap is closing</text>
+          <!-- bars -->
+          <g font-size="9" fill="#3f3f46">
+            <text x="136" y="136">Meals &amp; shop</text>
+            <rect x="136" y="142" width="128" height="8" rx="4" fill="#f0f0ef"/>
+            <rect x="136" y="142" width="76" height="8" rx="4" fill="#1a1a1e"/>
+            <rect x="212" y="142" width="52" height="8" fill="#e8553a"/>
+            <rect x="256" y="142" width="8" height="8" rx="4" fill="#e8553a"/>
+            <text x="136" y="168">School &amp; kids</text>
+            <rect x="136" y="174" width="128" height="8" rx="4" fill="#f0f0ef"/>
+            <rect x="136" y="174" width="94" height="8" rx="4" fill="#1a1a1e"/>
+            <rect x="230" y="174" width="26" height="8" fill="#e8553a"/>
+            <rect x="248" y="174" width="8" height="8" rx="4" fill="#e8553a"/>
+            <text x="136" y="200">Health &amp; appointments</text>
+            <rect x="136" y="206" width="128" height="8" rx="4" fill="#f0f0ef"/>
+            <rect x="136" y="206" width="70" height="8" rx="4" fill="#1a1a1e"/>
+            <rect x="206" y="206" width="50" height="8" fill="#e8553a"/>
+            <rect x="248" y="206" width="8" height="8" rx="4" fill="#e8553a"/>
+            <text x="136" y="232">Kit &amp; clothes</text>
+            <rect x="136" y="238" width="128" height="8" rx="4" fill="#f0f0ef"/>
+            <rect x="136" y="238" width="60" height="8" rx="4" fill="#1a1a1e"/>
+            <rect x="196" y="238" width="52" height="8" fill="#e8553a"/>
+            <rect x="240" y="238" width="8" height="8" rx="4" fill="#e8553a"/>
+          </g>
+          <circle cx="140" cy="256" r="3" fill="#1a1a1e"/>
+          <text x="147" y="259" font-size="8" fill="#8a8a93">carried by her</text>
+          <circle cx="210" cy="256" r="3" fill="#e8553a"/>
+          <text x="217" y="259" font-size="8" fill="#8a8a93">picked up by him</text>
+        </svg>
+        <figcaption><b>The one screen that isn't chat.</b> The Load shows who carried what — the invisible work, finally legible to the whole household. Clarity before fairness: you can only rebalance what you can see.</figcaption>
+      </figure>
+
+      <!-- PANEL 6 · the exhale -->
+      <figure class="panel">
+        <div class="ph"><span class="pnum">6</span><span class="ptitle">The exhale</span></div>
+        <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The couple sit close together on a warm sofa with a mug of tea, sharing one small calm thought bubble containing a kaleidoscope pattern.">
+          <rect width="420" height="300" fill="#f7efe3"/>
+          <!-- lamp + plant -->
+          <line x1="368" y1="0" x2="368" y2="26" stroke="#3b2f2a" stroke-width="2.5"/>
+          <path d="M356 48 L380 48 L374 26 L362 26 Z" fill="#fffdf8" stroke="#3b2f2a" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle cx="368" cy="53" r="4" fill="#f0c98f" stroke="#3b2f2a" stroke-width="1.5"/>
+          <g>
+            <path d="M68 244 C60 226 58 210 62 196 M70 244 C70 222 72 208 78 196 M72 244 C80 228 86 218 94 210" fill="none" stroke="#2f6f68" stroke-width="3" stroke-linecap="round"/>
+            <path d="M56 244 L86 244 L82 272 L60 272 Z" fill="#c9694d" stroke="#3b2f2a" stroke-width="2" stroke-linejoin="round"/>
+          </g>
+          <ellipse cx="215" cy="290" rx="150" ry="8" fill="#ece0c9"/>
+          <!-- shared thought bubble with kaleidoscope -->
+          <circle cx="224" cy="140" r="3.5" fill="#fffdf8" stroke="#2f6f68" stroke-width="2.5"/>
+          <circle cx="232" cy="124" r="5" fill="#fffdf8" stroke="#2f6f68" stroke-width="2.5"/>
+          <circle cx="246" cy="86" r="32" fill="#fffdf8" stroke="#2f6f68" stroke-width="3"/>
+          <g transform="translate(246,86)">
+            <path d="M0,-19 L6.5,-4.5 L-6.5,-4.5 Z" fill="#c9694d"/>
+            <path d="M0,-19 L6.5,-4.5 L-6.5,-4.5 Z" fill="#2f6f68" transform="rotate(60)"/>
+            <path d="M0,-19 L6.5,-4.5 L-6.5,-4.5 Z" fill="#c9694d" transform="rotate(120)"/>
+            <path d="M0,-19 L6.5,-4.5 L-6.5,-4.5 Z" fill="#2f6f68" transform="rotate(180)"/>
+            <path d="M0,-19 L6.5,-4.5 L-6.5,-4.5 Z" fill="#c9694d" transform="rotate(240)"/>
+            <path d="M0,-19 L6.5,-4.5 L-6.5,-4.5 Z" fill="#2f6f68" transform="rotate(300)"/>
+            <circle r="3.5" fill="#fffdf8" stroke="#3b2f2a" stroke-width="1.5"/>
+          </g>
+          <!-- sofa back + arms -->
+          <rect x="112" y="186" width="200" height="42" rx="15" fill="#e5d5ba" stroke="#3b2f2a" stroke-width="2.5"/>
+          <g transform="rotate(-8 136 202)"><rect x="120" y="190" width="32" height="26" rx="6" fill="#c9694d" stroke="#3b2f2a" stroke-width="2"/></g>
+          <!-- her, leaning on him -->
+          <g transform="rotate(-12 200 172)">
+            <path d="M181 184 C176 150 224 150 219 184 C219 188 214 189 213 185 C212 188 188 188 187 185 C186 189 181 188 181 184 Z" fill="#6f4a33" stroke="#3b2f2a" stroke-width="2"/>
+            <circle cx="200" cy="172" r="10" fill="#f3cfae" stroke="#3b2f2a" stroke-width="2"/>
+            <path d="M181 184 C178 160 190 152 200 152 C210 152 222 160 219 184 C217 166 208 161 200 161 C192 161 183 166 181 184 Z" fill="#6f4a33"/>
+            <path d="M193 172 Q195.5 174.5 198 172 M202 172 Q204.5 174.5 207 172" fill="none" stroke="#3b2f2a" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M197.5 178.5 Q200 180.5 202.5 178.5" fill="none" stroke="#3b2f2a" stroke-width="1.6" stroke-linecap="round"/>
+          </g>
+          <path d="M188 192 C194 189 206 189 212 192 L216 208 L215 232 L185 232 L184 208 Z" fill="#c9694d" stroke="#3b2f2a" stroke-width="2" stroke-linejoin="round"/>
+          <!-- him -->
+          <g>
+            <circle cx="244" cy="164" r="11" fill="#f3cfae" stroke="#3b2f2a" stroke-width="2"/>
+            <path d="M233 163 C230 146 258 146 255 163 C253 152 235 152 233 163 Z" fill="#6f4a33" stroke="#3b2f2a" stroke-width="2"/>
+            <path d="M237 166 Q239.5 168.5 242 166 M246 166 Q248.5 168.5 251 166" fill="none" stroke="#3b2f2a" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M240 172.5 Q244 175.5 248 172.5" fill="none" stroke="#3b2f2a" stroke-width="1.6" stroke-linecap="round"/>
+            <rect x="241" y="173" width="6" height="6" fill="#f3cfae"/>
+            <path d="M230 180 C236 177 252 177 258 180 L263 198 L262 232 L226 232 L225 198 Z" fill="#f6efe2" stroke="#3b2f2a" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M238 180 C240 184 248 184 250 180" fill="none" stroke="#3b2f2a" stroke-width="1.6"/>
+            <path d="M258 188 C250 198 232 201 216 196" fill="none" stroke="#3b2f2a" stroke-width="8" stroke-linecap="round"/>
+            <path d="M258 188 C250 198 232 201 216 196" fill="none" stroke="#f6efe2" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="214" cy="195" r="3.5" fill="#f3cfae" stroke="#3b2f2a" stroke-width="1.5"/>
+            <path d="M260 190 C268 198 270 206 266 212" fill="none" stroke="#3b2f2a" stroke-width="8" stroke-linecap="round"/>
+            <path d="M260 190 C268 198 270 206 266 212" fill="none" stroke="#f6efe2" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="265" cy="214" r="3.5" fill="#f3cfae" stroke="#3b2f2a" stroke-width="1.5"/>
+            <rect x="258" y="206" width="16" height="14" rx="3" fill="#fffdf8" stroke="#3b2f2a" stroke-width="2"/>
+            <path d="M274 209 C280 209 280 217 274 217" fill="none" stroke="#3b2f2a" stroke-width="2"/>
+            <path d="M263 200 C265 195 261 192 263 187 M269 200 C271 195 267 192 269 187" fill="none" stroke="#2f6f68" stroke-width="1.8" stroke-linecap="round"/>
+          </g>
+          <!-- armrests + seat cushions over laps -->
+          <rect x="96" y="206" width="28" height="60" rx="12" fill="#e5d5ba" stroke="#3b2f2a" stroke-width="2.5"/>
+          <rect x="300" y="206" width="28" height="60" rx="12" fill="#e5d5ba" stroke="#3b2f2a" stroke-width="2.5"/>
+          <rect x="118" y="226" width="94" height="36" rx="10" fill="#efe3cf" stroke="#3b2f2a" stroke-width="2.5"/>
+          <rect x="212" y="226" width="94" height="36" rx="10" fill="#efe3cf" stroke="#3b2f2a" stroke-width="2.5"/>
+          <rect x="108" y="264" width="8" height="14" rx="3" fill="#6f4a33" stroke="#3b2f2a" stroke-width="1.5"/>
+          <rect x="308" y="264" width="8" height="14" rx="3" fill="#6f4a33" stroke="#3b2f2a" stroke-width="1.5"/>
+        </svg>
+        <figcaption><b>The outcome we're building for.</b> The scattered fragments resolve into one clear picture — the kaleidoscope in the name. She isn't the only one holding it any more. That exhale is the product.</figcaption>
+      </figure>
+
+    </div>
+
+    <p style="margin-top:28px">That's the entire experience, by design. No project-management cosplay, no shared backlog to groom. <strong>A mate who texts at the right moment, an interface that's just a reply, and one honest picture of the load.</strong> If a feature can't live inside one of those six panels, it probably shouldn't exist.</p>
+  </div>
+</section>
+
+<!-- WHAT WE BELIEVE -->
+<section>
+  <div class="wrap">
+    <div class="kicker">What we believe</div>
+    <h2>Five principles. They settle arguments.</h2>
+    <p class="lede">These aren't decoration. When a feature, a notification, or a line of copy is in question, it has to pass these. If it can't, it doesn't ship — no matter how clever it is.</p>
+
+    <div class="prin">
+      <div class="pr">
+        <div class="pn">01</div>
+        <div>
+          <div class="pt">Warm roast, never shame</div>
+          <div class="pd">Cal teases like a good friend, not a disappointed parent. <b>Tone is a product requirement, not a finish.</b> A message that could make a dad defensive or deflated is a bug — we'd rather say nothing than make someone feel small.</div>
+        </div>
+      </div>
+      <div class="pr">
+        <div class="pn">02</div>
+        <div>
+          <div class="pt">Make the invisible visible</div>
+          <div class="pd">You can't share what you can't see. Our first job is always to surface the load honestly — the real picture of who carries what — before we try to redistribute a single thing. <b>Clarity before fairness.</b></div>
+        </div>
+      </div>
+      <div class="pr">
+        <div class="pn">03</div>
+        <div>
+          <div class="pt">Noticing, not outsourcing</div>
+          <div class="pd">We are not a butler that takes the household off the dad's plate. We're the nudge that helps him <b>notice</b> and own it himself. The win isn't a task completed by Cal — it's a partner who started seeing the load on his own. Growth, not dependence.</div>
+        </div>
+      </div>
+      <div class="pr">
+        <div class="pn">04</div>
+        <div>
+          <div class="pt">Earn the right to speak</div>
+          <div class="pd">Cal acts unprompted — but proactivity is a privilege, not a license. Every nudge must be timely, useful, and worth the interruption. <b>If we wouldn't text a friend about it, we don't ping a user about it.</b></div>
+        </div>
+      </div>
+      <div class="pr">
+        <div class="pn">05</div>
+        <div>
+          <div class="pt">Privacy is a promise, not a setting</div>
+          <div class="pd">We hold the most tender data a family has — children's ages, health, the honest truth of how a home really runs. We treat that as sacred: minimal, encrypted, never sold, never trained on. <b>Trust is the product. Lose it once and there is no second household.</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section>
+  <div class="wrap">
+    <div class="kicker">How Cal sounds</div>
+    <h2>The voice is the moat</h2>
+    <p class="lede">Anyone can build a reminder engine. No one else has Cal. The voice is what makes a notification feel like a mate checking in instead of an app demanding attention — and it's the one thing we guard hardest.</p>
+
+    <div class="voice">
+      <div class="col yes">
+        <div class="vh">Cal is</div>
+        <ul>
+          <li>A mate who's got your back</li>
+          <li>Dry, warm, a little cheeky</li>
+          <li>On your side, always</li>
+          <li>Brief — he texts, he doesn't lecture</li>
+          <li class="quote">"9 days since the big shop, mate. Fridge is looking brave."</li>
+        </ul>
+      </div>
+      <div class="col no">
+        <div class="vh">Cal is never</div>
+        <ul>
+          <li>A nagging parent or a boss</li>
+          <li>Shaming, guilt-tripping, passive-aggressive</li>
+          <li>A productivity drill sergeant</li>
+          <li>Corporate, clinical, or fake-cheerful</li>
+          <li class="quote">"You have 4 overdue tasks. Complete them now."</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:24px">Test for every line Cal says: <strong>would a good friend — one who genuinely likes you — actually say this?</strong> If it sounds like software, rewrite it. If it could land as a dig, kill it.</p>
+  </div>
+</section>
+
+<!-- THE BIGGER STORY -->
+<section>
+  <div class="wrap">
+    <div class="kicker">Why it matters</div>
+    <h2>We're not organising chores. We're rebalancing homes.</h2>
+    <p class="lede">It would be easy to describe Caleida as a household task app. That description is true and completely misses the point.</p>
+    <p>The mental load is one of the quiet structural inequalities of modern family life. It shapes who gets to rest, who gets to work, whose career bends, and how much resentment pools under the surface of an otherwise good relationship. It is enormous, and it is almost entirely undiscussed.</p>
+    <div class="pull">If we do our job, a partner somewhere exhales — because for the first time, she isn't the only one holding it all.</div>
+    <p>That's the company. Not features. Not funnels. A measurable amount of weight lifted off the people who've been carrying their households alone — and a generation of partners who learned to notice. Everything we build is in service of that exhale.</p>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section style="border-bottom:none">
+  <div class="wrap">
+    <div class="summary">
+      <div class="kicker">In one breath</div>
+      <p>Caleida turns the scattered fragments of family life into one clear picture — and gives it a voice, <strong>Cal</strong>, a mate who notices what's slipping and nudges the partner who could help to step up. <strong>Warm roast, never shame. Noticing, not outsourcing.</strong> We talk to the dad; we're building for the relief of the person who's been carrying it all.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Caleida — brand narrative · internal north star · the story before the story</div>
+</footer>
+
+</body>
+</html>
