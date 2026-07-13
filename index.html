@@ -24,6 +24,8 @@
   *{box-sizing:border-box}
   body{margin:0}
   a{text-decoration:none;color:inherit}
+  .board{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media (max-width:980px){.board{grid-template-columns:repeat(2,1fr);gap:18px}}
 </style>
 </helmet>
 
@@ -39,6 +41,7 @@
       <div style="display:flex;align-items:center;gap:30px;font-weight:600;font-size:15px;color:#6B5D50">
         <a href="#features">Features</a>
         <a href="#voice">Cal's voice</a>
+        <a href="#product">The product</a>
         <a href="#start">How it works</a>
         <a href="/caleida-tech-stack">Tech Stack</a>
         <a href="/caleida-brand-narrative">Brand Narrative</a>
@@ -119,8 +122,41 @@
   <div id="voice" style="max-width:1180px;margin:0 auto;padding:84px 32px;text-align:center">
     <h2 style="font-weight:800;letter-spacing:-.02em;font-size:40px;margin:0">Cal's voice: the warm roast.</h2>
     <p style="font-size:17px;line-height:1.6;color:#6B5D50;font-weight:500;margin:14px auto 48px;max-width:560px">Not a nagging app. Not a to-do list. A mate who helps you see what you've been missing — and won't let you look away.</p>
+
+    <!-- SAME MOMENT, TWO WAYS -->
+    <div style="display:inline-block;background:#FBEFD6;color:#9A6B12;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:20px;margin-bottom:26px">Same moment, two ways</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;text-align:left;margin-bottom:64px">
+      <div style="background:#EDEBE6;border:1px solid #DDD9D0;border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:14px">
+        <div style="font-weight:700;font-size:12px;letter-spacing:.08em;color:#8A857C;text-transform:uppercase">Any other app</div>
+        <div style="background:#FFFFFF;border:1px solid #E3E0D9;border-radius:14px;padding:16px 18px;font-family:system-ui,sans-serif">
+          <div style="font-weight:700;font-size:13px;color:#4A4740">⚠️ You have 4 overdue tasks</div>
+          <div style="font-size:13px;color:#8A857C;margin-top:4px">Complete them now to stay on track.</div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E3E0D9;border-radius:14px;padding:16px 18px;font-family:system-ui,sans-serif">
+          <div style="font-weight:700;font-size:13px;color:#4A4740">🔔 Streak lost</div>
+          <div style="font-size:13px;color:#8A857C;margin-top:4px">You haven't logged any activity today.</div>
+        </div>
+        <div style="font-weight:700;font-size:13px;color:#8A857C;margin-top:auto">Nag. Guilt. Swipe away. Uninstall.</div>
+      </div>
+      <div style="background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;padding:26px;box-shadow:0 8px 24px rgba(58,40,26,.06);display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:center;gap:9px">
+          <div style="width:26px;height:26px;border-radius:50%;background:conic-gradient(#D9A23A 0 90deg,#C2552E 90deg 180deg,#1F8175 180deg 270deg,#E0825E 270deg 360deg)"></div>
+          <span style="font-weight:700;font-size:12px;letter-spacing:.08em;color:#C2552E;text-transform:uppercase">Cal</span>
+        </div>
+        <div style="background:#F7F0E3;border:1px solid #EFE6D5;border-radius:14px;padding:16px 18px">
+          <p style="font-size:15px;line-height:1.5;font-weight:500;font-style:italic;color:#2A211B;margin:0">“9 days since the big shop, mate. Fridge is looking brave.”</p>
+        </div>
+        <div style="background:#F7F0E3;border:1px solid #EFE6D5;border-radius:14px;padding:16px 18px">
+          <p style="font-size:15px;line-height:1.5;font-weight:500;font-style:italic;color:#2A211B;margin:0">“Quiet day? Happens. Bins go out tonight — take that one and we're square.”</p>
+        </div>
+        <div style="font-weight:700;font-size:13px;color:#1F8175;margin-top:auto">A mate checking in. You're on it.</div>
+      </div>
+    </div>
+
+    <!-- A DAY IN THE THREAD -->
+    <div style="display:inline-block;background:#FBEFD6;color:#9A6B12;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:20px;margin-bottom:26px">A day in the thread</div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;text-align:left">
-      <sc-for list="{{ roasts }}" as="r" hint-placeholder-count="3">
+      <sc-for list="{{ roasts }}" as="r" hint-placeholder-count="6">
         <div style="background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;padding:26px;box-shadow:0 8px 24px rgba(58,40,26,.06);display:flex;flex-direction:column;gap:16px;min-height:240px">
           <div style="display:flex;align-items:center;gap:9px">
             <div style="width:26px;height:26px;border-radius:50%;background:conic-gradient(#D9A23A 0 90deg,#C2552E 90deg 180deg,#1F8175 180deg 270deg,#E0825E 270deg 360deg)"></div>
@@ -130,6 +166,79 @@
           <div style="font-weight:700;font-size:12.5px;color:{{ r.col }};letter-spacing:.02em">{{ r.tag }}</div>
         </div>
       </sc-for>
+    </div>
+
+    <!-- THE GOOD-FRIEND TEST -->
+    <div style="margin-top:64px;background:#2A211B;border-radius:26px;padding:52px 48px;text-align:center;box-shadow:0 24px 48px rgba(42,33,27,.18)">
+      <div style="font-weight:700;font-size:12px;letter-spacing:.1em;color:#9C8E7E;text-transform:uppercase">The test every line has to pass</div>
+      <p style="font-weight:800;letter-spacing:-.02em;font-size:30px;line-height:1.25;color:#FFFDF8;margin:16px auto 0;max-width:640px">Would a good friend — one who genuinely likes you — <span style="color:#E0825E">actually say this?</span></p>
+      <p style="font-size:16px;line-height:1.6;color:#C9BBA6;font-weight:500;margin:18px auto 0;max-width:520px">If it sounds like software, we rewrite it. If it could land as a dig, it doesn't get sent. Anyone can build a reminder engine — no one else has Cal.</p>
+    </div>
+  </div>
+
+  <!-- PRODUCT STORYBOARD -->
+  <div id="product" style="background:#FFFDF8;border-top:1px solid #EFE6D5;border-bottom:1px solid #EFE6D5">
+    <div style="max-width:1180px;margin:0 auto;padding:84px 32px">
+      <div style="display:inline-block;background:#FBEFD6;color:#9A6B12;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border-radius:20px">The product, in pictures</div>
+      <h2 style="font-weight:800;letter-spacing:-.02em;font-size:40px;line-height:1.1;margin:22px 0 0;max-width:680px">How Caleida works — a story in six panels.</h2>
+      <p style="font-size:17px;line-height:1.6;color:#6B5D50;font-weight:500;margin:16px 0 44px;max-width:640px">The idea, the interface, and the everyday use of it — told the way it actually happens in a house. The entire surface area is two things: <strong style="color:#2A211B">a chat thread with Cal</strong>, and <strong style="color:#2A211B">one screen called The Load</strong>. Everything else is voice and timing.</p>
+      <div class="board">
+
+        <figure style="margin:0;background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;overflow:hidden;box-shadow:0 8px 24px rgba(58,40,26,.06);display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px dashed #EFE6D5">
+            <span style="flex:none;width:24px;height:24px;border-radius:50%;background:#C2552E;color:#FFFDF8;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">1</span>
+            <span style="font-weight:700;font-size:17px;color:#2A211B">One head holds it all</span>
+          </div>
+          <img src="assets/panel-1-mental-load-v2.png" width="1000" height="714" loading="lazy" alt="In a warmly illustrated kitchen, a woman carries a large thought bubble full of household responsibilities while her partner looks on beside a small empty thought bubble." style="display:block;width:100%;height:auto;aspect-ratio:7/5;object-fit:cover">
+          <figcaption style="padding:16px 20px 19px;font-size:13.5px;line-height:1.58;color:#6B5D50;font-weight:500;border-top:1px solid #EFE6D5;margin-top:auto"><b style="color:#2A211B;font-weight:700">The idea starts here.</b> The mental load is real work — unwritten, invisible, carried by one person while the rest of the house honestly can't see it. You can't split a weight no one can see.</figcaption>
+        </figure>
+
+        <figure style="margin:0;background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;overflow:hidden;box-shadow:0 8px 24px rgba(58,40,26,.06);display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px dashed #EFE6D5">
+            <span style="flex:none;width:24px;height:24px;border-radius:50%;background:#C2552E;color:#FFFDF8;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">2</span>
+            <span style="font-weight:700;font-size:17px;color:#2A211B">Cal texts first</span>
+          </div>
+          <img src="assets/panel-2-cal-texts-first-v2.png" width="1000" height="714" loading="lazy" alt="In a warmly illustrated kitchen, a man smiles at an incoming Cal notification on his phone beside a simple visual reminder about groceries." style="display:block;width:100%;height:auto;aspect-ratio:7/5;object-fit:cover">
+          <figcaption style="padding:16px 20px 19px;font-size:13.5px;line-height:1.58;color:#6B5D50;font-weight:500;border-top:1px solid #EFE6D5;margin-top:auto"><b style="color:#2A211B;font-weight:700">The app makes the first move.</b> Cal notices the pattern and reaches out — no dashboard to check, no app you have to remember to open. Proactive, but only when it's worth the interruption.</figcaption>
+        </figure>
+
+        <figure style="margin:0;background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;overflow:hidden;box-shadow:0 8px 24px rgba(58,40,26,.06);display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px dashed #EFE6D5">
+            <span style="flex:none;width:24px;height:24px;border-radius:50%;background:#C2552E;color:#FFFDF8;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">3</span>
+            <span style="font-weight:700;font-size:17px;color:#2A211B">The whole app is a conversation</span>
+          </div>
+          <img src="assets/panel-3-conversation-v2.png" width="1000" height="714" loading="lazy" alt="A man chats with Cal from his kitchen table while an enlarged illustrated phone shows a simple conversation and quick actions." style="display:block;width:100%;height:auto;aspect-ratio:7/5;object-fit:cover">
+          <figcaption style="padding:16px 20px 19px;font-size:13.5px;line-height:1.58;color:#6B5D50;font-weight:500;border-top:1px solid #EFE6D5;margin-top:auto"><b style="color:#2A211B;font-weight:700">The UI is a text thread.</b> No boards, no forms, no setup. Lists, reminders and bookings happen as replies and one-tap chips — Cal turns talk into action, and the interface stays as light as a chat with a mate.</figcaption>
+        </figure>
+
+        <figure style="margin:0;background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;overflow:hidden;box-shadow:0 8px 24px rgba(58,40,26,.06);display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px dashed #EFE6D5">
+            <span style="flex:none;width:24px;height:24px;border-radius:50%;background:#C2552E;color:#FFFDF8;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">4</span>
+            <span style="font-weight:700;font-size:17px;color:#2A211B">Noticing becomes doing</span>
+          </div>
+          <img src="assets/panel-4-noticing-becomes-doing-v2.png" width="1000" height="714" loading="lazy" alt="In a warmly illustrated kitchen, a man proudly unpacks groceries while his relaxed partner looks on and a small teal check confirms the task is logged." style="display:block;width:100%;height:auto;aspect-ratio:7/5;object-fit:cover">
+          <figcaption style="padding:16px 20px 19px;font-size:13.5px;line-height:1.58;color:#6B5D50;font-weight:500;border-top:1px solid #EFE6D5;margin-top:auto"><b style="color:#2A211B;font-weight:700">This is the use, day to day.</b> He notices, he does it, one tap logs it — and Cal celebrates. Warm roast, never shame: the win gets recorded without anyone having to chase, ask, or assign.</figcaption>
+        </figure>
+
+        <figure style="margin:0;background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;overflow:hidden;box-shadow:0 8px 24px rgba(58,40,26,.06);display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px dashed #EFE6D5">
+            <span style="flex:none;width:24px;height:24px;border-radius:50%;background:#C2552E;color:#FFFDF8;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">5</span>
+            <span style="font-weight:700;font-size:17px;color:#2A211B">The Load, made visible</span>
+          </div>
+          <img src="assets/panel-5-load-visible-v2.png" width="1000" height="714" loading="lazy" alt="A couple calmly review The Load together on a tablet beside a clear illustrated dashboard of shared household categories." style="display:block;width:100%;height:auto;aspect-ratio:7/5;object-fit:cover">
+          <figcaption style="padding:16px 20px 19px;font-size:13.5px;line-height:1.58;color:#6B5D50;font-weight:500;border-top:1px solid #EFE6D5;margin-top:auto"><b style="color:#2A211B;font-weight:700">The one screen that isn't chat.</b> The Load shows who carried what — the invisible work, finally legible to the whole household. Clarity before fairness: you can only rebalance what you can see.</figcaption>
+        </figure>
+
+        <figure style="margin:0;background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;overflow:hidden;box-shadow:0 8px 24px rgba(58,40,26,.06);display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px dashed #EFE6D5">
+            <span style="flex:none;width:24px;height:24px;border-radius:50%;background:#C2552E;color:#FFFDF8;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">6</span>
+            <span style="font-weight:700;font-size:17px;color:#2A211B">The exhale</span>
+          </div>
+          <img src="assets/panel-6-the-exhale-v2.png" width="1000" height="714" loading="lazy" alt="A relaxed couple sit close together on a warm sofa beneath one shared teal thought bubble containing a calm kaleidoscope pattern." style="display:block;width:100%;height:auto;aspect-ratio:7/5;object-fit:cover">
+          <figcaption style="padding:16px 20px 19px;font-size:13.5px;line-height:1.58;color:#6B5D50;font-weight:500;border-top:1px solid #EFE6D5;margin-top:auto"><b style="color:#2A211B;font-weight:700">The outcome we're building for.</b> The scattered fragments resolve into one clear picture — the kaleidoscope in the name. She isn't the only one holding it any more. That exhale is the product.</figcaption>
+        </figure>
+
+      </div>
     </div>
   </div>
 
@@ -212,8 +321,11 @@ class Component extends DCLogic {
     return {
       roasts:[
         {time:'7:45 AM', text:"Quick one. Do you know what's for dinner today? Not judging — just checking it's on your radar. It's on hers.", tag:'Learning to notice', col:'#1F8175'},
-        {time:'3:20 PM', text:"Nappies are down to the last pack. I've added it to the basket. Confirm and it's done.", tag:"Taking it off her plate", col:'#C2552E'},
-        {time:'9:00 PM', text:"Leo's got a birthday party Saturday. Present's not sorted. I found three options under £20. Want me to handle it?", tag:'Getting ahead of it', col:'#9A6B12'},
+        {time:'12:10 PM', text:"School emailed — trip form's due Wednesday. Two-minute job. Want the link before it lands on her list?", tag:'Catching it before it slips', col:'#C2552E'},
+        {time:'3:20 PM', text:"Nappies are down to the last pack. I've added it to the basket. Confirm and it's done.", tag:"Taking it off her plate", col:'#9A6B12'},
+        {time:'5:45 PM', text:"You booked the dentist before anyone had to ask. Look at you. Logged it — this is the stuff she notices.", tag:'Clocking the win', col:'#1F8175'},
+        {time:'9:00 PM', text:"Leo's got a birthday party Saturday. Present's not sorted. I found three options under £20. Want me to handle it?", tag:'Getting ahead of it', col:'#C2552E'},
+        {time:'10:30 PM', text:"Three things came off her plate today — and she didn't have to ask for one of them. That's the whole point, mate. Night.", tag:'The day, closed out', col:'#9A6B12'},
       ],
       email:this.state.email,
       onEmail:(e)=>this.setState({email:e.target.value}),
