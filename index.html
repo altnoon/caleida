@@ -24,8 +24,39 @@
   *{box-sizing:border-box}
   body{margin:0}
   a{text-decoration:none;color:inherit}
+  img{max-width:100%}
   .board{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  @media (max-width:980px){.board{grid-template-columns:repeat(2,1fr);gap:18px}}
+
+  /* ---- responsive ---- */
+  @media (max-width:980px){
+    .board{grid-template-columns:repeat(2,1fr);gap:18px}
+    .hero-grid{grid-template-columns:1fr!important;gap:40px!important}
+    .feat-grid,.start-grid,.cta-box{grid-template-columns:1fr!important}
+    .roasts{grid-template-columns:repeat(2,1fr)!important}
+    .nav-links{gap:16px!important;font-size:14px!important}
+    .nav-sec{display:none!important}
+  }
+  @media (max-width:700px){
+    .grid-2,.roasts{grid-template-columns:1fr!important}
+    .board{grid-template-columns:1fr;gap:18px}
+  }
+  @media (max-width:640px){
+    .sec{padding:56px 20px!important}
+    .hero-sec{padding:44px 20px 56px!important}
+    .cta-outer{padding:0 20px 56px!important}
+    .footer-in{padding:36px 20px!important}
+    .nav-in{padding:12px 20px!important}
+    .nav-doc{display:none!important}
+    .nav-cta{padding:9px 15px!important;font-size:14px}
+    .hero-h1{font-size:38px!important}
+    .h2{font-size:28px!important}
+    .dark-panel{padding:36px 22px!important}
+    .dark-quote{font-size:23px!important}
+    .cta-box{padding:32px 22px!important;gap:26px!important}
+    .cta-form{flex-direction:column;padding:14px!important}
+    .cta-form input{font-size:16px!important;padding:10px 4px!important}
+    .cta-form button{width:100%;padding:14px 22px!important}
+  }
 </style>
 </helmet>
 
@@ -33,28 +64,28 @@
 
   <!-- NAV -->
   <div style="position:sticky;top:0;z-index:50;background:#F7F0E3E6;backdrop-filter:blur(10px);border-bottom:1px solid #EBE0CD">
-    <div style="max-width:1180px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between">
+    <div class="nav-in" style="max-width:1180px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between">
       <div style="display:flex;align-items:center;gap:11px">
         <div style="width:30px;height:30px;border-radius:50%;background:conic-gradient(#D9A23A 0 90deg,#C2552E 90deg 180deg,#1F8175 180deg 270deg,#E0825E 270deg 360deg);position:relative"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:11px;height:11px;border-radius:50%;background:#F7F0E3"></div></div>
         <span style="font-family:'Bungee',sans-serif;font-size:22px;letter-spacing:.5px">caleida</span>
       </div>
-      <div style="display:flex;align-items:center;gap:30px;font-weight:600;font-size:15px;color:#6B5D50">
-        <a href="#features">Features</a>
-        <a href="#voice">Cal's voice</a>
-        <a href="#product">The product</a>
-        <a href="#start">How it works</a>
-        <a href="/caleida-tech-stack">Tech Stack</a>
-        <a href="/caleida-brand-narrative">Brand Narrative</a>
-        <a href="#cta" style="background:#C2552E;color:#FFFDF8;padding:11px 20px;border-radius:13px;font-weight:700;box-shadow:0 8px 18px rgba(194,85,46,.26)">Get started</a>
+      <div class="nav-links" style="display:flex;align-items:center;gap:30px;font-weight:600;font-size:15px;color:#6B5D50">
+        <a class="nav-sec" href="#features">Features</a>
+        <a class="nav-sec" href="#voice">Cal's voice</a>
+        <a class="nav-sec" href="#product">The product</a>
+        <a class="nav-sec" href="#start">How it works</a>
+        <a class="nav-doc" href="/caleida-tech-stack">Tech Stack</a>
+        <a class="nav-doc" href="/caleida-brand-narrative">Brand Narrative</a>
+        <a class="nav-cta" href="#cta" style="background:#C2552E;color:#FFFDF8;padding:11px 20px;border-radius:13px;font-weight:700;box-shadow:0 8px 18px rgba(194,85,46,.26)">Get started</a>
       </div>
     </div>
   </div>
 
   <!-- HERO -->
-  <div style="max-width:1180px;margin:0 auto;padding:72px 32px 80px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center">
+  <div class="hero-grid hero-sec" style="max-width:1180px;margin:0 auto;padding:72px 32px 80px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center">
     <div>
       <div style="display:inline-block;background:#FBEFD6;color:#9A6B12;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border-radius:20px">For the dads who do</div>
-      <h1 style="font-weight:800;letter-spacing:-.03em;font-size:62px;line-height:1.02;margin:22px 0 0">Close the gap.<br><span style="color:#C2552E">Own your half.</span></h1>
+      <h1 class="hero-h1" style="font-weight:800;letter-spacing:-.03em;font-size:62px;line-height:1.02;margin:22px 0 0">Close the gap.<br><span style="color:#C2552E">Own your half.</span></h1>
       <p style="font-size:18px;line-height:1.6;color:#6B5D50;font-weight:500;margin:24px 0 0;max-width:460px">She's carrying 71% of the invisible work — not because she wants to, because you can't see it. Cal is the straight-talking mate who makes the invisible visible, so you can finally pull your weight.</p>
       <div style="display:flex;gap:14px;margin-top:34px;flex-wrap:wrap">
         <a href="#cta" style="background:#C2552E;color:#FFFDF8;padding:16px 30px;border-radius:15px;font-weight:700;font-size:16px;box-shadow:0 14px 28px rgba(194,85,46,.28)">Get started</a>
@@ -78,10 +109,10 @@
 
   <!-- SEE IT -->
   <div id="features" style="background:#FFFDF8;border-top:1px solid #EFE6D5;border-bottom:1px solid #EFE6D5">
-    <div style="max-width:1180px;margin:0 auto;padding:84px 32px">
-      <h2 style="font-weight:800;letter-spacing:-.02em;font-size:40px;line-height:1.1;margin:0;max-width:680px">Nobody taught you to see it. Cal does.</h2>
+    <div class="sec" style="max-width:1180px;margin:0 auto;padding:84px 32px">
+      <h2 class="h2" style="font-weight:800;letter-spacing:-.02em;font-size:40px;line-height:1.1;margin:0;max-width:680px">Nobody taught you to see it. Cal does.</h2>
       <p style="font-size:17px;line-height:1.6;color:#6B5D50;font-weight:500;margin:16px 0 44px;max-width:620px">Short paternity leave, a culture that told you to step back, and a world that never showed you what to look for. The odds were stacked. Cal levels them.</p>
-      <div style="display:grid;grid-template-columns:1fr 1.25fr;gap:24px">
+      <div class="feat-grid" style="display:grid;grid-template-columns:1fr 1.25fr;gap:24px">
         <div style="display:flex;flex-direction:column;gap:24px">
           <div style="background:#FBF1DD;border:1px solid #F0E0BE;border-radius:22px;padding:28px">
             <div style="font-family:'Bungee',sans-serif;font-size:34px;color:#C2552E">71%</div>
@@ -119,13 +150,13 @@
   </div>
 
   <!-- VOICE -->
-  <div id="voice" style="max-width:1180px;margin:0 auto;padding:84px 32px;text-align:center">
-    <h2 style="font-weight:800;letter-spacing:-.02em;font-size:40px;margin:0">Cal's voice: the warm roast.</h2>
+  <div id="voice" class="sec" style="max-width:1180px;margin:0 auto;padding:84px 32px;text-align:center">
+    <h2 class="h2" style="font-weight:800;letter-spacing:-.02em;font-size:40px;margin:0">Cal's voice: the warm roast.</h2>
     <p style="font-size:17px;line-height:1.6;color:#6B5D50;font-weight:500;margin:14px auto 48px;max-width:560px">Not a nagging app. Not a to-do list. A mate who helps you see what you've been missing — and won't let you look away.</p>
 
     <!-- SAME MOMENT, TWO WAYS -->
     <div style="display:inline-block;background:#FBEFD6;color:#9A6B12;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:20px;margin-bottom:26px">Same moment, two ways</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;text-align:left;margin-bottom:64px">
+    <div class="grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:22px;text-align:left;margin-bottom:64px">
       <div style="background:#EDEBE6;border:1px solid #DDD9D0;border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:14px">
         <div style="font-weight:700;font-size:12px;letter-spacing:.08em;color:#8A857C;text-transform:uppercase">Any other app</div>
         <div style="background:#FFFFFF;border:1px solid #E3E0D9;border-radius:14px;padding:16px 18px;font-family:system-ui,sans-serif">
@@ -155,7 +186,7 @@
 
     <!-- A DAY IN THE THREAD -->
     <div style="display:inline-block;background:#FBEFD6;color:#9A6B12;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:20px;margin-bottom:26px">A day in the thread</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;text-align:left">
+    <div class="roasts" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;text-align:left">
       <sc-for list="{{ roasts }}" as="r" hint-placeholder-count="6">
         <div style="background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;padding:26px;box-shadow:0 8px 24px rgba(58,40,26,.06);display:flex;flex-direction:column;gap:16px;min-height:240px">
           <div style="display:flex;align-items:center;gap:9px">
@@ -169,18 +200,18 @@
     </div>
 
     <!-- THE GOOD-FRIEND TEST -->
-    <div style="margin-top:64px;background:#2A211B;border-radius:26px;padding:52px 48px;text-align:center;box-shadow:0 24px 48px rgba(42,33,27,.18)">
+    <div class="dark-panel" style="margin-top:64px;background:#2A211B;border-radius:26px;padding:52px 48px;text-align:center;box-shadow:0 24px 48px rgba(42,33,27,.18)">
       <div style="font-weight:700;font-size:12px;letter-spacing:.1em;color:#9C8E7E;text-transform:uppercase">The test every line has to pass</div>
-      <p style="font-weight:800;letter-spacing:-.02em;font-size:30px;line-height:1.25;color:#FFFDF8;margin:16px auto 0;max-width:640px">Would a good friend — one who genuinely likes you — <span style="color:#E0825E">actually say this?</span></p>
+      <p class="dark-quote" style="font-weight:800;letter-spacing:-.02em;font-size:30px;line-height:1.25;color:#FFFDF8;margin:16px auto 0;max-width:640px">Would a good friend — one who genuinely likes you — <span style="color:#E0825E">actually say this?</span></p>
       <p style="font-size:16px;line-height:1.6;color:#C9BBA6;font-weight:500;margin:18px auto 0;max-width:520px">If it sounds like software, we rewrite it. If it could land as a dig, it doesn't get sent. Anyone can build a reminder engine — no one else has Cal.</p>
     </div>
   </div>
 
   <!-- PRODUCT STORYBOARD -->
   <div id="product" style="background:#FFFDF8;border-top:1px solid #EFE6D5;border-bottom:1px solid #EFE6D5">
-    <div style="max-width:1180px;margin:0 auto;padding:84px 32px">
+    <div class="sec" style="max-width:1180px;margin:0 auto;padding:84px 32px">
       <div style="display:inline-block;background:#FBEFD6;color:#9A6B12;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border-radius:20px">The product, in pictures</div>
-      <h2 style="font-weight:800;letter-spacing:-.02em;font-size:40px;line-height:1.1;margin:22px 0 0;max-width:680px">How Caleida works — a story in six panels.</h2>
+      <h2 class="h2" style="font-weight:800;letter-spacing:-.02em;font-size:40px;line-height:1.1;margin:22px 0 0;max-width:680px">How Caleida works — a story in six panels.</h2>
       <p style="font-size:17px;line-height:1.6;color:#6B5D50;font-weight:500;margin:16px 0 44px;max-width:640px">The idea, the interface, and the everyday use of it — told the way it actually happens in a house. The entire surface area is two things: <strong style="color:#2A211B">a chat thread with Cal</strong>, and <strong style="color:#2A211B">one screen called The Load</strong>. Everything else is voice and timing.</p>
       <div class="board">
 
@@ -244,9 +275,9 @@
 
   <!-- HONEST START (dark) -->
   <div id="start" style="background:#2A211B;color:#FFFDF8">
-    <div style="max-width:1180px;margin:0 auto;padding:84px 32px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
+    <div class="sec start-grid" style="max-width:1180px;margin:0 auto;padding:84px 32px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
       <div>
-        <h2 style="font-weight:800;letter-spacing:-.02em;font-size:40px;line-height:1.1;margin:0">The honest starting point.</h2>
+        <h2 class="h2" style="font-weight:800;letter-spacing:-.02em;font-size:40px;line-height:1.1;margin:0">The honest starting point.</h2>
         <p style="font-size:17px;line-height:1.65;color:#C9BBA6;font-weight:500;margin:18px 0 0;max-width:440px">Most dads aren't where they want to be. That's exactly why you're here. Cal starts with a straight conversation — no judgment, just an honest look at where things stand. Two minutes. Your first step.</p>
         <a href="#cta" style="display:inline-flex;align-items:center;gap:10px;margin-top:30px;background:#C2552E;color:#FFFDF8;padding:15px 26px;border-radius:14px;font-weight:700;font-size:16px">Meet Cal →</a>
       </div>
@@ -267,10 +298,10 @@
   </div>
 
   <!-- TESTIMONIALS -->
-  <div style="max-width:1180px;margin:0 auto;padding:84px 32px;text-align:center">
+  <div class="sec" style="max-width:1180px;margin:0 auto;padding:84px 32px;text-align:center">
     <div style="display:inline-block;background:#FBEFD6;color:#9A6B12;font-weight:700;font-size:12.5px;letter-spacing:.06em;padding:8px 16px;border-radius:20px">5,000+ DADS</div>
-    <h2 style="font-weight:800;letter-spacing:-.02em;font-size:36px;margin:18px 0 44px">Turning invisible labour into visible wins.</h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;text-align:left">
+    <h2 class="h2" style="font-weight:800;letter-spacing:-.02em;font-size:36px;margin:18px 0 44px">Turning invisible labour into visible wins.</h2>
+    <div class="grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;text-align:left">
       <div style="background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;padding:30px;box-shadow:0 8px 24px rgba(58,40,26,.06)">
         <p style="font-size:18px;line-height:1.55;font-weight:600;margin:0;color:#2A211B">"Cal didn't just give me a task list. It gave me context. I stopped asking 'how can I help?' and started doing the things that needed doing."</p>
         <div style="font-weight:700;font-size:14px;color:#9C8E7E;margin-top:18px">— Mark R., dad of 3</div>
@@ -283,13 +314,13 @@
   </div>
 
   <!-- CTA -->
-  <div id="cta" style="max-width:1180px;margin:0 auto;padding:0 32px 84px">
-    <div style="background:#C2552E;border-radius:28px;padding:56px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;box-shadow:0 30px 60px rgba(194,85,46,.26)">
+  <div id="cta" class="cta-outer" style="max-width:1180px;margin:0 auto;padding:0 32px 84px">
+    <div class="cta-box" style="background:#C2552E;border-radius:28px;padding:56px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;box-shadow:0 30px 60px rgba(194,85,46,.26)">
       <div>
-        <h2 style="font-weight:800;letter-spacing:-.02em;font-size:38px;line-height:1.08;margin:0;color:#FFFDF8">Ready to carry your share?</h2>
+        <h2 class="h2" style="font-weight:800;letter-spacing:-.02em;font-size:38px;line-height:1.08;margin:0;color:#FFFDF8">Ready to carry your share?</h2>
         <p style="font-size:16.5px;line-height:1.6;color:#FFE6DA;font-weight:500;margin:14px 0 0">Two-minute baseline. First wins set up before you finish your coffee. No fluff — just the tools to lead your home with clarity.</p>
       </div>
-      <div style="background:#FFFDF8;border-radius:18px;padding:10px;display:flex;gap:8px">
+      <div class="cta-form" style="background:#FFFDF8;border-radius:18px;padding:10px;display:flex;gap:8px">
         <input value="{{ email }}" sc-camel-on-input="{{ onEmail }}" placeholder="dad@email.com" style="flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:15px;padding:12px 14px;color:#2A211B">
         <button sc-camel-on-click="{{ join }}" style="border:none;background:#2A211B;color:#FFFDF8;font-weight:700;font-size:15px;padding:13px 22px;border-radius:13px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;white-space:nowrap" style-active="transform:translateY(1px)">{{ joinLabel }}</button>
       </div>
@@ -298,7 +329,7 @@
 
   <!-- FOOTER -->
   <div style="background:#FFFDF8;border-top:1px solid #EFE6D5">
-    <div style="max-width:1180px;margin:0 auto;padding:48px 32px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px">
+    <div class="footer-in" style="max-width:1180px;margin:0 auto;padding:48px 32px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px">
       <div style="max-width:240px">
         <span style="font-family:'Bungee',sans-serif;font-size:20px">caleida</span>
         <p style="font-size:13.5px;color:#9C8E7E;font-weight:500;margin:10px 0 0;line-height:1.5">Built for the modern dad who actually wants to help.</p>
