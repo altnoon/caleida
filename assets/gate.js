@@ -1,7 +1,7 @@
 /* Caleida — session password gate */
 (function () {
   var KEY = 'caleida_unlocked';
-  var HASH = 'ecd71870d1963316a97e3ac3408c9835ad8cf0f3c1bc703527c30265534f75ae'; /* sha256 hex */
+  var HASH = '1b297d7ec9c6fe626899b69a5fae0179482d39453196d98bd97b8563fa117acb'; /* sha256 hex */
   try { if (sessionStorage.getItem(KEY) === HASH) return; } catch (e) { return; }
 
   var de = document.documentElement;
