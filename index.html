@@ -39,7 +39,7 @@
   img{max-width:100%;display:block}
 
   .page{width:100%;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--body);
-    background:linear-gradient(178deg,var(--paper),var(--paper-deep));position:relative;overflow-x:hidden}
+    background:linear-gradient(178deg,var(--paper),var(--paper-deep));position:relative;overflow-x:clip}
   .page::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;background-image:var(--noise)}
   .sec{max-width:1180px;margin:0 auto;padding:84px 32px;position:relative;z-index:1}
   .band{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:1}
@@ -62,7 +62,8 @@
   .mark{flex:none;display:block}
 
   /* nav */
-  .nav{position:sticky;top:0;z-index:50;background:rgba(247,240,227,.86);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)}
+  .nav{position:sticky;top:0;z-index:50;background:rgba(247,240,227,.86);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line);transition:transform .32s cubic-bezier(.22,.61,.36,1);will-change:transform}
+  .nav.nav--hidden{transform:translateY(-100%)}
   .nav-in{max-width:1180px;margin:0 auto;padding:15px 32px;display:flex;align-items:center;justify-content:space-between;gap:22px}
   .nav-links{display:flex;align-items:center;gap:20px;font-weight:600;font-size:14.5px;color:var(--muted)}
   .nav-links a{white-space:nowrap}
@@ -398,5 +399,25 @@ class Component extends DCLogic {
 }
 </script>
 
+<script>
+/* smart sticky nav — hide on scroll down, reveal on scroll up */
+(function(){
+  var lastY = window.pageYOffset || 0, nav = null, ticking = false;
+  function onFrame(){
+    ticking = false;
+    if(!nav || !document.body.contains(nav)) nav = document.querySelector('.nav');
+    if(!nav) return;
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var d = y - lastY;
+    if(y < 80) nav.classList.remove('nav--hidden');
+    else if(d > 6) nav.classList.add('nav--hidden');
+    else if(d < -6) nav.classList.remove('nav--hidden');
+    lastY = y;
+  }
+  window.addEventListener('scroll', function(){
+    if(!ticking){ window.requestAnimationFrame(onFrame); ticking = true; }
+  }, {passive:true});
+})();
+</script>
 
 </body></html>
