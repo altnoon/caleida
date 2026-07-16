@@ -77,6 +77,52 @@
   .statline .num{font-family:'Newsreader',serif;font-size:30px;color:var(--accent);font-weight:500;line-height:1}
   .statline .txt{font-size:15.5px;color:var(--body)}
   .statline .txt b{color:var(--ink);font-weight:600}
+  .srcnote{font-size:12.5px;color:var(--muted);margin-top:16px;max-width:680px}
+
+  /* ---- distinctive assets ---- */
+  .assets{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+  .assets .as{border:1px solid var(--line-2);border-radius:var(--radius);padding:18px 20px}
+  .assets .at{font-family:'Newsreader',serif;font-size:19px;color:var(--ink);margin-bottom:6px}
+  .assets .ad{font-size:14px;color:var(--body);line-height:1.55}
+
+  /* ---- origin draft ---- */
+  .draft{border:1.5px dashed var(--accent);border-radius:var(--radius);padding:0 24px 22px;background:#fffaf8;margin-top:8px}
+  .draft .dlabel{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--accent);padding:5px 11px;border-radius:0 0 8px 8px}
+  .draft p{max-width:none}
+  .draft .br{color:var(--accent);font-style:italic}
+  .draft .dnote{font-size:13.5px;color:var(--muted);font-style:italic;margin:16px 0 0;border-top:1px solid var(--line);padding-top:14px}
+
+  /* ---- why-he callout ---- */
+  .callout{background:var(--accent-soft);border:1px solid #f1c8bd;border-radius:var(--radius);padding:22px 26px;margin:6px 0 32px}
+  .callout .ct{font-family:'Newsreader',serif;font-size:20px;color:var(--accent);margin-bottom:9px}
+  .callout p{font-size:15px;color:var(--body);max-width:none;margin:0}
+  .callout p b{color:var(--ink);font-weight:600}
+
+  /* ---- behaviour laws ---- */
+  .beh{margin-top:8px}
+  .beh .bl{padding:20px 0;border-bottom:1px solid var(--line)}
+  .beh .bl:last-child{border-bottom:none}
+  .beh .blt{font-weight:600;color:var(--ink);font-size:16.5px;margin-bottom:6px}
+  .beh .bld{font-size:15px;color:var(--body);line-height:1.6;max-width:700px}
+  .beh .bld b{color:var(--ink);font-weight:600}
+
+  /* ---- lexicon ---- */
+  .lex{margin-top:8px;border-top:1px solid var(--line-2)}
+  .lex .lh,.lex .lr{display:grid;grid-template-columns:.9fr 1fr 1.5fr;gap:18px;padding:15px 0;border-bottom:1px solid var(--line)}
+  .lex .lh{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+  .lex .say{font-family:'Newsreader',serif;font-size:18px;color:var(--accent);line-height:1.25}
+  .lex .say .g{display:block;font-family:'Inter';font-size:11.5px;color:var(--muted);margin-top:3px;letter-spacing:.02em}
+  .lex .not{font-size:14px;color:var(--muted);text-decoration:line-through;text-decoration-color:#d8b9b0;align-self:center;line-height:1.45}
+  .lex .why{font-size:13.7px;color:var(--body);line-height:1.5;align-self:center}
+  .lex .why em{color:var(--ink);font-style:italic}
+
+  /* ---- hard questions ---- */
+  .qa{margin-top:8px}
+  .qa .qq{font-family:'Newsreader',serif;font-style:italic;font-size:20px;color:var(--ink);line-height:1.36;margin:28px 0 11px;padding-left:20px;border-left:2px solid var(--accent)}
+  .qa .qq:first-child{margin-top:0}
+  .qa .aa{font-size:15.5px;color:var(--body);line-height:1.62;max-width:700px}
+  .qa .aa b{color:var(--ink);font-weight:600}
+  .qa .aa em{font-style:italic}
 
   /* ---- name block ---- */
   .name{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
@@ -154,7 +200,13 @@
     .manifesto{font-size:23px;line-height:1.4}
     .manifesto p{margin-bottom:20px}
     .pull{font-size:20px;padding-left:18px}
-    .name,.who{grid-template-columns:1fr}
+    .name,.who,.assets{grid-template-columns:1fr}
+    .lex .lh{display:none}
+    .lex .lr{grid-template-columns:1fr;gap:5px;padding:16px 0}
+    .lex .not{text-decoration:none;font-size:13.5px}
+    .lex .not::before{content:"✕ ";color:var(--accent)}
+    .callout{padding:18px 20px}
+    .qa .qq{font-size:18px;padding-left:16px}
     .voice{grid-template-columns:1fr}
     .voice .col.no{border-left:none;border-top:1px solid var(--line-2)}
     .board{grid-template-columns:1fr;gap:18px}
@@ -194,8 +246,23 @@
     <div class="kicker">The belief</div>
     <div class="manifesto">
       <p>In every home there is a person who remembers. Who notices the milk is low and the dentist is overdue and the school jumper no longer fits. None of it is written down. All of it is carried.</p>
-      <p>We call that weight the <span class="hl">mental load</span> — and for most of history it has been invisible, unpaid, and unevenly shared. Not because anyone is cruel. Because no one was <em class="t">noticing</em>.</p>
-      <p>Caleida exists to make the invisible visible — and then to help carry it. Not by nagging. Not by shaming. By standing beside the person who could be doing more, and quietly making it easier to step up.</p>
+      <p>Researchers call that weight the mental load. We call it what it is: <span class="hl">invisible work</span> — and for most of history it has been exactly that. Invisible, unpaid, unevenly shared. Not because anyone is cruel. Because no one was <em class="t">noticing</em>.</p>
+      <p>Caleida exists to make invisible work visible — and then to get it shared. Not by nagging. Not by shaming. By standing beside the dad who could carry more, and quietly making it easy to start.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ORIGIN -->
+<section>
+  <div class="wrap">
+    <div class="kicker">Where this came from</div>
+    <h2>Before it was a company, it was something we watched</h2>
+    <div class="draft">
+      <span class="dlabel">Draft · needs Des's real story</span>
+      <p style="margin-top:20px">Caleida didn't start on a whiteboard. It started with <span class="br">[the person — a partner, a mother, a friend you watched]</span> running an entire household from inside her own head: <span class="br">[the specific, small, true detail — the wall calendar only she updated; the 11pm "did anyone book the…"; the birthday she carried for a child that wasn't even hers]</span>. Everyone in that house would have sworn the work was shared. It wasn't. It was just invisible.</p>
+      <p>What stuck wasn't the unfairness — it was that <span class="br">[the willing partner]</span> genuinely wanted to help and still couldn't see it. Not lazy. Just without the map. And every app we reached for made it worse: one more list handed to the person already holding all the lists.</p>
+      <p>We kept waiting for someone to build the thing that would actually lift it. <span class="br">[Why no one did — and the moment you decided to build it yourself.]</span> No one did. So we did.</p>
+      <p class="dnote">Des — swap the bracketed lines for what actually happened; the smaller and truer the detail, the harder this lands. This is the one part of the page I can't write for you: it's what turns a strategy into a conviction, and a new hire into a believer. Give me the raw version in three sentences and I'll shape it — until then, don't publish this section.</p>
     </div>
   </div>
 </section>
@@ -208,11 +275,12 @@
     <p class="lede">The dishes get done and the appointments get made — but the <em>remembering</em>, the planning, the worrying, the holding-it-all-in-your-head — that almost always lands on one person. It is real labour, and it has a cost.</p>
 
     <div class="statline">
-      <div class="row"><div class="num">01</div><div class="txt"><b>It's invisible.</b> You can't split a load no one can see. The first move isn't fairness — it's making the weight legible to the whole household.</div></div>
-      <div class="row"><div class="num">02</div><div class="txt"><b>It's lopsided.</b> One person becomes the household's operating system. The other waits to be told what to do — and being told is itself a tax on the person who carries the list.</div></div>
+      <div class="row"><div class="num">01</div><div class="txt"><b>It's invisible.</b> You can't split work no one can see. When researchers asked 3,000 parents, fathers were far more likely to say the household's thinking work was equally shared. Mothers disagreed. Both answered in good faith — that's the problem.</div></div>
+      <div class="row"><div class="num">02</div><div class="txt"><b>It's lopsided.</b> Mothers carry <b>71%</b> of the household's thinking work — and <b>79%</b> of the daily, always-on kind. In the UK, women do 60% more unpaid work than men: 26 hours a week to his 16. One person becomes the household's operating system; the other waits to be told — and being told is itself a tax on the person who carries the list.</div></div>
       <div class="row"><div class="num">03</div><div class="txt"><b>It's corrosive.</b> Resentment doesn't arrive in arguments. It accumulates in the thousand small things one partner tracked and the other never knew about.</div></div>
-      <div class="row"><div class="num">04</div><div class="txt"><b>Apps made it worse.</b> Shared calendars and to-do lists just moved the load. Someone still has to fill them in, assign them, and chase them. We didn't need another list. We needed a mate.</div></div>
+      <div class="row"><div class="num">04</div><div class="txt"><b>Apps made it worse.</b> Shared calendars and to-do lists just moved the work. Someone still has to fill them in, assign them, and chase them. We didn't need another list. We needed a mate.</div></div>
     </div>
+    <p class="srcnote">Numbers: University of Bath &amp; University of Melbourne study of household cognitive labour, 2024 (3,000 parents) · ONS analysis of UK unpaid work.</p>
   </div>
 </section>
 
@@ -233,7 +301,8 @@
         <div class="nd"><b>The mate you actually talk to.</b> Caleida is the system; Cal is the human face of it. Short, warm, first-name. You don't open Cal. You text him — and he texts back like someone who's known your house for years.</div>
       </div>
     </div>
-    <p style="margin-top:24px">The name carries our two markets in one word. It reads as English and lives in Spanish — fitting for a product born between the UK and Spain, for families who don't all share one language but share the same load.</p>
+    <p style="margin-top:24px">The name carries our two markets in one word. It reads as English and lives in Spanish — fitting for a product born between the UK and Spain, for families who don't all share one language but share the same invisible work.</p>
+    <p>One rule of use: <strong>users meet Cal; the company signs as Caleida.</strong> Cal speaks in the product, the notifications, the texts. Caleida speaks on the website footer, the invoice, the press release. The mate is never corporate, and the company never pretends to be your mate.</p>
   </div>
 </section>
 
@@ -257,6 +326,40 @@
       </div>
     </div>
     <p style="margin-top:24px">So we account for one and serve the other. Cal lives in the dad's pocket, but every feature is judged by a question asked from the partner's side of the bed: <strong>does this take weight off me, or just move it around?</strong></p>
+    <p>That test starts at minute zero. <strong>The setup is his first act of carrying.</strong> Cal learns the house from him — the school run, the shoe sizes, the allergy, the bin day — never by handing her a form to fill in. If she has to brief the app, we haven't lifted the work; we've given it a new inbox. She should meet Caleida as relief already happening, not as one more system to feed.</p>
+    <p>And when someone asks why <em>the dad</em> and <em>she</em> — because someone will — the answer lives here: it's the pattern's most common shape, not a law of nature. We write to the archetype because specific stories land and diluted ones don't. The roles are a wedge, not a worldview. In real houses the carrier is sometimes him, sometimes another her, sometimes a flatmate or an abuela — and Cal never assumes. The house tells him who's carrying, and he talks to whoever could pick it up.</p>
+  </div>
+</section>
+
+<!-- POSITIONING -->
+<section>
+  <div class="wrap">
+    <div class="kicker">Where we stand</div>
+    <h2>Not a task app. The other side of the market.</h2>
+    <p class="lede">Positioning is a choosing game, and these four choices are already made. Copy, product, and pitch all inherit them.</p>
+
+    <div class="who">
+      <div class="wc">
+        <div class="wl">The category</div>
+        <div class="wt">A household companion</div>
+        <div class="wd">Not a to-do app, not a chore chart, not "productivity for families". Caleida is the noticing layer of a home — closer to a mate with a very good memory than to software. If a shelf must be named, we'd rather build a new one than sit next to the list apps.</div>
+      </div>
+      <div class="wc">
+        <div class="wl">The onlyness</div>
+        <div class="wt">Built for the one not carrying it</div>
+        <div class="wd">Every household product on earth sells to the person already doing the work — sharper lists for the list-keeper. Caleida is the only one built for the other partner. <b>That inversion is the company.</b> Protect it in every headline.</div>
+      </div>
+      <div class="wc">
+        <div class="wl">The word we own</div>
+        <div class="wt">Noticing</div>
+        <div class="wd">Calendars remind. Lists collect. Cal <b>notices</b>. One verb tells you what to build, what to cut, and how to talk. If a line of ours could be written by a to-do app, it's off-brand.</div>
+      </div>
+      <div class="wc">
+        <div class="wl">The enemy</div>
+        <div class="wt">Invisibility</div>
+        <div class="wd">Never the dad — he's the one we arm. Never her — she's why we exist. The enemy is the invisibility of the work itself: the condition where one person carries a household no one can see. We don't fight other apps. We fight that.</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -265,7 +368,7 @@
   <div class="wrap">
     <div class="kicker">The product, in pictures</div>
     <h2>How Caleida works — a story in six panels</h2>
-    <p class="lede">The idea, the interface, and the everyday use of it — told the way it actually happens in a house. The entire surface area is two things: <strong>a chat thread with Cal</strong>, and <strong>one screen called The Load</strong>. Everything else is voice and timing.</p>
+    <p class="lede">The idea, the interface, and the everyday use of it — told the way it actually happens in a house. The entire surface area is two things: <strong>a chat thread with Cal</strong>, and <strong>one screen called Invisible Work</strong>. Everything else is voice and timing.</p>
 
     <div class="board">
 
@@ -407,7 +510,7 @@
           </g>
         </svg>
         <img class="story-image" src="assets/panel-1-mental-load-v2.png" width="1000" height="714" loading="lazy" alt="In a warmly illustrated kitchen, a woman carries a large thought bubble full of household responsibilities while her partner looks on beside a small empty thought bubble.">
-        <figcaption><b>The idea starts here.</b> The mental load is real work — unwritten, invisible, carried by one person while the rest of the house honestly can't see it. You can't split a weight no one can see.</figcaption>
+        <figcaption><b>The idea starts here.</b> Invisible work is real work — unwritten, uncounted, carried by one person while the rest of the house can't see it. You can't split a weight no one can see.</figcaption>
       </figure>
 
       <!-- PANEL 2 · cal texts first -->
@@ -538,7 +641,7 @@
           <circle cx="260" cy="77" r="10" fill="#c9694d"/>
           <path d="M255 77 L259 81 L266 73" stroke="#fffdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           <text x="276" y="74" font-size="10.5" font-weight="600" fill="#3b2f2a">Big shop — done</text>
-          <text x="276" y="89" font-size="9" fill="#8a8a93">logged to The Load</text>
+          <text x="276" y="89" font-size="9" fill="#8a8a93">seen by the whole house</text>
           <!-- cal speech bubble -->
           <path d="M296 150 L304 138 L312 150" fill="#f7dfd2"/>
           <rect x="246" y="148" width="148" height="46" rx="12" fill="#f7dfd2" stroke="#d9a08c" stroke-width="1.5"/>
@@ -559,13 +662,13 @@
         <figcaption><b>This is the use, day to day.</b> He notices, he does it, one tap logs it — and Cal celebrates. Warm roast, never shame: the win gets recorded without anyone having to chase, ask, or assign.</figcaption>
       </figure>
 
-      <!-- PANEL 5 · the load -->
+      <!-- PANEL 5 · invisible work -->
       <figure class="panel panel-raster">
-        <div class="ph"><span class="pnum">5</span><span class="ptitle">The Load, made visible</span></div>
-        <svg viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A dashboard screen titled The Load showing the household split 63 to 37, with bars per category showing who carried what.">
+        <div class="ph"><span class="pnum">5</span><span class="ptitle">Invisible work, made visible</span></div>
+        <svg viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A screen titled Invisible Work showing the household split 63 to 37, with bars per category showing who carried what.">
           <rect width="420" height="280" fill="#ffffff"/>
           <rect x="118" y="12" width="184" height="256" rx="24" fill="#ffffff" stroke="#1a1a1e" stroke-width="2.5"/>
-          <text x="136" y="50" font-size="17" fill="#1a1a1e" font-family="Newsreader, serif">The Load</text>
+          <text x="136" y="50" font-size="15" fill="#1a1a1e" font-family="Newsreader, serif">Invisible work</text>
           <text x="136" y="64" font-size="9" fill="#8a8a93">this week, whole household</text>
           <text x="136" y="98" font-size="24" font-weight="600" fill="#1a1a1e" letter-spacing="-0.5">63<tspan fill="#c9c9cf" font-weight="400"> / </tspan><tspan fill="#e8553a">37</tspan></text>
           <text x="136" y="112" font-size="8.5" fill="#8a8a93">her / him — the gap is closing</text>
@@ -597,8 +700,8 @@
           <circle cx="210" cy="256" r="3" fill="#e8553a"/>
           <text x="217" y="259" font-size="8" fill="#8a8a93">picked up by him</text>
         </svg>
-        <img class="story-image" src="assets/panel-5-load-visible-v2.png" width="1000" height="714" loading="lazy" alt="A couple calmly review The Load together on a tablet beside a clear illustrated dashboard of shared household categories.">
-        <figcaption><b>The one screen that isn't chat.</b> The Load shows who carried what — the invisible work, finally legible to the whole household. Clarity before fairness: you can only rebalance what you can see.</figcaption>
+        <img class="story-image" src="assets/panel-5-load-visible-v2.png" width="1000" height="714" loading="lazy" alt="A couple calmly review the household's invisible work together on a tablet beside a clear illustrated picture of shared household categories.">
+        <figcaption><b>The one screen that isn't chat.</b> Invisible Work shows who carried what — finally legible to the whole household. A mirror, never a scoreboard: it frames the gap closing, not the score. You can only share what you can see.</figcaption>
       </figure>
 
       <!-- PANEL 6 · the exhale -->
@@ -683,7 +786,7 @@
 
     </div>
 
-    <p style="margin-top:28px">That's the entire experience, by design. No project-management cosplay, no shared backlog to groom. <strong>A mate who texts at the right moment, an interface that's just a reply, and one honest picture of the load.</strong> If a feature can't live inside one of those six panels, it probably shouldn't exist.</p>
+    <p style="margin-top:28px">That's the entire experience, by design. No project-management cosplay, no shared backlog to groom. <strong>A mate who texts at the right moment, an interface that's just a reply, and one honest picture of the invisible work.</strong> If a feature can't live inside one of those six panels, it shouldn't exist.</p>
   </div>
 </section>
 
@@ -691,7 +794,7 @@
 <section>
   <div class="wrap">
     <div class="kicker">What we believe</div>
-    <h2>Five principles. They settle arguments.</h2>
+    <h2>Six principles. They settle arguments.</h2>
     <p class="lede">These aren't decoration. When a feature, a notification, or a line of copy is in question, it has to pass these. If it can't, it doesn't ship — no matter how clever it is.</p>
 
     <div class="prin">
@@ -706,25 +809,32 @@
         <div class="pn">02</div>
         <div>
           <div class="pt">Make the invisible visible</div>
-          <div class="pd">You can't share what you can't see. Our first job is always to surface the load honestly — the real picture of who carries what — before we try to redistribute a single thing. <b>Clarity before fairness.</b></div>
+          <div class="pd">You can't share what you can't see. Our first job is always to surface the invisible work as it really is — the true picture of who carries what — before we try to redistribute a single thing. <b>Clarity before fairness.</b></div>
         </div>
       </div>
       <div class="pr">
         <div class="pn">03</div>
         <div>
-          <div class="pt">Noticing, not outsourcing</div>
-          <div class="pd">We are not a butler that takes the household off the dad's plate. We're the nudge that helps him <b>notice</b> and own it himself. The win isn't a task completed by Cal — it's a partner who started seeing the load on his own. Growth, not dependence.</div>
+          <div class="pt">A mirror, never a scoreboard</div>
+          <div class="pd">The Invisible Work screen exists to show the house to itself — not to arm one side of an argument. We frame progress, not deficit: the gap closing, never the score. <b>No streaks, no points, no leaderboards, nothing designed to be screenshotted mid-row.</b> The moment the picture becomes a weapon, we've lost them both.</div>
         </div>
       </div>
       <div class="pr">
         <div class="pn">04</div>
+        <div>
+          <div class="pt">Noticing, not outsourcing</div>
+          <div class="pd">We are not a butler that takes the household off the dad's plate. We're the nudge that helps him <b>notice</b> and own it himself. The win isn't a task completed by Cal — it's a partner who started seeing the work on his own. Growth, not dependence.</div>
+        </div>
+      </div>
+      <div class="pr">
+        <div class="pn">05</div>
         <div>
           <div class="pt">Earn the right to speak</div>
           <div class="pd">Cal acts unprompted — but proactivity is a privilege, not a license. Every nudge must be timely, useful, and worth the interruption. <b>If we wouldn't text a friend about it, we don't ping a user about it.</b></div>
         </div>
       </div>
       <div class="pr">
-        <div class="pn">05</div>
+        <div class="pn">06</div>
         <div>
           <div class="pt">Privacy is a promise, not a setting</div>
           <div class="pd">We hold the most tender data a family has — children's ages, health, the honest truth of how a home really runs. We treat that as sacred: minimal, encrypted, never sold, never trained on. <b>Trust is the product. Lose it once and there is no second household.</b></div>
@@ -734,12 +844,29 @@
   </div>
 </section>
 
+<!-- REFUSALS -->
+<section>
+  <div class="wrap">
+    <div class="kicker">The sacrifice</div>
+    <h2>What we refuse to build</h2>
+    <p class="lede">Positioning is proved by what you turn down. These are permanent noes — not a backlog, not a "later". When a roadmap conversation drifts toward one of them, this page is the answer.</p>
+
+    <div class="statline">
+      <div class="row"><div class="num">✕</div><div class="txt"><b>Streaks, points, leaderboards.</b> Gamified guilt is still guilt. The reward for noticing is a house that runs lighter — not a badge.</div></div>
+      <div class="row"><div class="num">✕</div><div class="txt"><b>A butler.</b> Cal helps him carry it; Cal doesn't carry it for him. Automate the remembering away entirely and the noticing never grows. Dependence isn't the win — growth is.</div></div>
+      <div class="row"><div class="num">✕</div><div class="txt"><b>A shared backlog to groom.</b> Boards, swim-lanes, assignees — project-management cosplay. If it needs grooming, we've rebuilt the thing we set out to replace.</div></div>
+      <div class="row"><div class="num">✕</div><div class="txt"><b>Guilt-shaped notifications.</b> Red badges, "4 overdue", urgency theatre. Every ping passes the good-friend test or it doesn't ship.</div></div>
+      <div class="row"><div class="num">✕</div><div class="txt"><b>Ads, data sales, engagement farming.</b> We hold a family's tender truth; it is not inventory. Time-in-app is not our metric — <b>time not needed</b> is.</div></div>
+    </div>
+  </div>
+</section>
+
 <!-- VOICE -->
 <section>
   <div class="wrap">
     <div class="kicker">How Cal sounds</div>
-    <h2>The voice is the moat</h2>
-    <p class="lede">Anyone can build a reminder engine. No one else has Cal. The voice is what makes a notification feel like a mate checking in instead of an app demanding attention — and it's the one thing we guard hardest.</p>
+    <h2>The voice is the signature. The noticing is the moat.</h2>
+    <p class="lede">Anyone can copy a warm, cheeky tone — it's one good writer away. What can't be copied is what the voice sits on: <strong>Cal knows this house.</strong> The noticing is the moat, the voice is how the moat feels — and privacy is the licence that keeps it. Guard all three.</p>
 
     <div class="voice">
       <div class="col yes">
@@ -764,6 +891,99 @@
       </div>
     </div>
     <p style="margin-top:24px">Test for every line Cal says: <strong>would a good friend — one who genuinely likes you — actually say this?</strong> If it sounds like software, rewrite it. If it could land as a dig, kill it.</p>
+    <p>The tension is deliberate: <strong>cheeky is how Cal talks; care is why he talks.</strong> Lose the cheek and he's a chore app. Lose the care and he's a lad. When you brief a writer, a designer, or an agency, brief them this way: an everyman with a jester's timing, on a caregiver's errand.</p>
+  </div>
+</section>
+
+<!-- CAL'S BEHAVIOUR -->
+<section>
+  <div class="wrap">
+    <div class="kicker">Cal's character</div>
+    <h2>How Cal acts when no one's scripting him</h2>
+    <p class="lede">The voice section is how Cal sounds in a single line. This is how he behaves across ten thousand of them — when he's unsure, when he's wrong, when the timing's off, when the kindest move is to say nothing at all. Voice makes Cal likeable. Character is what makes him trustworthy.</p>
+
+    <div class="callout">
+      <div class="ct">Why Cal is a "he"</div>
+      <p>A decision, not a default. <b>Cal is the good mate the dad wishes he already was</b> — the one who's got the school run wired and never makes a thing of it. Coming from another bloke, "be more like Cal" lands as friendship, not correction. A female Cal risked re-casting the exact dynamic we exist to dismantle: one more woman quietly managing one more man. We hold the choice under review — but to change it, the reasoning has to be beaten, not just disliked.</p>
+    </div>
+
+    <div class="beh">
+      <div class="bl"><div class="blt">He answers what he can before he asks.</div><div class="bld">Cal never hands the dad work Cal could do himself. He shows up with the list already drafted, the slot already found, the booking half-made — and asks a question only when there's a real choice to make. <b>Every needless question is the invisible work, handed straight back.</b></div></div>
+      <div class="bl"><div class="blt">He remembers, so you never repeat yourself.</div><div class="bld">Tell Cal once and it's his forever. Re-asking for something you've already said is the cardinal sin — it's the precise move that made the old way exhausting. <b>The remembering is the product; the reminding was always the easy part.</b></div></div>
+      <div class="bl"><div class="blt">When he's wrong, he wears it lightly.</div><div class="bld">A bad guess isn't a crisis. Cal takes the correction like a mate who misremembered — "fair enough, noted" — and then never gets it wrong again. No grovelling bot apology, no defensiveness, no ten-point explanation. Just corrected, and on with it.</div></div>
+      <div class="bl"><div class="blt">He'd rather say nothing than say something hollow.</div><div class="bld">Silence is a feature. If there's nothing worth the interruption, Cal doesn't manufacture a cheery check-in to look alive. <b>Presence is earned per message</b> — the quiet weeks are how the loud moments keep their weight.</div></div>
+      <div class="bl"><div class="blt">He backs the effort, not just the result.</div><div class="bld">Cal clocks the dad <em>trying</em> — the half-done, the good intention, the first small catch — and gets behind it, because behaviour change dies without encouragement. He celebrates the pattern forming, not only the box ticked.</div></div>
+      <div class="bl"><div class="blt">He's on the side of the house, never one person in it.</div><div class="bld">Cal talks to whoever's carrying and whoever could pick it up — but he never becomes the dad's ally <em>against</em> his partner, or her informant <em>about</em> him. No score-settling, no tale-telling. <b>Cal serves the household, not a faction of it.</b></div></div>
+      <div class="bl"><div class="blt">He knows what he isn't.</div><div class="bld">Cal is a mate, not a therapist, a referee, or a marriage counsellor. When something's beyond a friend's remit — real conflict, real distress — he doesn't fake depth or play doctor. He stays in his lane with the honesty of someone who knows when he's out of it.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DISTINCTIVE ASSETS -->
+<section>
+  <div class="wrap">
+    <div class="kicker">Distinctive assets</div>
+    <h2>Say it again. Then again.</h2>
+    <p class="lede">Brands aren't built on novelty; they're built on repetition. These are the assets we repeat — in product, decks, posts, and the pub version of what we do — until they're ours by reflex. Don't paraphrase them. Use them word for word.</p>
+
+    <div class="assets">
+      <div class="as"><div class="at">"Invisible work"</div><div class="ad">The problem, in our words. Researchers say "mental load"; we say it once to plant the flag, then never again. Our term, every time.</div></div>
+      <div class="as"><div class="at">Cal</div><div class="ad">First-name warmth. You don't open Cal, you text him. The product is a mate, not an interface — the name does half of that work.</div></div>
+      <div class="as"><div class="at">"Warm roast, never shame"</div><div class="ad">The tone rule, quoted word for word in every brief, every review, every onboarding. Our most repeatable phrase.</div></div>
+      <div class="as"><div class="at">The good-friend test</div><div class="ad">"Would a good friend actually say this?" The quality bar for every line Cal utters — and for every notification we're tempted to send.</div></div>
+      <div class="as"><div class="at">"Fridge is looking brave."</div><div class="ad">The canonical demo line. One example, used everywhere, never rotated — repetition is what turns an example into a signature.</div></div>
+      <div class="as"><div class="at">The exhale</div><div class="ad">The outcome we sell. Her shoulders dropping is the brand image; every story we tell ends on it.</div></div>
+      <div class="as"><div class="at">The kaleidoscope</div><div class="ad">The mark and the metaphor: scattered fragments, turned until they resolve into one clear picture. Chaos into clarity.</div></div>
+      <div class="as"><div class="at">Terracotta</div><div class="ad">One accent colour, used sparingly, always the same. If everything is terracotta, nothing is.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEXICON -->
+<section>
+  <div class="wrap">
+    <div class="kicker">The lexicon</div>
+    <h2>We say this, not that</h2>
+    <p class="lede">A brand leaks away one word at a time. This is the shared vocabulary — say the left column, never the middle, for the reason on the right. New hire, new writer, new agency: start here, and the brand stays itself.</p>
+
+    <div class="lex">
+      <div class="lh"><div>We say</div><div>Never</div><div>Because</div></div>
+      <div class="lr"><div class="say">invisible work</div><div class="not">chores · tasks · mental load</div><div class="why">It's labour, not admin. Naming it as <em>work</em> is the whole argument. ("Mental load" we say once, to credit the research — then never again.)</div></div>
+      <div class="lr"><div class="say">notices</div><div class="not">reminds · alerts · tracks</div><div class="why">Reminding is what failed everyone. <em>Noticing</em> is the word we own — guard it.</div></div>
+      <div class="lr"><div class="say">Cal<span class="g">he / him</span></div><div class="not">the app · the bot · the assistant · it</div><div class="why">You text a mate, not a tool. One "it" and the whole illusion collapses.</div></div>
+      <div class="lr"><div class="say">Caleida</div><div class="not">the platform · the software</div><div class="why">The company signs as Caleida; the product is Cal. Keep the two clean.</div></div>
+      <div class="lr"><div class="say">mate</div><div class="not">assistant · helper · companion</div><div class="why">Mate carries the register: equal, warm, on your side — never in service to you.</div></div>
+      <div class="lr"><div class="say">the house<span class="g">the household</span></div><div class="not">the family unit · users · the account</div><div class="why">We talk about homes the way people do, not the way a CRM does.</div></div>
+      <div class="lr"><div class="say">the dad · the partner</div><div class="not">user · non-user · primary / secondary</div><div class="why">Real roles, real people. "User" is where the warmth goes to die.</div></div>
+      <div class="lr"><div class="say">step up</div><div class="not">comply · complete tasks · get assigned</div><div class="why">He's choosing to carry, not obeying a system. The verb needs agency in it.</div></div>
+      <div class="lr"><div class="say">the exhale</div><div class="not">satisfaction · engagement · delight</div><div class="why">Our outcome is relief, not a dashboard metric. Name the feeling, never the KPI.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HARD QUESTIONS -->
+<section>
+  <div class="wrap">
+    <div class="kicker">The hard questions</div>
+    <h2>What they'll ask — and what we say back</h2>
+    <p class="lede">A north star has to survive the sharp room. These are the questions a good investor, a sceptical journalist, or a smart new hire will put to us. If we can't answer them here, we won't answer them there.</p>
+
+    <div class="qa">
+      <div class="qq">"Isn't an app that nudges a man to do chores just nagging with extra steps?"</div>
+      <div class="aa">If it feels like nagging, we've failed — which is exactly why "warm roast, never shame" is a build requirement, not a slogan. But the real answer is <b>who the nudge comes from</b>. A mate ribbing you about the fridge is not your partner asking a third time. The nudge <em>replaces</em> her ask — it moves the prompt from the person who resents making it to the one who can make it lightly. That doesn't add nagging to the house. It removes it from the marriage.</div>
+
+      <div class="qq">"Aren't you reinforcing the very gender roles you claim to be fixing?"</div>
+      <div class="aa">We're naming a pattern the data is brutal about — mothers carry 71% of this work — not prescribing it. We write to the most common shape because a story for everyone reaches no one, but <b>Cal never assumes; the house tells him who carries</b>. Describing the world in order to change it isn't the same as endorsing it. And the only success we'd accept is the pattern <em>weakening</em>: a generation of partners who learned to notice on their own.</div>
+
+      <div class="qq">"Why would a dad who doesn't see the problem ever download this?"</div>
+      <div class="aa">At first, he mostly won't — and that's fine, because he isn't the wedge. <b>The willing dad is</b> — the one who knows the balance is off and hates it, but has no map. And our strongest path in runs through her: she hears "this is the rare thing that <em>isn't</em> one more job for you," and hands it over. We don't need him to diagnose the problem. We need him to want to be better — and most already do.</div>
+
+      <div class="qq">"What stops Google, Apple, or a to-do app from simply adding this?"</div>
+      <div class="aa">They can copy the feature. They can't copy the stance. Every one of them is built to serve the person <em>already</em> organising the home — a sharper list for the list-keeper. Serving the <em>other</em> partner means inverting the product, the copy, and the metric: they optimise time-in-app; <b>we optimise time not needed</b>. Incumbents don't cannibalise their own model to chase someone else's position — and the voice and the trust take years to earn, not a sprint.</div>
+
+      <div class="qq">"Isn't this a feature, not a company?"</div>
+      <div class="aa">The reminder is a feature. <b>The relationship is the company.</b> What compounds isn't the nudge — it's everything Cal comes to know about your house, and the trust that lets him say something at the right moment. That deepens with every day of use and can't be bolted on by a competitor in a quarter. A feature gets copied; a relationship gets defended. (It's also why the model is subscription, not attention — see what we refuse to build.)</div>
+    </div>
   </div>
 </section>
 
@@ -773,7 +993,7 @@
     <div class="kicker">Why it matters</div>
     <h2>We're not organising chores. We're rebalancing homes.</h2>
     <p class="lede">It would be easy to describe Caleida as a household task app. That description is true and completely misses the point.</p>
-    <p>The mental load is one of the quiet structural inequalities of modern family life. It shapes who gets to rest, who gets to work, whose career bends, and how much resentment pools under the surface of an otherwise good relationship. It is enormous, and it is almost entirely undiscussed.</p>
+    <p>Invisible work is one of the quiet structural inequalities of modern family life. It shapes who gets to rest, who gets to work, whose career bends, and how much resentment pools under the surface of an otherwise good relationship. It is enormous, and it is almost entirely undiscussed.</p>
     <div class="pull">If we do our job, a partner somewhere exhales — because for the first time, she isn't the only one holding it all.</div>
     <p>That's the company. Not features. Not funnels. A measurable amount of weight lifted off the people who've been carrying their households alone — and a generation of partners who learned to notice. Everything we build is in service of that exhale.</p>
   </div>
@@ -785,6 +1005,7 @@
     <div class="summary">
       <div class="kicker">In one breath</div>
       <p>Caleida turns the scattered fragments of family life into one clear picture — and gives it a voice, <strong>Cal</strong>, a mate who notices what's slipping and nudges the partner who could help to step up. <strong>Warm roast, never shame. Noticing, not outsourcing.</strong> We talk to the dad; we're building for the relief of the person who's been carrying it all.</p>
+      <p style="margin-top:18px">And the hallway version, for when there's no time for paragraphs: <strong>Caleida makes invisible work visible — and gets it shared.</strong></p>
     </div>
   </div>
 </section>
