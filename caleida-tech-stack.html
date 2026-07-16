@@ -24,7 +24,7 @@
     --radius:14px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
   body{
     font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
     color:var(--body);background:var(--bg);
@@ -109,6 +109,13 @@
   td:nth-child(2){color:var(--ink);width:280px}
   td:last-child{color:var(--muted);font-size:13.5px}
   tr:last-child td{border-bottom:none}
+  @media(max-width:600px){
+    table{font-size:13px}
+    th,td{padding-right:10px}
+    td:first-child{white-space:normal;width:auto}
+    td:nth-child(2){width:auto}
+    td:last-child{font-size:12.5px}
+  }
 
   /* ---- detail blocks ---- */
   .block{margin-bottom:34px}

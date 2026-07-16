@@ -23,21 +23,20 @@
       '<style>' +
       '#caleida-gate{position:fixed;inset:0;z-index:2147483647;background:#F7F0E3;display:flex;align-items:center;justify-content:center;font-family:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,sans-serif;visibility:visible}' +
       '#caleida-gate .cg-card{text-align:center;padding:40px 28px;max-width:360px;width:calc(100% - 48px)}' +
-      '#caleida-gate .cg-mark{width:54px;height:54px;border-radius:50%;margin:0 auto;background:conic-gradient(#D9A23A 0 90deg,#C2552E 90deg 180deg,#1F8175 180deg 270deg,#E0825E 270deg 360deg);position:relative}' +
-      '#caleida-gate .cg-mark:after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:19px;height:19px;border-radius:50%;background:#F7F0E3}' +
+      '#caleida-gate .cg-mark{width:56px;height:56px;margin:0 auto;display:block}' +
       '#caleida-gate .cg-name{font-size:26px;font-weight:800;letter-spacing:.4px;color:#2A211B;margin-top:16px}' +
       '#caleida-gate .cg-sub{font-size:14px;color:#6B5D50;font-weight:500;margin-top:6px}' +
       '#caleida-gate form{margin-top:26px;display:flex;gap:9px}' +
-      '#caleida-gate input{flex:1;min-width:0;padding:13px 16px;border-radius:13px;border:1.5px solid #E7DCC8;background:#FFFDF8;font-size:15px;color:#2A211B;outline:none;font-family:inherit}' +
-      '#caleida-gate input:focus{border-color:#C2552E}' +
-      '#caleida-gate button{background:#C2552E;color:#FFFDF8;border:none;padding:13px 20px;border-radius:13px;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit}' +
+      '#caleida-gate input{flex:1;min-width:0;padding:13px 16px;border-radius:13px;border:1.5px solid #E7DCC8;background:#FFFDF8;font-size:16px;color:#2A211B;outline:none;font-family:inherit}' +
+      '#caleida-gate input:focus{border-color:#C05330}' +
+      '#caleida-gate button{background:#C05330;color:#FFFDF8;border:none;padding:13px 20px;border-radius:13px;font-weight:700;font-size:16px;cursor:pointer;font-family:inherit}' +
       '#caleida-gate button:active{transform:translateY(1px)}' +
-      '#caleida-gate .cg-err{font-size:13px;font-weight:600;color:#C2552E;margin-top:12px;min-height:18px;opacity:0;transition:opacity .15s}' +
+      '#caleida-gate .cg-err{font-size:13px;font-weight:600;color:#C05330;margin-top:12px;min-height:18px;opacity:0;transition:opacity .15s}' +
       '#caleida-gate.cg-shake .cg-card{animation:cgshake .3s}' +
       '@keyframes cgshake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}' +
       '</style>' +
       '<div class="cg-card">' +
-      '<div class="cg-mark"></div>' +
+      '<div class="cg-mark"><svg width="56" height="56" viewBox="0 0 64 64" aria-hidden="true"><g transform="rotate(45 32 32)"><path d="M32 32 L32 2 A30 30 0 0 1 62 32 Z" fill="#D9A23A"/><path d="M32 32 L62 32 A30 30 0 0 1 32 62 Z" fill="#C05330"/><path d="M32 32 L32 62 A30 30 0 0 1 2 32 Z" fill="#1F8175"/><path d="M32 32 L2 32 A30 30 0 0 1 32 2 Z" fill="#E0825E"/></g><circle cx="32" cy="32" r="12" fill="#F7F0E3"/></svg></div>' +
       '<div class="cg-name">caleida</div>' +
       '<div class="cg-sub">This space is invite-only. Enter the password.</div>' +
       '<form><input type="password" autocomplete="current-password" placeholder="Password" aria-label="Password"><button type="submit">Enter</button></form>' +
