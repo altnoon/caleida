@@ -55,6 +55,8 @@
 
   /* surfaces + buttons */
   .card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--sh-2)}
+  .taped-note{position:relative}
+  .taped-note::before{content:"";position:absolute;top:-8px;left:50%;transform:translateX(-50%) rotate(-1.6deg);width:54px;height:15px;background:rgba(226,213,185,.86);box-shadow:0 1px 2px rgba(58,40,26,.16);border-radius:2px;z-index:2}
   .btn{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;padding:15px 28px;border-radius:12px;display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:none;line-height:1}
   .btn-primary{background:linear-gradient(#CF6238,var(--terra) 55%,var(--terra-deep));color:#FFFDF8;box-shadow:var(--press),0 8px 18px rgba(192,83,48,.24);text-shadow:0 -1px 0 rgba(90,30,10,.35)}
   .btn-primary:active{transform:translateY(1px)}
@@ -249,10 +251,10 @@
           <svg class="mark" width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><g transform="rotate(45 32 32)"><g stroke="#FFFDF6" stroke-width="3.2"><path d="M32 32 L32 2 A30 30 0 0 1 62 32 Z" fill="#D9A23A"/><path d="M32 32 L62 32 A30 30 0 0 1 32 62 Z" fill="#C05330"/><path d="M32 32 L32 62 A30 30 0 0 1 2 32 Z" fill="#1F8175"/><path d="M32 32 L2 32 A30 30 0 0 1 32 2 Z" fill="#E0825E"/></g></g><circle cx="32" cy="32" r="10.5" fill="#FFFDF6"/></svg>
           <span style="font-weight:700;font-size:12px;letter-spacing:.08em;color:var(--terra);text-transform:uppercase">Cal</span>
         </div>
-        <div style="background:var(--note);border-radius:4px;padding:15px 18px;box-shadow:var(--sh-1)">
+        <div class="taped-note" style="background:var(--note);border-radius:4px;padding:15px 18px;box-shadow:var(--sh-1)">
           <p class="cal" style="font-size:16px;line-height:1.5;margin:0">“9 days since the big shop, mate. Fridge is looking brave.”</p>
         </div>
-        <div style="background:var(--note);border-radius:4px;padding:15px 18px;box-shadow:var(--sh-1)">
+        <div class="taped-note" style="background:var(--note);border-radius:4px;padding:15px 18px;box-shadow:var(--sh-1)">
           <p class="cal" style="font-size:16px;line-height:1.5;margin:0">“Quiet day? Happens. Bins go out tonight — take that one and we're square.”</p>
         </div>
         <div style="font-weight:700;font-size:13px;color:var(--teal-deep);margin-top:auto">A mate checking in. You're on it.</div>
@@ -263,7 +265,7 @@
     <div class="eyebrow" style="margin-bottom:26px">A day in the thread</div>
     <div class="roasts" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;text-align:left">
       <sc-for list="{{ roasts }}" as="r" hint-placeholder-count="6">
-        <div class="card" style="padding:26px;display:flex;flex-direction:column;gap:16px;min-height:240px">
+        <div class="card taped-note" style="padding:26px;display:flex;flex-direction:column;gap:16px;min-height:240px">
           <div style="display:flex;align-items:center;gap:9px">
             <svg class="mark" width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><g transform="rotate(45 32 32)"><g stroke="#FFFDF6" stroke-width="3.2"><path d="M32 32 L32 2 A30 30 0 0 1 62 32 Z" fill="#D9A23A"/><path d="M32 32 L62 32 A30 30 0 0 1 32 62 Z" fill="#C05330"/><path d="M32 32 L32 62 A30 30 0 0 1 2 32 Z" fill="#1F8175"/><path d="M32 32 L2 32 A30 30 0 0 1 32 2 Z" fill="#E0825E"/></g></g><circle cx="32" cy="32" r="10.5" fill="#FFFDF6"/></svg>
             <span style="font-weight:700;font-size:12px;letter-spacing:.06em;color:var(--muted)">CAL · {{ r.time }}</span>
