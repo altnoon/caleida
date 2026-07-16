@@ -59,6 +59,15 @@
   .brandlk .wm .i{color:var(--terra)}
   .navlinks{display:flex;gap:3px}
   .navlinks a{font-size:13px;font-weight:600;color:var(--muted);padding:7px 11px;border-radius:8px;white-space:nowrap}
+  .navburger{display:none;flex-direction:column;gap:5px;width:38px;height:38px;border:none;background:transparent;cursor:pointer;align-items:center;justify-content:center;padding:0;flex:none;border-radius:9px}
+  .navburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:transform .28s,opacity .18s}
+  .topnav.open .navburger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .topnav.open .navburger span:nth-child(2){opacity:0}
+  .topnav.open .navburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .navdrop{display:none;flex-direction:column;background:rgba(247,240,227,.98);backdrop-filter:saturate(160%) blur(12px);border-top:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .3s cubic-bezier(.22,.61,.36,1)}
+  .navdrop a{padding:13px 28px;font-size:15px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line)}
+  .navdrop a:last-child{border-bottom:none}
+  .topnav.open .navdrop{max-height:82vh}
   .navlinks a:hover{color:var(--ink);background:#EFE6D4}
 
   /* ===== hero ===== */
@@ -166,8 +175,9 @@
     .g2,.g3,.g32,.g23{grid-template-columns:1fr}
     .swatches{grid-template-columns:repeat(2,1fr)}
     .pairs,.imgrow{grid-template-columns:1fr}
-    .navlinks{overflow-x:auto;max-width:60%;scrollbar-width:none}
-    .navlinks::-webkit-scrollbar{display:none}
+    .navlinks{display:none}
+    .navburger{display:flex}
+    .navdrop{display:flex}
   }
   @media(max-width:520px){
     .dd{grid-template-columns:1fr}
@@ -416,6 +426,19 @@
       <a href="#tokens">Tokens</a>
       <a href="/caleida-brand-narrative">Doctrine</a>
     </div>
+    <button class="navburger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="navdrop">
+    <a href="#logo">Logo</a>
+    <a href="#colour">Colour</a>
+    <a href="#type">Type</a>
+    <a href="#material">Material</a>
+    <a href="#imagery">Imagery</a>
+    <a href="#components">Components</a>
+    <a href="#vocabulary">The work</a>
+    <a href="#screens">The app</a>
+    <a href="#tokens">Tokens</a>
+    <a href="/caleida-brand-narrative">Doctrine</a>
   </div>
 </div>
 
@@ -1208,7 +1231,7 @@
     </div>
 
     <div class="card" style="margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;background:linear-gradient(160deg,#FFFEFA,#FBF5E9)">
-      <div style="flex:1;min-width:280px">
+      <div style="flex:1;min-width:200px">
         <div class="clabel">Figma &amp; handoff kit</div>
         <p style="font-size:15px;color:var(--body);line-height:1.6;margin:0 0 6px">Everything you need to rebuild Caleida in Figma — design tokens ready for the <strong>Tokens Studio</strong> plugin, the mark as SVG, a labelled palette, and a setup guide. Not a native <code style="font-size:12.5px">.fig</code>, but it drops the whole system into Figma in about fifteen minutes.</p>
         <p style="font-size:12.5px;color:var(--muted);margin:0">Tokens Studio JSON · W3C tokens.json · tokens.css · SVG marks + wordmark + palette · README</p>
@@ -1225,6 +1248,17 @@
     Caleida — The Sunday Kitchen · Brand Bible · built 2026. The kaleidoscope lives in the logo. Cal speaks in the warm roast. The invisible work, made visible.
   </div>
 </footer>
+
+<script>
+(function(){
+  document.addEventListener('click', function(e){
+    var nav = document.querySelector('.topnav'); if(!nav) return;
+    if(e.target.closest('.navburger')){ var o=nav.classList.toggle('open'); var b=nav.querySelector('.navburger'); if(b) b.setAttribute('aria-expanded', o?'true':'false'); e.preventDefault(); return; }
+    if(e.target.closest('.navdrop a')){ nav.classList.remove('open'); var b2=nav.querySelector('.navburger'); if(b2) b2.setAttribute('aria-expanded','false'); return; }
+    if(nav.classList.contains('open') && !e.target.closest('.topnav')){ nav.classList.remove('open'); var b3=nav.querySelector('.navburger'); if(b3) b3.setAttribute('aria-expanded','false'); }
+  });
+})();
+</script>
 
 </body>
 </html>
