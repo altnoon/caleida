@@ -65,9 +65,20 @@
   .nav{position:sticky;top:0;z-index:50;background:rgba(247,240,227,.86);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line);transition:transform .32s cubic-bezier(.22,.61,.36,1);will-change:transform}
   .nav.nav--hidden{transform:translateY(-100%)}
   .nav-in{max-width:1180px;margin:0 auto;padding:15px 32px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+  .nav-right{display:flex;align-items:center;gap:20px}
+  .nav-cta{white-space:nowrap}
   .nav-links{display:flex;align-items:center;gap:20px;font-weight:600;font-size:14.5px;color:var(--muted)}
   .nav-links a{white-space:nowrap}
-  .nav-links a.nav-sec:hover,.nav-links a.nav-doc:hover{color:var(--ink)}
+  .nav-links a:hover{color:var(--ink)}
+  .burger{display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:40px;height:40px;padding:0;border:none;background:transparent;cursor:pointer;border-radius:10px;flex:none}
+  .burger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:transform .28s ease,opacity .18s ease}
+  .nav.menu-open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav.menu-open .burger span:nth-child(2){opacity:0}
+  .nav.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .navmenu{display:none;flex-direction:column;border-top:1px solid var(--line);background:rgba(247,240,227,.98);backdrop-filter:saturate(160%) blur(12px);max-height:0;overflow:hidden;transition:max-height .32s cubic-bezier(.22,.61,.36,1)}
+  .navmenu a{padding:15px 32px;font-weight:600;font-size:16px;color:var(--ink);border-bottom:1px solid var(--line)}
+  .navmenu a:last-child{border-bottom:none}
+  .nav.menu-open .navmenu{max-height:70vh}
 
   .board{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
   .panel{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--sh-2);display:flex;flex-direction:column}
@@ -77,7 +88,7 @@
   .dark{background:var(--espresso);color:var(--linen);position:relative;z-index:1}
   .dark .h2{color:var(--linen)}
 
-  @media (max-width:1060px){ .nav-sec{display:none!important} }
+  @media (max-width:1060px){ .nav-links{display:none!important} .burger{display:flex!important} .navmenu{display:flex!important} }
   @media (max-width:980px){
     .board{grid-template-columns:repeat(2,1fr);gap:18px}
     .hero-grid{grid-template-columns:1fr!important;gap:40px!important}
@@ -95,8 +106,9 @@
     .hero-sec{padding:40px 20px 56px!important}
     .cta-outer{padding:0 20px 56px!important}
     .footer-in{padding:36px 20px!important}
-    .nav-in{padding:12px 20px!important}
-    .nav-doc{display:none!important}
+    .nav-in{padding:12px 20px!important;gap:12px!important}
+    .nav-right{gap:12px!important}
+    .navmenu a{padding-left:20px;padding-right:20px}
     .nav-cta{padding:9px 15px!important;font-size:14px}
     .hero-h1{font-size:42px!important}
     .h2{font-size:29px!important}
@@ -115,20 +127,32 @@
   <!-- NAV -->
   <div class="nav">
     <div class="nav-in">
-      <div style="display:flex;align-items:center;gap:10px">
+      <div class="brand" style="display:flex;align-items:center;gap:10px">
         <svg class="mark" width="30" height="30" viewBox="0 0 64 64" aria-hidden="true"><g transform="rotate(45 32 32)"><g stroke="#F7F0E3" stroke-width="3"><path d="M32 32 L32 2 A30 30 0 0 1 62 32 Z" fill="#D9A23A"/><path d="M32 32 L62 32 A30 30 0 0 1 32 62 Z" fill="#C05330"/><path d="M32 32 L32 62 A30 30 0 0 1 2 32 Z" fill="#1F8175"/><path d="M32 32 L2 32 A30 30 0 0 1 32 2 Z" fill="#E0825E"/></g></g><circle cx="32" cy="32" r="10.5" fill="#F7F0E3"/></svg>
         <span class="wm" style="font-size:21px">caleida</span>
       </div>
-      <div class="nav-links">
-        <a class="nav-sec" href="#features">Features</a>
-        <a class="nav-sec" href="#voice">Cal's voice</a>
-        <a class="nav-sec" href="#product">The product</a>
-        <a class="nav-sec" href="#start">How it works</a>
-        <a class="nav-doc" href="/caleida-tech-stack">Tech Stack</a>
-        <a class="nav-doc" href="/caleida-brand-narrative">Brand Narrative</a>
-        <a class="nav-doc" href="/caleida-design-system">Design System</a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#voice">Cal's voice</a>
+          <a href="#product">The product</a>
+          <a href="#start">How it works</a>
+          <a href="/caleida-tech-stack">Tech Stack</a>
+          <a href="/caleida-brand-narrative">Brand Narrative</a>
+          <a href="/caleida-design-system">Design System</a>
+        </div>
         <a class="nav-cta btn btn-primary" href="#cta" style="font-size:15px;padding:11px 20px">Get started</a>
+        <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navmenu"><span></span><span></span><span></span></button>
       </div>
+    </div>
+    <div class="navmenu" id="navmenu">
+      <a href="#features">Features</a>
+      <a href="#voice">Cal's voice</a>
+      <a href="#product">The product</a>
+      <a href="#start">How it works</a>
+      <a href="/caleida-tech-stack">Tech Stack</a>
+      <a href="/caleida-brand-narrative">Brand Narrative</a>
+      <a href="/caleida-design-system">Design System</a>
     </div>
   </div>
 
@@ -407,6 +431,7 @@ class Component extends DCLogic {
     ticking = false;
     if(!nav || !document.body.contains(nav)) nav = document.querySelector('.nav');
     if(!nav) return;
+    if(nav.classList.contains('menu-open')) return;
     var y = window.pageYOffset || document.documentElement.scrollTop || 0;
     var d = y - lastY;
     if(y < 80) nav.classList.remove('nav--hidden');
@@ -417,6 +442,26 @@ class Component extends DCLogic {
   window.addEventListener('scroll', function(){
     if(!ticking){ window.requestAnimationFrame(onFrame); ticking = true; }
   }, {passive:true});
+})();
+</script>
+
+<script>
+/* mobile burger menu */
+(function(){
+  function getNav(){ return document.querySelector('.nav'); }
+  function close(n){ n.classList.remove('menu-open'); var b=n.querySelector('.burger'); if(b) b.setAttribute('aria-expanded','false'); }
+  document.addEventListener('click', function(e){
+    var n = getNav(); if(!n) return;
+    if(e.target.closest('.burger')){
+      var open = n.classList.toggle('menu-open');
+      if(open) n.classList.remove('nav--hidden');
+      var b = n.querySelector('.burger'); if(b) b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      e.preventDefault(); return;
+    }
+    if(e.target.closest('.navmenu a')){ close(n); return; }
+    if(n.classList.contains('menu-open') && !e.target.closest('.nav')) close(n);
+  });
+  window.addEventListener('resize', function(){ var n = getNav(); if(n && window.innerWidth > 1060) close(n); }, {passive:true});
 })();
 </script>
 
