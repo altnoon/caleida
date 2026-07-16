@@ -1,0 +1,167 @@
+/* ============================================================
+   CALEIDA — Design Tokens · "The Sunday Kitchen" v1
+   Canonical source of truth. Import once, use everywhere.
+   Doctrine: kaleidoscope lives in the logo only · warm roast ·
+   mirror never a scoreboard · household companion, not a task app.
+   ============================================================ */
+
+:root {
+  /* ---------- SURFACES ---------- */
+  --cal-paper:            #F7F0E3;   /* page / app surface (base of stock gradient) */
+  --cal-paper-deep:       #F0E7D3;   /* foot of the paper-stock gradient */
+  --cal-card:             #FFFDF6;   /* panels */
+  --cal-note:             #FFFDF3;   /* Cal's note paper */
+  --cal-surface-gradient: linear-gradient(178deg, #F7F0E3, #F0E7D3);
+
+  /* ---------- INK ---------- */
+  --cal-ink:              #2A211B;   /* headings, primary text — 14:1 on paper (AAA) */
+  --cal-body:             #4A4038;   /* body copy — 8.9:1 on paper (AAA) */
+  --cal-muted:            #9C8E7E;   /* captions, meta */
+  --cal-line:             #E8DEC9;   /* hairlines, borders */
+  --cal-line-2:           #DFD3BC;   /* stronger dividers */
+
+  /* ---------- PIGMENTS ---------- */
+  --cal-terracotta:       #C05330;   /* THE signature — display, fills, buttons */
+  --cal-terracotta-deep:  #A94525;   /* small terracotta text / button press — 5.2:1 (AA) */
+  --cal-salmon:           #E0825E;   /* terracotta tint, illustration fills */
+  --cal-teal:             #1F8175;   /* Cal acts / confirms */
+  --cal-teal-deep:        #186B60;   /* small teal text — 5.6:1 (AA) */
+  --cal-gold:             #D9A23A;   /* highlights (small areas only) */
+  --cal-gold-soft:        #F3E2B8;   /* sticky labels */
+  --cal-gold-ink:         #8A5F10;   /* text on gold */
+
+  /* on-colour text */
+  --cal-on-terracotta:    #FFFDF8;   /* white on terra — 4.6:1 (AA) */
+  --cal-on-teal:          #FFFDF8;   /* white on teal — 4.7:1 (AA) */
+
+  /* material fills */
+  --cal-glaze-terracotta: linear-gradient(165deg, #C96F49, #B65C38 55%, #A04E2C);
+  --cal-glaze-teal:       linear-gradient(165deg, #2E9488, #1F8175 55%, #186B60);
+  --cal-btn-terracotta:   linear-gradient(#CF6238, #C05330 55%, #A94525);
+  --cal-label-gold:       linear-gradient(#FBEFD2, #F3E2B8);
+
+  /* ---------- DARK / EVENING SURFACE ---------- */
+  --cal-espresso:         #211913;   /* night surface (not black) */
+  --cal-espresso-panel:   #2A2017;
+  --cal-linen:            #F4EDE0;   /* text on espresso */
+  --cal-terracotta-glow:  #D77E57;   /* terracotta on dark */
+  --cal-teal-glow:        #7FB6A6;   /* teal on dark */
+
+  /* ---------- TYPOGRAPHY ---------- */
+  --cal-font-logo:    "Bricolage Grotesque", "Plus Jakarta Sans", sans-serif; /* the logotype / wordmark ONLY — Bricolage 600, tracking -0.02em; the diamond carries the craft */
+  --cal-font-display: "Fraunces", Georgia, "Times New Roman", serif;   /* editorial headlines only */
+  --cal-font-ui:      "Plus Jakarta Sans", system-ui, -apple-system, sans-serif; /* body + UI */
+  --cal-font-cal:     "Shantell Sans", "Comic Sans MS", cursive;       /* Cal's voice — his handwriting */
+
+  --cal-weight-body: 400;
+  --cal-weight-medium: 500;   /* Cal's roast */
+  --cal-weight-bold: 700;     /* Cal's confirm */
+  --cal-weight-display: 520;  /* Fraunces display — lightened from 620; range 440–560 */
+  --cal-weight-logo: 600;     /* Bricolage logotype */
+
+  /* fluid type scale */
+  --cal-text-display: clamp(40px, 6.6vw, 74px);
+  --cal-text-h1:      clamp(32px, 5vw, 52px);
+  --cal-text-h2:      clamp(26px, 3.4vw, 36px);
+  --cal-text-h3:      20px;
+  --cal-text-body:    16px;
+  --cal-text-small:   14px;
+  --cal-text-caption: 12.5px;
+  --cal-leading-body: 1.65;
+  --cal-leading-tight: 1.1;
+  --cal-tracking-caption: 0.08em;
+
+  /* ---------- SHAPE ---------- */
+  --cal-radius-card: 14px;
+  --cal-radius-btn:  12px;
+  --cal-radius-input: 10px;
+  --cal-radius-note: 3px;    /* paper corners */
+  --cal-radius-pill: 999px;
+  --cal-radius-icon: 18px;   /* app icon squircle */
+
+  /* ---------- ELEVATION (one light source, top-left, warm) ---------- */
+  --cal-shadow-1: 0 1px 2px rgba(58,40,26,.10);
+  --cal-shadow-2: 0 1px 2px rgba(58,40,26,.10), 0 8px 18px rgba(58,40,26,.10);
+  --cal-shadow-3: 0 1px 2px rgba(58,40,26,.12), 0 16px 34px rgba(58,40,26,.13);
+  --cal-inset:    inset 0 1px 3px rgba(58,40,26,.14);   /* pressed inputs */
+  --cal-press:    0 1px 0 rgba(255,255,255,.30) inset, 0 -2px 0 rgba(90,30,10,.30) inset; /* button depth */
+
+  /* ---------- SPACING (8pt base) ---------- */
+  --cal-space-1: 4px;
+  --cal-space-2: 8px;
+  --cal-space-3: 12px;
+  --cal-space-4: 16px;
+  --cal-space-5: 20px;
+  --cal-space-6: 24px;
+  --cal-space-8: 32px;
+  --cal-space-10: 40px;
+  --cal-space-14: 56px;
+  --cal-space-container: 1060px;
+
+  /* ---------- MOTION ---------- */
+  --cal-ease: cubic-bezier(0.22, 0.61, 0.36, 1);   /* ease-out, drawer-soft */
+  --cal-dur-fast: 160ms;
+  --cal-dur: 220ms;
+
+  /* ---------- TEXTURE ---------- */
+  --cal-paper-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.28 0 0 0 0 0.2 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- READY-MADE PATTERNS ---------- */
+
+.cal-surface {
+  background: var(--cal-surface-gradient);
+  color: var(--cal-body);
+  font-family: var(--cal-font-ui);
+  line-height: var(--cal-leading-body);
+}
+
+.cal-btn-primary {
+  font-family: var(--cal-font-ui);
+  font-weight: var(--cal-weight-bold);
+  color: var(--cal-on-terracotta);
+  background: var(--cal-btn-terracotta);
+  border: none;
+  border-radius: var(--cal-radius-btn);
+  padding: 13px 24px;
+  box-shadow: var(--cal-press), 0 3px 6px rgba(58,40,26,.2);
+  text-shadow: 0 -1px 0 rgba(90,30,10,.35);
+  cursor: pointer;
+  transition: transform var(--cal-dur-fast) var(--cal-ease);
+}
+.cal-btn-primary:active { transform: translateY(1px); }
+
+.cal-card {
+  background: var(--cal-card);
+  border: 1px solid var(--cal-line);
+  border-radius: var(--cal-radius-card);
+  box-shadow: var(--cal-shadow-2);
+}
+
+.cal-input {
+  background: var(--cal-note);
+  border: none;
+  box-shadow: var(--cal-inset);
+  border-radius: var(--cal-radius-input);
+  color: var(--cal-ink);
+  font-family: var(--cal-font-ui);
+  padding: 13px 15px;
+}
+
+.cal-chip { /* sticky label */
+  font-family: var(--cal-font-ui);
+  font-weight: var(--cal-weight-bold);
+  font-size: 12px;
+  color: var(--cal-gold-ink);
+  background: var(--cal-label-gold);
+  border-radius: 5px;
+  padding: 8px 15px;
+  box-shadow: var(--cal-shadow-1);
+}
+
+/* the logotype — Bricolage grotesque; the diamond mark carries the craft, the word stays quiet */
+.cal-wordmark { font-family: var(--cal-font-logo); font-weight: var(--cal-weight-logo); letter-spacing: -0.02em; color: var(--cal-ink); }
+
+/* Cal's voice — his handwriting; a note left for you by a mate */
+.cal-voice   { font-family: var(--cal-font-cal); font-weight: 500; color: var(--cal-ink); }   /* the roast + notes */
+.cal-confirm { font-family: var(--cal-font-ui); font-weight: 700; color: var(--cal-teal-deep); } /* the confirm — stays sans for status legibility */

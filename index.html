@@ -19,15 +19,64 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Shantell+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  :root{
+    --paper:#F7F0E3;--paper-deep:#F0E7D3;--card:#FFFDF6;--note:#FFFDF3;
+    --ink:#2A211B;--body:#4A4038;--muted:#9C8E7E;--line:#E8DEC9;--line-2:#DFD3BC;
+    --terra:#C05330;--terra-deep:#A94525;--salmon:#E0825E;--teal:#1F8175;--teal-deep:#186B60;
+    --gold:#D9A23A;--gold-soft:#F3E2B8;--gold-ink:#8A5F10;
+    --espresso:#211913;--espresso-2:#2A2017;--linen:#F4EDE0;--terra-glow:#D77E57;--teal-glow:#7FB6A6;
+    --sh-1:0 1px 2px rgba(58,40,26,.10);
+    --sh-2:0 1px 2px rgba(58,40,26,.10),0 8px 18px rgba(58,40,26,.10);
+    --sh-3:0 1px 2px rgba(58,40,26,.12),0 16px 34px rgba(58,40,26,.13);
+    --press:0 1px 0 rgba(255,255,255,.30) inset,0 -2px 0 rgba(90,30,10,.30) inset;
+    --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.28 0 0 0 0 0.2 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
   *{box-sizing:border-box}
   body{margin:0}
   a{text-decoration:none;color:inherit}
-  img{max-width:100%}
-  .board{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  img{max-width:100%;display:block}
 
-  /* ---- responsive ---- */
+  .page{width:100%;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--body);
+    background:linear-gradient(178deg,var(--paper),var(--paper-deep));position:relative;overflow-x:hidden}
+  .page::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;background-image:var(--noise)}
+  .sec{max-width:1180px;margin:0 auto;padding:84px 32px;position:relative;z-index:1}
+  .band{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:1}
+
+  /* type */
+  .disp{font-family:'Fraunces',serif;font-optical-sizing:auto;color:var(--ink);letter-spacing:-.02em;line-height:1.03;font-weight:560;text-shadow:0 1px 0 rgba(255,255,255,.55)}
+  .h2{font-family:'Fraunces',serif;font-weight:540;letter-spacing:-.01em;line-height:1.1;color:var(--ink);margin:0}
+  .wm{font-family:'Bricolage Grotesque','Plus Jakarta Sans',sans-serif;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+  .stat{font-family:'Fraunces',serif;font-weight:600;line-height:1}
+  .cal{font-family:'Shantell Sans','Comic Sans MS',cursive;font-weight:500;color:var(--ink)}
+  .lead{font-size:17.5px;line-height:1.62;color:var(--body);font-weight:500}
+  .eyebrow{display:inline-block;font-weight:700;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold-ink);background:linear-gradient(#FBEFD2,var(--gold-soft));padding:7px 14px;border-radius:6px;box-shadow:var(--sh-1)}
+
+  /* surfaces + buttons */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--sh-2)}
+  .btn{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;padding:15px 28px;border-radius:12px;display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:none;line-height:1}
+  .btn-primary{background:linear-gradient(#CF6238,var(--terra) 55%,var(--terra-deep));color:#FFFDF8;box-shadow:var(--press),0 8px 18px rgba(192,83,48,.24);text-shadow:0 -1px 0 rgba(90,30,10,.35)}
+  .btn-primary:active{transform:translateY(1px)}
+  .btn-dark{background:var(--ink);color:var(--paper);box-shadow:var(--sh-2)}
+  .mark{flex:none;display:block}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(247,240,227,.86);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:1180px;margin:0 auto;padding:15px 32px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+  .nav-links{display:flex;align-items:center;gap:20px;font-weight:600;font-size:14.5px;color:var(--muted)}
+  .nav-links a{white-space:nowrap}
+  .nav-links a.nav-sec:hover,.nav-links a.nav-doc:hover{color:var(--ink)}
+
+  .board{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--sh-2);display:flex;flex-direction:column}
+  .pnum{flex:none;width:24px;height:24px;border-radius:50%;background:linear-gradient(#CF6238,var(--terra) 55%,var(--terra-deep));color:#FFFDF8;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:var(--sh-1)}
+
+  /* dark evening surfaces */
+  .dark{background:var(--espresso);color:var(--linen);position:relative;z-index:1}
+  .dark .h2{color:var(--linen)}
+
+  @media (max-width:1060px){ .nav-sec{display:none!important} }
   @media (max-width:980px){
     .board{grid-template-columns:repeat(2,1fr);gap:18px}
     .hero-grid{grid-template-columns:1fr!important;gap:40px!important}
@@ -42,16 +91,16 @@
   }
   @media (max-width:640px){
     .sec{padding:56px 20px!important}
-    .hero-sec{padding:44px 20px 56px!important}
+    .hero-sec{padding:40px 20px 56px!important}
     .cta-outer{padding:0 20px 56px!important}
     .footer-in{padding:36px 20px!important}
     .nav-in{padding:12px 20px!important}
     .nav-doc{display:none!important}
     .nav-cta{padding:9px 15px!important;font-size:14px}
-    .hero-h1{font-size:38px!important}
-    .h2{font-size:28px!important}
+    .hero-h1{font-size:42px!important}
+    .h2{font-size:29px!important}
     .dark-panel{padding:36px 22px!important}
-    .dark-quote{font-size:23px!important}
+    .dark-quote{font-size:24px!important}
     .cta-box{padding:32px 22px!important;gap:26px!important}
     .cta-form{flex-direction:column;padding:14px!important}
     .cta-form input{font-size:16px!important;padding:10px 4px!important}
@@ -60,88 +109,89 @@
 </style>
 </helmet>
 
-<div style="width:100%;background:#F7F0E3;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#2A211B;overflow-x:hidden">
+<div class="page">
 
   <!-- NAV -->
-  <div style="position:sticky;top:0;z-index:50;background:#F7F0E3E6;backdrop-filter:blur(10px);border-bottom:1px solid #EBE0CD">
-    <div class="nav-in" style="max-width:1180px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between">
-      <div style="display:flex;align-items:center;gap:11px">
-        <div style="width:30px;height:30px;border-radius:50%;background:conic-gradient(#D9A23A 0 90deg,#C2552E 90deg 180deg,#1F8175 180deg 270deg,#E0825E 270deg 360deg);position:relative"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:11px;height:11px;border-radius:50%;background:#F7F0E3"></div></div>
-        <span style="font-family:'Bungee',sans-serif;font-size:22px;letter-spacing:.5px">caleida</span>
+  <div class="nav">
+    <div class="nav-in">
+      <div style="display:flex;align-items:center;gap:10px">
+        <svg class="mark" width="30" height="30" viewBox="0 0 64 64" aria-hidden="true"><g transform="rotate(45 32 32)"><g stroke="#F7F0E3" stroke-width="3"><path d="M32 32 L32 2 A30 30 0 0 1 62 32 Z" fill="#D9A23A"/><path d="M32 32 L62 32 A30 30 0 0 1 32 62 Z" fill="#C05330"/><path d="M32 32 L32 62 A30 30 0 0 1 2 32 Z" fill="#1F8175"/><path d="M32 32 L2 32 A30 30 0 0 1 32 2 Z" fill="#E0825E"/></g></g><circle cx="32" cy="32" r="10.5" fill="#F7F0E3"/></svg>
+        <span class="wm" style="font-size:21px">caleida</span>
       </div>
-      <div class="nav-links" style="display:flex;align-items:center;gap:30px;font-weight:600;font-size:15px;color:#6B5D50">
+      <div class="nav-links">
         <a class="nav-sec" href="#features">Features</a>
         <a class="nav-sec" href="#voice">Cal's voice</a>
         <a class="nav-sec" href="#product">The product</a>
         <a class="nav-sec" href="#start">How it works</a>
         <a class="nav-doc" href="/caleida-tech-stack">Tech Stack</a>
         <a class="nav-doc" href="/caleida-brand-narrative">Brand Narrative</a>
-        <a class="nav-cta" href="#cta" style="background:#C2552E;color:#FFFDF8;padding:11px 20px;border-radius:13px;font-weight:700;box-shadow:0 8px 18px rgba(194,85,46,.26)">Get started</a>
+        <a class="nav-doc" href="/caleida-design-system">Design System</a>
+        <a class="nav-cta btn btn-primary" href="#cta" style="font-size:15px;padding:11px 20px">Get started</a>
       </div>
     </div>
   </div>
 
   <!-- HERO -->
-  <div class="hero-grid hero-sec" style="max-width:1180px;margin:0 auto;padding:72px 32px 80px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center">
+  <div class="hero-grid hero-sec sec" style="padding-top:72px;padding-bottom:80px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center">
     <div>
-      <div style="display:inline-block;background:#FBEFD6;color:#9A6B12;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border-radius:20px">For the dads who do</div>
-      <h1 class="hero-h1" style="font-weight:800;letter-spacing:-.03em;font-size:62px;line-height:1.02;margin:22px 0 0">Close the gap.<br><span style="color:#C2552E">Own your half.</span></h1>
-      <p style="font-size:18px;line-height:1.6;color:#6B5D50;font-weight:500;margin:24px 0 0;max-width:460px">She's carrying 71% of the invisible work — not because she wants to, because you can't see it. Cal is the straight-talking mate who makes the invisible visible, so you can finally pull your weight.</p>
+      <div class="eyebrow">For the dads who do</div>
+      <h1 class="hero-h1 disp" style="font-size:64px;font-weight:560;margin:22px 0 0">Close the gap.<br><span style="color:var(--terra)">Own your half.</span></h1>
+      <p class="lead" style="font-size:18px;margin:24px 0 0;max-width:460px">She's carrying 71% of the invisible work — not because she wants to, because you can't see it. Cal is the straight-talking mate who makes the invisible visible, so you can finally pull your weight.</p>
       <div style="display:flex;gap:14px;margin-top:34px;flex-wrap:wrap">
-        <a href="#cta" style="background:#C2552E;color:#FFFDF8;padding:16px 30px;border-radius:15px;font-weight:700;font-size:16px;box-shadow:0 14px 28px rgba(194,85,46,.28)">Get started</a>
-              </div>
-      <div style="display:flex;align-items:center;gap:10px;margin-top:30px;color:#9C8E7E;font-weight:600;font-size:13.5px">
+        <a href="#cta" class="btn btn-primary">Get started</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin-top:30px;color:var(--muted);font-weight:600;font-size:13.5px">
         <div style="display:flex">
-          <div style="width:30px;height:30px;border-radius:50%;background:#C2552E;border:2px solid #F7F0E3"></div>
-          <div style="width:30px;height:30px;border-radius:50%;background:#1F8175;border:2px solid #F7F0E3;margin-left:-10px"></div>
-          <div style="width:30px;height:30px;border-radius:50%;background:#D9A23A;border:2px solid #F7F0E3;margin-left:-10px"></div>
+          <div style="width:30px;height:30px;border-radius:50%;background:var(--terra);border:2px solid var(--paper)"></div>
+          <div style="width:30px;height:30px;border-radius:50%;background:var(--teal);border:2px solid var(--paper);margin-left:-10px"></div>
+          <div style="width:30px;height:30px;border-radius:50%;background:var(--gold);border:2px solid var(--paper);margin-left:-10px"></div>
         </div>
         Joining 5,000+ dads turning invisible labour into visible wins
       </div>
     </div>
     <div style="position:relative">
-      <div style="border-radius:24px;overflow:hidden;border:1px solid #E7DCC8;box-shadow:0 30px 60px rgba(58,40,26,.16);aspect-ratio:1/1">
-        <img src="assets/hero-caleida-couple-v2.png" width="1000" height="1000" alt="A dad begins carrying part of the household's invisible mental load while his partner looks on with relief" fetchpriority="high" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block">
+      <div style="border-radius:22px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--sh-3);aspect-ratio:1/1">
+        <img src="assets/hero-caleida-couple-v2.png" width="1000" height="1000" alt="A dad begins carrying part of the household's invisible mental load while his partner looks on with relief" fetchpriority="high" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center">
       </div>
-      <div style="position:absolute;bottom:-16px;left:-16px;background:#1F8175;color:#FFFDF8;font-weight:700;font-size:13px;padding:11px 16px;border-radius:14px;box-shadow:0 12px 24px rgba(31,129,117,.3)">The invisible work, made visible</div>
+      <div style="position:absolute;bottom:-16px;left:-16px;background:linear-gradient(165deg,#2E9488,var(--teal) 55%,var(--teal-deep));color:#FFFDF8;font-weight:700;font-size:13px;padding:11px 16px;border-radius:12px;box-shadow:var(--press),0 12px 24px rgba(31,129,117,.28);text-shadow:0 -1px 0 rgba(0,40,30,.3)">The invisible work, made visible</div>
     </div>
   </div>
 
   <!-- SEE IT -->
-  <div id="features" style="background:#FFFDF8;border-top:1px solid #EFE6D5;border-bottom:1px solid #EFE6D5">
-    <div class="sec" style="max-width:1180px;margin:0 auto;padding:84px 32px">
-      <h2 class="h2" style="font-weight:800;letter-spacing:-.02em;font-size:40px;line-height:1.1;margin:0;max-width:680px">Nobody taught you to see it. Cal does.</h2>
-      <p style="font-size:17px;line-height:1.6;color:#6B5D50;font-weight:500;margin:16px 0 44px;max-width:620px">Short paternity leave, a culture that told you to step back, and a world that never showed you what to look for. The odds were stacked. Cal levels them.</p>
+  <div id="features" class="band">
+    <div class="sec">
+      <h2 class="h2" style="font-size:40px;max-width:680px">Nobody taught you to see it. Cal does.</h2>
+      <p class="lead" style="font-size:17px;margin:16px 0 44px;max-width:620px">Short paternity leave, a culture that told you to step back, and a world that never showed you what to look for. The odds were stacked. Cal levels them.</p>
       <div class="feat-grid" style="display:grid;grid-template-columns:1fr 1.25fr;gap:24px">
         <div style="display:flex;flex-direction:column;gap:24px">
-          <div style="background:#FBF1DD;border:1px solid #F0E0BE;border-radius:22px;padding:28px">
-            <div style="font-family:'Bungee',sans-serif;font-size:34px;color:#C2552E">71%</div>
-            <div style="font-weight:700;font-size:17px;margin-top:8px">of the invisible work is hers</div>
-            <p style="font-size:14.5px;line-height:1.55;color:#6B5D50;font-weight:500;margin:8px 0 0">Every appointment, every form, every "have we got enough wipes" — she's running it. You just don't see it yet.</p>
+          <div style="background:#FBF1DD;border:1px solid #F0E0BE;border-radius:18px;padding:28px;box-shadow:var(--sh-1)">
+            <div class="stat" style="font-size:44px;color:var(--terra)">71%</div>
+            <div style="font-weight:700;font-size:17px;margin-top:8px;color:var(--ink)">of the invisible work is hers</div>
+            <p style="font-size:14.5px;line-height:1.55;color:var(--body);font-weight:500;margin:8px 0 0">Every appointment, every form, every "have we got enough wipes" — she's running it. You just don't see it yet.</p>
           </div>
-          <div style="background:#E7F1EE;border:1px solid #C9E3DC;border-radius:22px;padding:28px">
-            <div style="font-family:'Bungee',sans-serif;font-size:34px;color:#1F8175">2.5 hrs</div>
-            <div style="font-weight:700;font-size:17px;margin-top:8px">a day, the unpaid gap</div>
-            <p style="font-size:14.5px;line-height:1.55;color:#6B5D50;font-weight:500;margin:8px 0 0">That's the daily difference in cognitive labour between partners. It compounds fast.</p>
+          <div style="background:#E7F1EE;border:1px solid #C9E3DC;border-radius:18px;padding:28px;box-shadow:var(--sh-1)">
+            <div class="stat" style="font-size:44px;color:var(--teal)">2.5 hrs</div>
+            <div style="font-weight:700;font-size:17px;margin-top:8px;color:var(--ink)">a day, the unpaid gap</div>
+            <p style="font-size:14.5px;line-height:1.55;color:var(--body);font-weight:500;margin:8px 0 0">That's the daily difference in cognitive labour between partners. It compounds fast.</p>
           </div>
-          <div style="background:#FBF1DD;border:1px solid #F0E0BE;border-radius:22px;padding:28px">
-            <div style="font-family:'Bungee',sans-serif;font-size:34px;color:#C2552E">7 in 10</div>
-            <div style="font-weight:700;font-size:17px;margin-top:8px">dads want to do more</div>
-            <p style="font-size:14.5px;line-height:1.55;color:#6B5D50;font-weight:500;margin:8px 0 0">The intention is there. What's missing is knowing where to start — Cal makes it obvious.</p>
+          <div style="background:#FBF1DD;border:1px solid #F0E0BE;border-radius:18px;padding:28px;box-shadow:var(--sh-1)">
+            <div class="stat" style="font-size:44px;color:var(--terra)">7 in 10</div>
+            <div style="font-weight:700;font-size:17px;margin-top:8px;color:var(--ink)">dads want to do more</div>
+            <p style="font-size:14.5px;line-height:1.55;color:var(--body);font-weight:500;margin:8px 0 0">The intention is there. What's missing is knowing where to start — Cal makes it obvious.</p>
           </div>
-          <div style="background:#E7F1EE;border:1px solid #C9E3DC;border-radius:22px;padding:28px">
-            <div style="font-family:'Bungee',sans-serif;font-size:34px;color:#1F8175">0</div>
-            <div style="font-weight:700;font-size:17px;margin-top:8px">guilt trips, ever</div>
-            <p style="font-size:14.5px;line-height:1.55;color:#6B5D50;font-weight:500;margin:8px 0 0">No scorekeeping, no shame. Just a clearer picture and a nudge toward your fair share.</p>
+          <div style="background:#E7F1EE;border:1px solid #C9E3DC;border-radius:18px;padding:28px;box-shadow:var(--sh-1)">
+            <div class="stat" style="font-size:44px;color:var(--teal)">0</div>
+            <div style="font-weight:700;font-size:17px;margin-top:8px;color:var(--ink)">guilt trips, ever</div>
+            <p style="font-size:14.5px;line-height:1.55;color:var(--body);font-weight:500;margin:8px 0 0">No scorekeeping, no shame. Just a clearer picture and a nudge toward your fair share.</p>
           </div>
         </div>
-        <div style="background:#F7F0E3;border:1px solid #EFE6D5;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:20px">
-          <div style="border-radius:18px;overflow:hidden;border:1px solid #E7DCC8;background:#FBF5E9">
-            <img src="assets/load-split.webp" alt="Her share 71%, your share 29%" style="width:100%;display:block">
+        <div style="background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:20px;box-shadow:var(--sh-1)">
+          <div style="border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#FBF5E9">
+            <img src="assets/load-split.webp" alt="Her share 71%, your share 29%" style="width:100%">
           </div>
-          <div style="background:#C2552E;color:#FFFDF8;border-radius:18px;padding:24px">
-            <div style="font-size:30px;line-height:1;font-weight:800">“</div>
-            <div style="font-weight:700;font-size:19px;line-height:1.35;margin-top:4px">I didn't know what size clothes my kids wore.</div>
+          <div style="background:linear-gradient(165deg,#C96F49,#B65C38 55%,#A04E2C);color:#FFFDF8;border-radius:16px;padding:24px;box-shadow:var(--sh-2)">
+            <div class="disp" style="font-size:30px;line-height:1;font-weight:560;color:#FFFDF8;text-shadow:none">“</div>
+            <div class="disp" style="font-weight:520;font-size:20px;line-height:1.3;margin-top:2px;color:#FFFDF8;text-shadow:none">I didn't know what size clothes my kids wore.</div>
             <div style="font-size:13px;font-weight:600;opacity:.85;margin-top:12px">— the moment it clicks</div>
           </div>
         </div>
@@ -150,198 +200,175 @@
   </div>
 
   <!-- VOICE -->
-  <div id="voice" class="sec" style="max-width:1180px;margin:0 auto;padding:84px 32px;text-align:center">
-    <h2 class="h2" style="font-weight:800;letter-spacing:-.02em;font-size:40px;margin:0">Cal's voice: the warm roast.</h2>
-    <p style="font-size:17px;line-height:1.6;color:#6B5D50;font-weight:500;margin:14px auto 48px;max-width:560px">Not a nagging app. Not a to-do list. A mate who helps you see what you've been missing — and won't let you look away.</p>
+  <div id="voice" class="sec" style="text-align:center">
+    <h2 class="h2" style="font-size:40px">Cal's voice: the warm roast.</h2>
+    <p class="lead" style="font-size:17px;margin:14px auto 48px;max-width:560px">Not a nagging app. Not a to-do list. A mate who helps you see what you've been missing — and won't let you look away.</p>
 
     <!-- SAME MOMENT, TWO WAYS -->
-    <div style="display:inline-block;background:#FBEFD6;color:#9A6B12;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:20px;margin-bottom:26px">Same moment, two ways</div>
+    <div class="eyebrow" style="margin-bottom:26px">Same moment, two ways</div>
     <div class="grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:22px;text-align:left;margin-bottom:64px">
-      <div style="background:#EDEBE6;border:1px solid #DDD9D0;border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:14px">
+      <div style="background:#EDEBE6;border:1px solid #DDD9D0;border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:14px">
         <div style="font-weight:700;font-size:12px;letter-spacing:.08em;color:#8A857C;text-transform:uppercase">Any other app</div>
-        <div style="background:#FFFFFF;border:1px solid #E3E0D9;border-radius:14px;padding:16px 18px;font-family:system-ui,sans-serif">
+        <div style="background:#FFFFFF;border:1px solid #E3E0D9;border-radius:12px;padding:16px 18px;font-family:system-ui,sans-serif">
           <div style="font-weight:700;font-size:13px;color:#4A4740">⚠️ You have 4 overdue tasks</div>
           <div style="font-size:13px;color:#8A857C;margin-top:4px">Complete them now to stay on track.</div>
         </div>
-        <div style="background:#FFFFFF;border:1px solid #E3E0D9;border-radius:14px;padding:16px 18px;font-family:system-ui,sans-serif">
+        <div style="background:#FFFFFF;border:1px solid #E3E0D9;border-radius:12px;padding:16px 18px;font-family:system-ui,sans-serif">
           <div style="font-weight:700;font-size:13px;color:#4A4740">🔔 Streak lost</div>
           <div style="font-size:13px;color:#8A857C;margin-top:4px">You haven't logged any activity today.</div>
         </div>
         <div style="font-weight:700;font-size:13px;color:#8A857C;margin-top:auto">Nag. Guilt. Swipe away. Uninstall.</div>
       </div>
-      <div style="background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;padding:26px;box-shadow:0 8px 24px rgba(58,40,26,.06);display:flex;flex-direction:column;gap:14px">
+      <div class="card" style="padding:26px;display:flex;flex-direction:column;gap:14px">
         <div style="display:flex;align-items:center;gap:9px">
-          <div style="width:26px;height:26px;border-radius:50%;background:conic-gradient(#D9A23A 0 90deg,#C2552E 90deg 180deg,#1F8175 180deg 270deg,#E0825E 270deg 360deg)"></div>
-          <span style="font-weight:700;font-size:12px;letter-spacing:.08em;color:#C2552E;text-transform:uppercase">Cal</span>
+          <svg class="mark" width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><g transform="rotate(45 32 32)"><g stroke="#FFFDF6" stroke-width="3.2"><path d="M32 32 L32 2 A30 30 0 0 1 62 32 Z" fill="#D9A23A"/><path d="M32 32 L62 32 A30 30 0 0 1 32 62 Z" fill="#C05330"/><path d="M32 32 L32 62 A30 30 0 0 1 2 32 Z" fill="#1F8175"/><path d="M32 32 L2 32 A30 30 0 0 1 32 2 Z" fill="#E0825E"/></g></g><circle cx="32" cy="32" r="10.5" fill="#FFFDF6"/></svg>
+          <span style="font-weight:700;font-size:12px;letter-spacing:.08em;color:var(--terra);text-transform:uppercase">Cal</span>
         </div>
-        <div style="background:#F7F0E3;border:1px solid #EFE6D5;border-radius:14px;padding:16px 18px">
-          <p style="font-size:15px;line-height:1.5;font-weight:500;font-style:italic;color:#2A211B;margin:0">“9 days since the big shop, mate. Fridge is looking brave.”</p>
+        <div style="background:var(--note);border-radius:4px;padding:15px 18px;box-shadow:var(--sh-1)">
+          <p class="cal" style="font-size:16px;line-height:1.5;margin:0">“9 days since the big shop, mate. Fridge is looking brave.”</p>
         </div>
-        <div style="background:#F7F0E3;border:1px solid #EFE6D5;border-radius:14px;padding:16px 18px">
-          <p style="font-size:15px;line-height:1.5;font-weight:500;font-style:italic;color:#2A211B;margin:0">“Quiet day? Happens. Bins go out tonight — take that one and we're square.”</p>
+        <div style="background:var(--note);border-radius:4px;padding:15px 18px;box-shadow:var(--sh-1)">
+          <p class="cal" style="font-size:16px;line-height:1.5;margin:0">“Quiet day? Happens. Bins go out tonight — take that one and we're square.”</p>
         </div>
-        <div style="font-weight:700;font-size:13px;color:#1F8175;margin-top:auto">A mate checking in. You're on it.</div>
+        <div style="font-weight:700;font-size:13px;color:var(--teal-deep);margin-top:auto">A mate checking in. You're on it.</div>
       </div>
     </div>
 
     <!-- A DAY IN THE THREAD -->
-    <div style="display:inline-block;background:#FBEFD6;color:#9A6B12;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:20px;margin-bottom:26px">A day in the thread</div>
+    <div class="eyebrow" style="margin-bottom:26px">A day in the thread</div>
     <div class="roasts" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;text-align:left">
       <sc-for list="{{ roasts }}" as="r" hint-placeholder-count="6">
-        <div style="background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;padding:26px;box-shadow:0 8px 24px rgba(58,40,26,.06);display:flex;flex-direction:column;gap:16px;min-height:240px">
+        <div class="card" style="padding:26px;display:flex;flex-direction:column;gap:16px;min-height:240px">
           <div style="display:flex;align-items:center;gap:9px">
-            <div style="width:26px;height:26px;border-radius:50%;background:conic-gradient(#D9A23A 0 90deg,#C2552E 90deg 180deg,#1F8175 180deg 270deg,#E0825E 270deg 360deg)"></div>
-            <span style="font-weight:700;font-size:12px;letter-spacing:.06em;color:#9C8E7E">CAL · {{ r.time }}</span>
+            <svg class="mark" width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><g transform="rotate(45 32 32)"><g stroke="#FFFDF6" stroke-width="3.2"><path d="M32 32 L32 2 A30 30 0 0 1 62 32 Z" fill="#D9A23A"/><path d="M32 32 L62 32 A30 30 0 0 1 32 62 Z" fill="#C05330"/><path d="M32 32 L32 62 A30 30 0 0 1 2 32 Z" fill="#1F8175"/><path d="M32 32 L2 32 A30 30 0 0 1 32 2 Z" fill="#E0825E"/></g></g><circle cx="32" cy="32" r="10.5" fill="#FFFDF6"/></svg>
+            <span style="font-weight:700;font-size:12px;letter-spacing:.06em;color:var(--muted)">CAL · {{ r.time }}</span>
           </div>
-          <p style="font-size:16px;line-height:1.55;font-weight:500;font-style:italic;color:#2A211B;margin:0;flex:1">“{{ r.text }}”</p>
+          <p class="cal" style="font-size:16px;line-height:1.55;margin:0;flex:1">“{{ r.text }}”</p>
           <div style="font-weight:700;font-size:12.5px;color:{{ r.col }};letter-spacing:.02em">{{ r.tag }}</div>
         </div>
       </sc-for>
     </div>
 
     <!-- THE GOOD-FRIEND TEST -->
-    <div class="dark-panel" style="margin-top:64px;background:#2A211B;border-radius:26px;padding:52px 48px;text-align:center;box-shadow:0 24px 48px rgba(42,33,27,.18)">
-      <div style="font-weight:700;font-size:12px;letter-spacing:.1em;color:#9C8E7E;text-transform:uppercase">The test every line has to pass</div>
-      <p class="dark-quote" style="font-weight:800;letter-spacing:-.02em;font-size:30px;line-height:1.25;color:#FFFDF8;margin:16px auto 0;max-width:640px">Would a good friend — one who genuinely likes you — <span style="color:#E0825E">actually say this?</span></p>
+    <div class="dark-panel dark" style="margin-top:64px;border-radius:24px;padding:52px 48px;text-align:center;box-shadow:var(--sh-3)">
+      <div style="font-weight:700;font-size:12px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase">The test every line has to pass</div>
+      <p class="dark-quote disp" style="font-weight:540;font-size:32px;line-height:1.22;color:var(--linen);margin:16px auto 0;max-width:660px;text-shadow:none">Would a good friend — one who genuinely likes you — <span style="color:var(--salmon)">actually say this?</span></p>
       <p style="font-size:16px;line-height:1.6;color:#C9BBA6;font-weight:500;margin:18px auto 0;max-width:520px">If it sounds like software, we rewrite it. If it could land as a dig, it doesn't get sent. Anyone can build a reminder engine — no one else has Cal.</p>
     </div>
   </div>
 
   <!-- PRODUCT STORYBOARD -->
-  <div id="product" style="background:#FFFDF8;border-top:1px solid #EFE6D5;border-bottom:1px solid #EFE6D5">
-    <div class="sec" style="max-width:1180px;margin:0 auto;padding:84px 32px">
-      <div style="display:inline-block;background:#FBEFD6;color:#9A6B12;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border-radius:20px">The product, in pictures</div>
-      <h2 class="h2" style="font-weight:800;letter-spacing:-.02em;font-size:40px;line-height:1.1;margin:22px 0 0;max-width:680px">How Caleida works — a story in six panels.</h2>
-      <p style="font-size:17px;line-height:1.6;color:#6B5D50;font-weight:500;margin:16px 0 44px;max-width:640px">The idea, the interface, and the everyday use of it — told the way it actually happens in a house. The entire surface area is two things: <strong style="color:#2A211B">a chat thread with Cal</strong>, and <strong style="color:#2A211B">one screen called The Load</strong>. Everything else is voice and timing.</p>
+  <div id="product" class="band">
+    <div class="sec">
+      <div class="eyebrow">The product, in pictures</div>
+      <h2 class="h2" style="font-size:40px;margin:22px 0 0;max-width:680px">How Caleida works — a story in six panels.</h2>
+      <p class="lead" style="font-size:17px;margin:16px 0 44px;max-width:640px">The idea, the interface, and the everyday use of it — told the way it actually happens in a house. The entire surface area is two things: <strong style="color:var(--ink)">a chat thread with Cal</strong>, and <strong style="color:var(--ink)">one screen called The Load</strong>. Everything else is voice and timing.</p>
       <div class="board">
-
-        <figure style="margin:0;background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;overflow:hidden;box-shadow:0 8px 24px rgba(58,40,26,.06);display:flex;flex-direction:column">
-          <div style="display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px dashed #EFE6D5">
-            <span style="flex:none;width:24px;height:24px;border-radius:50%;background:#C2552E;color:#FFFDF8;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">1</span>
-            <span style="font-weight:700;font-size:17px;color:#2A211B">One head holds it all</span>
-          </div>
-          <img src="assets/panel-1-mental-load-v2.png" width="1000" height="714" loading="lazy" alt="In a warmly illustrated kitchen, a woman carries a large thought bubble full of household responsibilities while her partner looks on beside a small empty thought bubble." style="display:block;width:100%;height:auto;aspect-ratio:7/5;object-fit:cover">
-          <figcaption style="padding:16px 20px 19px;font-size:13.5px;line-height:1.58;color:#6B5D50;font-weight:500;border-top:1px solid #EFE6D5;margin-top:auto"><b style="color:#2A211B;font-weight:700">The idea starts here.</b> The mental load is real work — unwritten, invisible, carried by one person while the rest of the house honestly can't see it. You can't split a weight no one can see.</figcaption>
+        <figure class="panel" style="margin:0">
+          <div style="display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px dashed var(--line)"><span class="pnum">1</span><span style="font-weight:700;font-size:17px;color:var(--ink)">One head holds it all</span></div>
+          <img src="assets/panel-1-mental-load-v2.png" width="1000" height="714" loading="lazy" alt="In a warmly illustrated kitchen, a woman carries a large thought bubble full of household responsibilities while her partner looks on beside a small empty thought bubble." style="width:100%;height:auto;aspect-ratio:7/5;object-fit:cover">
+          <figcaption style="padding:16px 20px 19px;font-size:13.5px;line-height:1.58;color:var(--body);font-weight:500;border-top:1px solid var(--line);margin-top:auto"><b style="color:var(--ink);font-weight:700">The idea starts here.</b> The mental load is real work — unwritten, invisible, carried by one person while the rest of the house honestly can't see it. You can't split a weight no one can see.</figcaption>
         </figure>
-
-        <figure style="margin:0;background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;overflow:hidden;box-shadow:0 8px 24px rgba(58,40,26,.06);display:flex;flex-direction:column">
-          <div style="display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px dashed #EFE6D5">
-            <span style="flex:none;width:24px;height:24px;border-radius:50%;background:#C2552E;color:#FFFDF8;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">2</span>
-            <span style="font-weight:700;font-size:17px;color:#2A211B">Cal texts first</span>
-          </div>
-          <img src="assets/panel-2-cal-texts-first-v2.png" width="1000" height="714" loading="lazy" alt="In a warmly illustrated kitchen, a man smiles at an incoming Cal notification on his phone beside a simple visual reminder about groceries." style="display:block;width:100%;height:auto;aspect-ratio:7/5;object-fit:cover">
-          <figcaption style="padding:16px 20px 19px;font-size:13.5px;line-height:1.58;color:#6B5D50;font-weight:500;border-top:1px solid #EFE6D5;margin-top:auto"><b style="color:#2A211B;font-weight:700">The app makes the first move.</b> Cal notices the pattern and reaches out — no dashboard to check, no app you have to remember to open. Proactive, but only when it's worth the interruption.</figcaption>
+        <figure class="panel" style="margin:0">
+          <div style="display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px dashed var(--line)"><span class="pnum">2</span><span style="font-weight:700;font-size:17px;color:var(--ink)">Cal texts first</span></div>
+          <img src="assets/panel-2-cal-texts-first-v2.png" width="1000" height="714" loading="lazy" alt="In a warmly illustrated kitchen, a man smiles at an incoming Cal notification on his phone beside a simple visual reminder about groceries." style="width:100%;height:auto;aspect-ratio:7/5;object-fit:cover">
+          <figcaption style="padding:16px 20px 19px;font-size:13.5px;line-height:1.58;color:var(--body);font-weight:500;border-top:1px solid var(--line);margin-top:auto"><b style="color:var(--ink);font-weight:700">The app makes the first move.</b> Cal notices the pattern and reaches out — no dashboard to check, no app you have to remember to open. Proactive, but only when it's worth the interruption.</figcaption>
         </figure>
-
-        <figure style="margin:0;background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;overflow:hidden;box-shadow:0 8px 24px rgba(58,40,26,.06);display:flex;flex-direction:column">
-          <div style="display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px dashed #EFE6D5">
-            <span style="flex:none;width:24px;height:24px;border-radius:50%;background:#C2552E;color:#FFFDF8;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">3</span>
-            <span style="font-weight:700;font-size:17px;color:#2A211B">The whole app is a conversation</span>
-          </div>
-          <img src="assets/panel-3-conversation-v2.png" width="1000" height="714" loading="lazy" alt="A man chats with Cal from his kitchen table while an enlarged illustrated phone shows a simple conversation and quick actions." style="display:block;width:100%;height:auto;aspect-ratio:7/5;object-fit:cover">
-          <figcaption style="padding:16px 20px 19px;font-size:13.5px;line-height:1.58;color:#6B5D50;font-weight:500;border-top:1px solid #EFE6D5;margin-top:auto"><b style="color:#2A211B;font-weight:700">The UI is a text thread.</b> No boards, no forms, no setup. Lists, reminders and bookings happen as replies and one-tap chips — Cal turns talk into action, and the interface stays as light as a chat with a mate.</figcaption>
+        <figure class="panel" style="margin:0">
+          <div style="display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px dashed var(--line)"><span class="pnum">3</span><span style="font-weight:700;font-size:17px;color:var(--ink)">The whole app is a conversation</span></div>
+          <img src="assets/panel-3-conversation-v2.png" width="1000" height="714" loading="lazy" alt="A man chats with Cal from his kitchen table while an enlarged illustrated phone shows a simple conversation and quick actions." style="width:100%;height:auto;aspect-ratio:7/5;object-fit:cover">
+          <figcaption style="padding:16px 20px 19px;font-size:13.5px;line-height:1.58;color:var(--body);font-weight:500;border-top:1px solid var(--line);margin-top:auto"><b style="color:var(--ink);font-weight:700">The UI is a text thread.</b> No boards, no forms, no setup. Lists, reminders and bookings happen as replies and one-tap chips — Cal turns talk into action, and the interface stays as light as a chat with a mate.</figcaption>
         </figure>
-
-        <figure style="margin:0;background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;overflow:hidden;box-shadow:0 8px 24px rgba(58,40,26,.06);display:flex;flex-direction:column">
-          <div style="display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px dashed #EFE6D5">
-            <span style="flex:none;width:24px;height:24px;border-radius:50%;background:#C2552E;color:#FFFDF8;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">4</span>
-            <span style="font-weight:700;font-size:17px;color:#2A211B">Noticing becomes doing</span>
-          </div>
-          <img src="assets/panel-4-noticing-becomes-doing-v2.png" width="1000" height="714" loading="lazy" alt="In a warmly illustrated kitchen, a man proudly unpacks groceries while his relaxed partner looks on and a small teal check confirms the task is logged." style="display:block;width:100%;height:auto;aspect-ratio:7/5;object-fit:cover">
-          <figcaption style="padding:16px 20px 19px;font-size:13.5px;line-height:1.58;color:#6B5D50;font-weight:500;border-top:1px solid #EFE6D5;margin-top:auto"><b style="color:#2A211B;font-weight:700">This is the use, day to day.</b> He notices, he does it, one tap logs it — and Cal celebrates. Warm roast, never shame: the win gets recorded without anyone having to chase, ask, or assign.</figcaption>
+        <figure class="panel" style="margin:0">
+          <div style="display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px dashed var(--line)"><span class="pnum">4</span><span style="font-weight:700;font-size:17px;color:var(--ink)">Noticing becomes doing</span></div>
+          <img src="assets/panel-4-noticing-becomes-doing-v2.png" width="1000" height="714" loading="lazy" alt="In a warmly illustrated kitchen, a man proudly unpacks groceries while his relaxed partner looks on and a small teal check confirms the task is logged." style="width:100%;height:auto;aspect-ratio:7/5;object-fit:cover">
+          <figcaption style="padding:16px 20px 19px;font-size:13.5px;line-height:1.58;color:var(--body);font-weight:500;border-top:1px solid var(--line);margin-top:auto"><b style="color:var(--ink);font-weight:700">This is the use, day to day.</b> He notices, he does it, one tap logs it — and Cal celebrates. Warm roast, never shame: the win gets recorded without anyone having to chase, ask, or assign.</figcaption>
         </figure>
-
-        <figure style="margin:0;background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;overflow:hidden;box-shadow:0 8px 24px rgba(58,40,26,.06);display:flex;flex-direction:column">
-          <div style="display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px dashed #EFE6D5">
-            <span style="flex:none;width:24px;height:24px;border-radius:50%;background:#C2552E;color:#FFFDF8;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">5</span>
-            <span style="font-weight:700;font-size:17px;color:#2A211B">The Load, made visible</span>
-          </div>
-          <img src="assets/panel-5-load-visible-v2.png" width="1000" height="714" loading="lazy" alt="A couple calmly review The Load together on a tablet beside a clear illustrated dashboard of shared household categories." style="display:block;width:100%;height:auto;aspect-ratio:7/5;object-fit:cover">
-          <figcaption style="padding:16px 20px 19px;font-size:13.5px;line-height:1.58;color:#6B5D50;font-weight:500;border-top:1px solid #EFE6D5;margin-top:auto"><b style="color:#2A211B;font-weight:700">The one screen that isn't chat.</b> The Load shows who carried what — the invisible work, finally legible to the whole household. Clarity before fairness: you can only rebalance what you can see.</figcaption>
+        <figure class="panel" style="margin:0">
+          <div style="display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px dashed var(--line)"><span class="pnum">5</span><span style="font-weight:700;font-size:17px;color:var(--ink)">The Load, made visible</span></div>
+          <img src="assets/panel-5-load-visible-v2.png" width="1000" height="714" loading="lazy" alt="A couple calmly review The Load together on a tablet beside a clear illustrated dashboard of shared household categories." style="width:100%;height:auto;aspect-ratio:7/5;object-fit:cover">
+          <figcaption style="padding:16px 20px 19px;font-size:13.5px;line-height:1.58;color:var(--body);font-weight:500;border-top:1px solid var(--line);margin-top:auto"><b style="color:var(--ink);font-weight:700">The one screen that isn't chat.</b> The Load shows who carried what — the invisible work, finally legible to the whole household. Clarity before fairness: you can only rebalance what you can see.</figcaption>
         </figure>
-
-        <figure style="margin:0;background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;overflow:hidden;box-shadow:0 8px 24px rgba(58,40,26,.06);display:flex;flex-direction:column">
-          <div style="display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px dashed #EFE6D5">
-            <span style="flex:none;width:24px;height:24px;border-radius:50%;background:#C2552E;color:#FFFDF8;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">6</span>
-            <span style="font-weight:700;font-size:17px;color:#2A211B">The exhale</span>
-          </div>
-          <img src="assets/panel-6-the-exhale-v2.png" width="1000" height="714" loading="lazy" alt="A relaxed couple sit close together on a warm sofa beneath one shared teal thought bubble containing a calm kaleidoscope pattern." style="display:block;width:100%;height:auto;aspect-ratio:7/5;object-fit:cover">
-          <figcaption style="padding:16px 20px 19px;font-size:13.5px;line-height:1.58;color:#6B5D50;font-weight:500;border-top:1px solid #EFE6D5;margin-top:auto"><b style="color:#2A211B;font-weight:700">The outcome we're building for.</b> The scattered fragments resolve into one clear picture — the kaleidoscope in the name. She isn't the only one holding it any more. That exhale is the product.</figcaption>
+        <figure class="panel" style="margin:0">
+          <div style="display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px dashed var(--line)"><span class="pnum">6</span><span style="font-weight:700;font-size:17px;color:var(--ink)">The exhale</span></div>
+          <img src="assets/panel-6-the-exhale-v2.png" width="1000" height="714" loading="lazy" alt="A relaxed couple sit close together on a warm sofa beneath one shared teal thought bubble containing a calm kaleidoscope pattern." style="width:100%;height:auto;aspect-ratio:7/5;object-fit:cover">
+          <figcaption style="padding:16px 20px 19px;font-size:13.5px;line-height:1.58;color:var(--body);font-weight:500;border-top:1px solid var(--line);margin-top:auto"><b style="color:var(--ink);font-weight:700">The outcome we're building for.</b> The scattered fragments resolve into one clear picture — the kaleidoscope in the name. She isn't the only one holding it any more. That exhale is the product.</figcaption>
         </figure>
-
       </div>
     </div>
   </div>
 
   <!-- HONEST START (dark) -->
-  <div id="start" style="background:#2A211B;color:#FFFDF8">
-    <div class="sec start-grid" style="max-width:1180px;margin:0 auto;padding:84px 32px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
+  <div id="start" class="dark">
+    <div class="sec start-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
       <div>
-        <h2 class="h2" style="font-weight:800;letter-spacing:-.02em;font-size:40px;line-height:1.1;margin:0">The honest starting point.</h2>
+        <h2 class="h2" style="font-size:40px;color:var(--linen)">The honest starting point.</h2>
         <p style="font-size:17px;line-height:1.65;color:#C9BBA6;font-weight:500;margin:18px 0 0;max-width:440px">Most dads aren't where they want to be. That's exactly why you're here. Cal starts with a straight conversation — no judgment, just an honest look at where things stand. Two minutes. Your first step.</p>
-        <a href="#cta" style="display:inline-flex;align-items:center;gap:10px;margin-top:30px;background:#C2552E;color:#FFFDF8;padding:15px 26px;border-radius:14px;font-weight:700;font-size:16px">Meet Cal →</a>
+        <a href="#cta" class="btn btn-primary" style="margin-top:30px">Meet Cal →</a>
       </div>
-      <div style="background:#1E1712;border:1px solid #3A2E25;border-radius:22px;padding:28px">
-        <div style="font-weight:700;font-size:12px;letter-spacing:.1em;color:#9C8E7E">YOUR BASELINE</div>
+      <div style="background:var(--espresso-2);border:1px solid #3A2E25;border-radius:20px;padding:28px">
+        <div style="font-weight:700;font-size:12px;letter-spacing:.1em;color:var(--muted)">YOUR BASELINE</div>
         <div style="display:flex;flex-direction:column;gap:0;margin-top:18px">
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid #3A2E25"><span style="font-weight:600;font-size:15px;color:#E9E0D2">Household management</span><span style="font-weight:800;color:#E0825E">12%</span></div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid #3A2E25"><span style="font-weight:600;font-size:15px;color:#E9E0D2">Social coordination</span><span style="font-weight:800;color:#E0825E">05%</span></div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid #3A2E25"><span style="font-weight:600;font-size:15px;color:#E9E0D2">Childcare logistics</span><span style="font-weight:800;color:#E0825E">18%</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid #3A2E25"><span style="font-weight:600;font-size:15px;color:#E9E0D2">Household management</span><span class="stat" style="font-size:18px;color:var(--terra-glow)">12%</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid #3A2E25"><span style="font-weight:600;font-size:15px;color:#E9E0D2">Social coordination</span><span class="stat" style="font-size:18px;color:var(--terra-glow)">05%</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid #3A2E25"><span style="font-weight:600;font-size:15px;color:#E9E0D2">Childcare logistics</span><span class="stat" style="font-size:18px;color:var(--terra-glow)">18%</span></div>
         </div>
-        <div style="margin-top:20px;background:#C2552E22;border:1px solid #C2552E55;border-radius:13px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div style="margin-top:20px;background:rgba(215,126,87,.13);border:1px solid rgba(215,126,87,.34);border-radius:12px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center">
           <span style="font-weight:700;font-size:13px;letter-spacing:.04em;color:#E9B057">VERDICT</span>
           <span style="font-weight:800;font-size:15px;color:#FFB59C">Passive observer</span>
         </div>
-        <p style="font-size:13.5px;color:#9C8E7E;font-weight:500;margin:16px 0 0;line-height:1.5">"Most dads think they're doing 50/50 until they actually list the tasks. We'll close that gap together — no friction."</p>
+        <p class="cal" style="font-size:15px;color:#C9BBA6;margin:16px 0 0;line-height:1.45">"Most dads think they're doing 50/50 until they actually list the tasks. We'll close that gap together — no friction."</p>
       </div>
     </div>
   </div>
 
   <!-- TESTIMONIALS -->
-  <div class="sec" style="max-width:1180px;margin:0 auto;padding:84px 32px;text-align:center">
-    <div style="display:inline-block;background:#FBEFD6;color:#9A6B12;font-weight:700;font-size:12.5px;letter-spacing:.06em;padding:8px 16px;border-radius:20px">5,000+ DADS</div>
-    <h2 class="h2" style="font-weight:800;letter-spacing:-.02em;font-size:36px;margin:18px 0 44px">Turning invisible labour into visible wins.</h2>
+  <div class="sec" style="text-align:center">
+    <div class="eyebrow">5,000+ dads</div>
+    <h2 class="h2" style="font-size:36px;margin:18px 0 44px">Turning invisible labour into visible wins.</h2>
     <div class="grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;text-align:left">
-      <div style="background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;padding:30px;box-shadow:0 8px 24px rgba(58,40,26,.06)">
-        <p style="font-size:18px;line-height:1.55;font-weight:600;margin:0;color:#2A211B">"Cal didn't just give me a task list. It gave me context. I stopped asking 'how can I help?' and started doing the things that needed doing."</p>
-        <div style="font-weight:700;font-size:14px;color:#9C8E7E;margin-top:18px">— Mark R., dad of 3</div>
+      <div class="card" style="padding:30px">
+        <p style="font-size:18px;line-height:1.55;font-weight:600;margin:0;color:var(--ink)">"Cal didn't just give me a task list. It gave me context. I stopped asking 'how can I help?' and started doing the things that needed doing."</p>
+        <div style="font-weight:700;font-size:14px;color:var(--muted);margin-top:18px">— Mark R., dad of 3</div>
       </div>
-      <div style="background:#FFFDF8;border:1px solid #EFE6D5;border-radius:22px;padding:30px;box-shadow:0 8px 24px rgba(58,40,26,.06)">
-        <p style="font-size:18px;line-height:1.55;font-weight:600;margin:0;color:#2A211B">"The roast is real. But my marriage is actually better because I'm not waiting for a honey-do list anymore. I'm the one making the list now."</p>
-        <div style="font-weight:700;font-size:14px;color:#9C8E7E;margin-top:18px">— Sarah T., partner of a Cal user</div>
+      <div class="card" style="padding:30px">
+        <p style="font-size:18px;line-height:1.55;font-weight:600;margin:0;color:var(--ink)">"The roast is real. But my marriage is actually better because I'm not waiting for a honey-do list anymore. I'm the one making the list now."</p>
+        <div style="font-weight:700;font-size:14px;color:var(--muted);margin-top:18px">— Sarah T., partner of a Cal user</div>
       </div>
     </div>
   </div>
 
   <!-- CTA -->
-  <div id="cta" class="cta-outer" style="max-width:1180px;margin:0 auto;padding:0 32px 84px">
-    <div class="cta-box" style="background:#C2552E;border-radius:28px;padding:56px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;box-shadow:0 30px 60px rgba(194,85,46,.26)">
+  <div id="cta" class="cta-outer" style="max-width:1180px;margin:0 auto;padding:0 32px 84px;position:relative;z-index:1">
+    <div class="cta-box" style="background:linear-gradient(165deg,#C96F49,#B65C38 55%,#A04E2C);border-radius:26px;padding:56px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;box-shadow:var(--sh-3)">
       <div>
-        <h2 class="h2" style="font-weight:800;letter-spacing:-.02em;font-size:38px;line-height:1.08;margin:0;color:#FFFDF8">Ready to carry your share?</h2>
+        <h2 class="h2" style="font-size:38px;line-height:1.06;color:#FFFDF8;text-shadow:0 1px 0 rgba(90,30,10,.25)">Ready to carry your share?</h2>
         <p style="font-size:16.5px;line-height:1.6;color:#FFE6DA;font-weight:500;margin:14px 0 0">Two-minute baseline. First wins set up before you finish your coffee. No fluff — just the tools to lead your home with clarity.</p>
       </div>
-      <div class="cta-form" style="background:#FFFDF8;border-radius:18px;padding:10px;display:flex;gap:8px">
-        <input value="{{ email }}" sc-camel-on-input="{{ onEmail }}" placeholder="dad@email.com" style="flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:15px;padding:12px 14px;color:#2A211B">
-        <button sc-camel-on-click="{{ join }}" style="border:none;background:#2A211B;color:#FFFDF8;font-weight:700;font-size:15px;padding:13px 22px;border-radius:13px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;white-space:nowrap" style-active="transform:translateY(1px)">{{ joinLabel }}</button>
+      <div class="cta-form" style="background:var(--card);border-radius:16px;padding:10px;display:flex;gap:8px;box-shadow:var(--sh-2)">
+        <input value="{{ email }}" sc-camel-on-input="{{ onEmail }}" placeholder="dad@email.com" style="flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:15px;padding:12px 14px;color:var(--ink)">
+        <button sc-camel-on-click="{{ join }}" class="btn btn-dark" style="padding:13px 22px;white-space:nowrap" style-active="transform:translateY(1px)">{{ joinLabel }}</button>
       </div>
     </div>
   </div>
 
   <!-- FOOTER -->
-  <div style="background:#FFFDF8;border-top:1px solid #EFE6D5">
+  <div class="band" style="border-bottom:none">
     <div class="footer-in" style="max-width:1180px;margin:0 auto;padding:48px 32px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px">
-      <div style="max-width:240px">
-        <span style="font-family:'Bungee',sans-serif;font-size:20px">caleida</span>
-        <p style="font-size:13.5px;color:#9C8E7E;font-weight:500;margin:10px 0 0;line-height:1.5">Built for the modern dad who actually wants to help.</p>
+      <div style="max-width:250px">
+        <div style="display:flex;align-items:center;gap:9px">
+          <svg class="mark" width="24" height="24" viewBox="0 0 64 64" aria-hidden="true"><g transform="rotate(45 32 32)"><g stroke="#FFFDF6" stroke-width="3.2"><path d="M32 32 L32 2 A30 30 0 0 1 62 32 Z" fill="#D9A23A"/><path d="M32 32 L62 32 A30 30 0 0 1 32 62 Z" fill="#C05330"/><path d="M32 32 L32 62 A30 30 0 0 1 2 32 Z" fill="#1F8175"/><path d="M32 32 L2 32 A30 30 0 0 1 32 2 Z" fill="#E0825E"/></g></g><circle cx="32" cy="32" r="10.5" fill="#FFFDF6"/></svg>
+          <span class="wm" style="font-size:19px">caleida</span>
+        </div>
+        <p style="font-size:13.5px;color:var(--muted);font-weight:500;margin:12px 0 0;line-height:1.5">Built for the modern dad who actually wants to help.</p>
       </div>
       <div style="display:flex;gap:56px;flex-wrap:wrap;font-size:14px">
-        <div style="display:flex;flex-direction:column;gap:11px"><span style="font-weight:700;color:#2A211B">Product</span><a href="#" style="color:#9C8E7E;font-weight:500">Invisible work</a><a href="#" style="color:#9C8E7E;font-weight:500">Task tracking</a><a href="#" style="color:#9C8E7E;font-weight:500">Shared brain</a></div>
-        <div style="display:flex;flex-direction:column;gap:11px"><span style="font-weight:700;color:#2A211B">Company</span><a href="#" style="color:#9C8E7E;font-weight:500">Our method</a><a href="#" style="color:#9C8E7E;font-weight:500">Privacy</a><a href="#" style="color:#9C8E7E;font-weight:500">Support</a></div>
+        <div style="display:flex;flex-direction:column;gap:11px"><span style="font-weight:700;color:var(--ink)">Product</span><a href="#" style="color:var(--muted);font-weight:500">Invisible work</a><a href="#" style="color:var(--muted);font-weight:500">Task tracking</a><a href="#" style="color:var(--muted);font-weight:500">Shared brain</a></div>
+        <div style="display:flex;flex-direction:column;gap:11px"><span style="font-weight:700;color:var(--ink)">Company</span><a href="/caleida-brand-narrative" style="color:var(--muted);font-weight:500">Our method</a><a href="/caleida-design-system" style="color:var(--muted);font-weight:500">Design system</a><a href="#" style="color:var(--muted);font-weight:500">Support</a></div>
       </div>
     </div>
-    <div style="border-top:1px solid #EFE6D5"><div style="max-width:1180px;margin:0 auto;padding:20px 32px;font-size:12.5px;color:#9C8E7E;font-weight:500">© 2026 Caleida. The invisible work, visible.</div></div>
+    <div style="border-top:1px solid var(--line)"><div style="max-width:1180px;margin:0 auto;padding:20px 32px;font-size:12.5px;color:var(--muted);font-weight:500">© 2026 Caleida. The invisible work, made visible.</div></div>
   </div>
-
 
 </div>
 </x-dc>
@@ -351,17 +378,17 @@ class Component extends DCLogic {
   renderVals(){
     return {
       roasts:[
-        {time:'7:45 AM', text:"Quick one. Do you know what's for dinner today? Not judging — just checking it's on your radar. It's on hers.", tag:'Learning to notice', col:'#1F8175'},
-        {time:'12:10 PM', text:"School emailed — trip form's due Wednesday. Two-minute job. Want the link before it lands on her list?", tag:'Catching it before it slips', col:'#C2552E'},
-        {time:'3:20 PM', text:"Nappies are down to the last pack. I've added it to the basket. Confirm and it's done.", tag:"Taking it off her plate", col:'#9A6B12'},
-        {time:'5:45 PM', text:"You booked the dentist before anyone had to ask. Look at you. Logged it — this is the stuff she notices.", tag:'Clocking the win', col:'#1F8175'},
-        {time:'9:00 PM', text:"Leo's got a birthday party Saturday. Present's not sorted. I found three options under £20. Want me to handle it?", tag:'Getting ahead of it', col:'#C2552E'},
-        {time:'10:30 PM', text:"Three things came off her plate today — and she didn't have to ask for one of them. That's the whole point, mate. Night.", tag:'The day, closed out', col:'#9A6B12'},
+        {time:'7:45 AM', text:"Quick one. Do you know what's for dinner today? Not judging — just checking it's on your radar. It's on hers.", tag:'Learning to notice', col:'#186B60'},
+        {time:'12:10 PM', text:"School emailed — trip form's due Wednesday. Two-minute job. Want the link before it lands on her list?", tag:'Catching it before it slips', col:'#A94525'},
+        {time:'3:20 PM', text:"Nappies are down to the last pack. I've added it to the basket. Confirm and it's done.", tag:"Taking it off her plate", col:'#8A5F10'},
+        {time:'5:45 PM', text:"You booked the dentist before anyone had to ask. Look at you. Logged it — this is the stuff she notices.", tag:'Clocking the win', col:'#186B60'},
+        {time:'9:00 PM', text:"Leo's got a birthday party Saturday. Present's not sorted. I found three options under £20. Want me to handle it?", tag:'Getting ahead of it', col:'#A94525'},
+        {time:'10:30 PM', text:"Three things came off her plate today — and she didn't have to ask for one of them. That's the whole point, mate. Night.", tag:'The day, closed out', col:'#8A5F10'},
       ],
       email:this.state.email,
       onEmail:(e)=>this.setState({email:e.target.value}),
       join:()=>this.setState({joined:true}),
-      joinLabel:this.state.joined?'You\u2019re in ✓':'Join the crew',
+      joinLabel:this.state.joined?'You’re in ✓':'Join the crew',
       showDemo:this.state.showDemo,
       openDemo:()=>this.setState({showDemo:true}),
       closeDemo:()=>this.setState({showDemo:false}),
